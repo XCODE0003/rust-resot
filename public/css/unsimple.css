@@ -1,0 +1,32 @@
+.unsimple {
+  margin: auto;
+  opacity: 0.2;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-transition: .4s;
+  transition: .4s;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: left;
+  text-decoration: none;
+  -webkit-transition: .5s;
+  transition: .5s;
+  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+}
+
+.unsimple img {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.unsimple:hover {
+  opacity: 1;
+}
+/*# sourceMappingURL=unsimple.css.map */

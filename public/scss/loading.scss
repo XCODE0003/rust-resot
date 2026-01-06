@@ -1,0 +1,69 @@
+.scale-loading {
+    transform: scale(1.5);
+}
+
+.loading {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(14, 10, 7, 0.90);
+    backdrop-filter: blur(20px);
+    z-index: 1002;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: 1s;
+    overflow: hidden;
+    top: 1;
+
+
+    .logo-loading {
+        transition: .5s;
+        animation: scale 2s infinite linear;
+        margin-bottom: 50px;
+
+        img {
+            width: 100px;
+        }
+
+    }
+
+ 
+}
+
+
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes scale {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 0.5;
+        transform: translateY(-8px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .loading {
+        .logo-loading {
+            img {
+                width: 60px;
+            }
+        }
+    }
+}

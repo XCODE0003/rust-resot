@@ -1,0 +1,1149 @@
+[04-Mar-2022 19:15:42 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.3.33. in /home/warstown/public_html/vendor/composer/platform_check.php on line 24
+[04-Mar-2022 19:15:42 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.3.33. in /home/warstown/public_html/vendor/composer/platform_check.php on line 24
+[04-Mar-2022 19:15:42 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.3.33. in /home/warstown/public_html/vendor/composer/platform_check.php on line 24
+[04-Mar-2022 19:29:12 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.3.33. in /home/warstown/public_html/vendor/composer/platform_check.php on line 24
+[04-Mar-2022 19:29:12 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.3.33. in /home/warstown/public_html/vendor/composer/platform_check.php on line 24
+[04-Mar-2022 19:29:12 UTC] PHP Fatal error:  Composer detected issues in your platform: Your Composer dependencies require a PHP version ">= 7.4.0". You are running 7.3.33. in /home/warstown/public_html/vendor/composer/platform_check.php on line 24
+[04-Mar-2022 21:39:17 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#11 /home/warstown/public_html/public/index.php(52): Illuminate\Foundation\Http\Kernel->handle()
+#12 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 21:39:17 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#11 /home/warstown/public_html/public/index.php(52): Illuminate\Foundation\Http\Kernel->handle()
+#12 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 21:39:17 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#11 /home/warstown/public_html/public/index.php(52): Illuminate\Foundation\Http\Kernel->handle()
+#12 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 21:54:02 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#11 /home/warstown/public_html/public/index.php(52): Illuminate\Foundation\Http\Kernel->handle()
+#12 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:14:12 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(52): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:14:12 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(52): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:14:12 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(52): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:17:25 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:17:26 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:17:26 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:17:35 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:17:36 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:17:36 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:18:24 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:18:25 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:18:25 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:18:34 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:18:34 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:18:34 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:19:01 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:19:01 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:19:01 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:19:05 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:22:01 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:22:01 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:22:01 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:26:58 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:26:59 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:26:59 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:27:16 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:27:16 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:27:16 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:27:47 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:28:43 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:28:49 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:29:38 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:29:43 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:29:53 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:31:42 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:32:08 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:32:30 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:32:50 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:32:53 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 20:35:23 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function dd() in /home/warstown/public_html/public/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/warstown/public_html/public/index.php on line 7
+[04-Mar-2022 20:36:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function dd() in /home/warstown/public_html/public/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/warstown/public_html/public/index.php on line 7
+[04-Mar-2022 20:36:30 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function dd() in /home/warstown/public_html/public/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/warstown/public_html/public/index.php on line 7
+[04-Mar-2022 20:36:59 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function dd() in /home/warstown/public_html/public/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/warstown/public_html/public/index.php on line 7
+[04-Mar-2022 20:41:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function dd() in /home/warstown/public_html/public/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/warstown/public_html/public/index.php on line 7
+[04-Mar-2022 20:47:00 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function dd() in /home/warstown/public_html/public/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/warstown/public_html/public/index.php on line 7
+[04-Mar-2022 20:47:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function dd() in /home/warstown/public_html/public/index.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/warstown/public_html/public/index.php on line 7
+[04-Mar-2022 22:47:32 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:47:44 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:47:48 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:50:13 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:50:13 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:50:13 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:55:21 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:55:23 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:55:23 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:55:54 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:55:54 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 22:55:54 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 23:11:33 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 23:11:34 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 23:11:34 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 23:11:41 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 23:11:46 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 23:11:52 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 23:11:52 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 23:11:52 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 23:12:46 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 23:12:46 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[04-Mar-2022 23:12:46 Europe/Kiev] PHP Fatal error:  During inheritance of ArrayAccess: Uncaught ErrorException: Return type of Illuminate\Support\Collection::offsetExists($key) should either be compatible with ArrayAccess::offsetExists(mixed $offset): bool, or the #[\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php:1481
+Stack trace:
+#0 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php(13): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError()
+#1 /home/warstown/public_html/vendor/composer/ClassLoader.php(444): include('/home/warstown/...')
+#2 /home/warstown/public_html/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile()
+#3 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/helpers.php(15): Composer\Autoload\ClassLoader->loadClass()
+#4 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(130): collect()
+#5 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(106): Illuminate\Foundation\PackageManifest->build()
+#6 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(89): Illuminate\Foundation\PackageManifest->getManifest()
+#7 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/PackageManifest.php(78): Illuminate\Foundation\PackageManifest->config()
+#8 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/RegisterFacades.php(26): Illuminate\Foundation\PackageManifest->aliases()
+#9 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(237): Illuminate\Foundation\Bootstrap\RegisterFacades->bootstrap()
+#10 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(152): Illuminate\Foundation\Application->bootstrapWith()
+#11 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(136): Illuminate\Foundation\Http\Kernel->bootstrap()
+#12 /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(110): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter()
+#13 /home/warstown/public_html/public/index.php(53): Illuminate\Foundation\Http\Kernel->handle()
+#14 {main} in /home/warstown/public_html/vendor/laravel/framework/src/Illuminate/Collections/Collection.php on line 13
+[08-Mar-2022 20:38:25 Europe/Kiev] PHP Fatal error:  Switch statements may only contain one default clause in /home/warstown/public_html/app/Lib/GameServer.php on line 58

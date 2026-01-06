@@ -1,0 +1,111 @@
+.servers-title {
+  font-family: 'Panton' !important;
+}
+
+.servers-online {
+  font-family: 'salma pro' !important;
+}
+
+.connect {
+  font-family: 'salma pro' !important;
+}
+
+.swiper-button-next {
+  font-family: 'Salma Pro' !important;
+}
+
+.swiper-button-prev {
+  font-family: 'Salma Pro' !important;
+}
+
+.header-news-content-text span {
+  font-family: 'Salma Pro' !important;
+}
+
+.servers-list-content {
+    font-family: 'Salma Pro' !important;
+}
+
+.footer-social-title {
+  font-family: 'Panton' !important;
+}
+
+.servers-list-content-name-text {
+  font-family: 'Stem' !important;
+}
+
+.footer {
+  font-family: 'Salma Pro' !important;
+}
+
+.help-nav {
+  font-family: 'Salma pro' !important;
+}
+
+.inner-header {
+  font-family: 'Panton' !important;
+}
+
+.tab-nav ul li {
+  font-family: 'Salma Pro' !important;
+}
+/*# sourceMappingURL=ru.css.map */
+.plate-block img {
+  left: 40px !important;
+}
+.plate-block span {
+  letter-spacing: 1px !important;
+}
+body,
+.shop-pick-content-button,
+.vip-group span {
+  font-family: 'Rust', 'Salma Pro', sens-serif !important;
+}
+.trading-user-info span {
+  font-size: 18px !important;
+}
+.action-btns button i {
+  font-size: 14px !important;
+}
+.page-bonus-prize span,
+#opencase-pay > span,
+.inner .news .news-list .news-content .news-content-text {
+  font-family: 'Salma Pro' !important;
+}
+.buying-item-terms label {
+  font-size: 14px;
+}
+.inner .shop-item .shop-item-buy .shop-item-buy-gift-user p {
+  font-size: 13px !important;
+}
+.stats-content-nav li span {
+  padding: 15px 60px 15px 60px !important;
+}
+body .inner-header,
+.stats-content .personal-stats .personal-right {
+  font-family: 'Panton' !important;
+}
+.personal-stats .personal-right .stats-personal .stats-content div span {
+  letter-spacing: -0.5px !important;
+}
+.categories-menu ul li a {
+  font-family: 'Stem';
+  text-transform: uppercase;
+  color: white;
+  font-size: 20px;
+  letter-spacing: 1px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+.categories-menu ul li a:hover {
+  color: #bc5909;
+}

@@ -1,0 +1,107 @@
+.terms {
+  text-align: left;
+  padding: 50px;
+  border-radius: 10px;
+  border: 1px solid var(--white-08);
+  background-color: var(--box);
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
+}
+
+.terms p:not(:last-child) {
+  margin-bottom: 50px;
+}
+
+.terms p {
+  color: var(--white-6);
+  font-family: 'Stem';
+  font-size: 14px;
+  letter-spacing: 0.7px;
+  line-height: 28px;
+}
+
+.terms p strong {
+  font-size: 16px;
+  padding-bottom: 15px !important;
+  color: white;
+}
+
+.terms p strong span {
+  color: var(--orange);
+}
+
+.open-new {
+  text-align: left;
+  padding: 50px;
+  border-radius: 10px;
+  border: 1px solid var(--white-08);
+  background-color: var(--box);
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
+}
+.open-guide {
+  text-align: left;
+  padding: 0;
+  border-radius: 10px;
+  border: none !important;
+  background: rgba(255, 255, 255, 0);
+  -webkit-backdrop-filter: blur(0px);
+  backdrop-filter: blur(0px);
+}
+
+.open-new .open-new-title {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid var(--white-08);
+  font-size: 24px;
+}
+
+.open-new .open-new-title span {
+  color: var(--orange);
+}
+
+.open-new img {
+  width: 100%;
+}
+
+.open-new p {
+  color: var(--white-6);
+  letter-spacing: 0.8px;
+  font-size: 14px;
+  font-family: 'Stem';
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.back-news {
+  text-align: left;
+}
+
+.back-news a {
+  color: var(--white);
+  margin-bottom: 50px;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  letter-spacing: 1px;
+  font-size: 20px;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.back-news a:hover {
+  color: var(--orange);
+}
+
+.back-news a i {
+  color: var(--orange);
+  margin-right: 10px;
+}
+/*# sourceMappingURL=inner-additional.css.map */

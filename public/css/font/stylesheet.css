@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Salma Pro';
+    src: url('SalmaPro-MediumNarrow.eot');
+    src: url('SalmaPro-MediumNarrow.eot?#iefix') format('embedded-opentype'),
+        url('SalmaPro-MediumNarrow.woff2') format('woff2'),
+        url('SalmaPro-MediumNarrow.woff') format('woff'),
+        url('SalmaPro-MediumNarrow.ttf') format('truetype'),
+        url('SalmaPro-MediumNarrow.svg#SalmaPro-MediumNarrow') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+

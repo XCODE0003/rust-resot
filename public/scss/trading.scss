@@ -1,0 +1,243 @@
+.trading {
+
+
+    .trading-items {
+        text-align: left;
+
+        .title {
+            color: white;
+            font-size: 45px;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .items {
+            display: flex;
+            flex-wrap: wrap;
+
+     
+            .item:nth-child(2) {
+                margin: 0px 20px 20px 20px;
+            }
+
+            .item:nth-child(4) {
+                margin: 0px 0px 20px 20px;
+            }
+
+
+            .item:nth-child(6) {
+                margin: 0px 20px 20px 20px;
+            }
+
+            .item:nth-child(8) {
+                margin: 0px 0px 20px 20px;
+            }
+
+            .item:nth-child(10) {
+                margin: 0px 20px 20px 20px;
+            }
+
+            .item:nth-child(12) {
+                margin: 0px 0px 20px 20px;
+            }
+
+
+            .item:nth-child(14) {
+                margin: 0px 20px 20px 20px;
+            }
+
+            .item:nth-child(16) {
+                margin: 0px 0px 20px 20px;
+            }
+
+            .item:nth-child(18) {
+                margin: 0px 20px 20px 20px;
+            }
+
+            .item:nth-child(20) {
+                margin: 0px 0px 20px 20px;
+            }
+           
+
+            .item {
+                width: 23.7%;
+                background-color: rgba(128, 128, 128, 0.205);
+                backdrop-filter: blur(20px);
+                border-radius: 15px;
+                position: relative;
+                margin-bottom: 20px;
+                padding: 40px;
+
+                .item-value {
+                    font-size: 25px;
+                    font-weight: 500;
+                    color: orange;
+
+                }
+
+                .item-img {
+                    position: absolute;
+                    top: 50px;
+                    right: 30px;
+                    img {
+                        width: 80px;
+                    }
+                }
+
+                .item-name {
+                    margin-top: 30px;
+                    p {
+                        color: white;
+                        font-size: 20px;
+                        font-family: 'Stem';
+                        font-weight: bold;
+                    }
+
+                    span {
+                        color: rgba(255, 255, 255, 0.39);
+                        font-size: 12px;
+                        font-family: 'Stem';
+                    }
+                }
+
+                .item-links {
+                    display: flex;
+                    flex-direction: column;
+                    margin-top: 20px;
+
+                    a {
+                        color: rgba(255, 255, 255, 0.37);
+                        text-decoration: none;
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 10px;
+                        font-family: 'Stem';
+                        font-size: 12px;
+                        font-weight: 500;
+                        transition: .5s;
+
+                        &:hover {
+                            color: white;
+                        }
+                        
+
+                        i {
+                            margin-right: 10px;
+                            width: 10px;
+                        }
+
+                        .fa-chevron-right {
+                            margin-left: 5px;
+                            font-size: 10px;
+                            color: orange;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .trading-link {
+        display: flex;
+        text-align: left;
+        align-items: center;
+        justify-content: start;
+        background-color: rgba(128, 128, 128, 0.158);
+        border-radius: 10px;
+        backdrop-filter: blur(20px);
+        padding: 50px;
+        margin-bottom: 60px;
+
+        .trading-fp {
+            width: 150px;
+            height: 100px;
+            background-color: black;
+            margin-right: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+
+            img {
+                height: 100%;
+            }
+        }
+
+        .trading-info {
+            width: 100%;
+
+            p {
+                color: gray;
+                font-family: 'Stem';
+                font-size: 12px;
+                margin-top: 20px;
+            }
+            
+            .trading-link-copy {
+                position: relative;
+                width: 100%;
+
+                input {
+                    width: 100%;
+                    height: 50px;
+                    background-color: rgba(0, 0, 0, 0.596);
+                    border-radius: 5px;
+                    border: 1px solid rgba(255, 255, 255, 0.13);
+                    color: rgba(255, 255, 255, 0.301);
+                    font-family: 'Stem';
+                    padding-left: 20px;
+                    outline: none;
+                    pointer-events: none;
+                    
+                }
+
+                button {
+                    position: absolute;
+                    top: 26%;
+                    right: 15px;
+                    background-color: none;
+                    background: none;
+                    border: none;
+                    outline: none;
+                    color: rgba(255, 255, 255, 0.438);
+                    cursor: pointer;
+                    transition: .5s;
+                    font-size: 19px;
+
+                    &:hover {
+                        color: white;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+
+
+
+@media (max-width: 768px) {
+    .trading {
+        .trading-link {
+            flex-wrap: wrap;
+            padding: 20px;
+
+            .trading-fp {
+                width: 100%;
+                margin-bottom: 30px;
+                margin-right: 0;
+                display: none;
+            }
+
+            
+        }
+
+        .trading-items {
+            .items {
+                .item {
+                    width: 100%;
+                    margin: 0px 0px 20px 0px !important;
+                }
+            }
+        }
+    }
+}
