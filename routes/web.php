@@ -369,11 +369,10 @@ Route::middleware('server.config')->group(function () {
     Route::get('/tebex/{method}', [\App\Http\Controllers\PaymentsController::class, 'tebexStatus'])->name('tebex.status');
     Route::get('/heleket/success', [\App\Http\Controllers\Api\HeleketController::class, 'success'])->name('heleket.success');
     Route::get('/heleket/fail', [\App\Http\Controllers\Api\HeleketController::class, 'fail'])->name('heleket.fail');
-});
-Route::withoutMiddleware([\Illuminate\Session\Middleware\AuthenticateSession::class])->group(function () {
     Route::post('/pally/success', [\App\Http\Controllers\Api\PallyController::class, 'success'])->name('pally.success');
     Route::post('/pally/fail', [\App\Http\Controllers\Api\PallyController::class, 'fail'])->name('pally.fail');
 });
+
 Route::get('/test/login', function () {
     $user = User::first();
     Auth::login($user);
