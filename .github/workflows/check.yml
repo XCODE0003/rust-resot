@@ -1,0 +1,42 @@
+name: Code Quality Check
+
+on:
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  code-quality:
+    name: Check Code Quality
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv
+          tools: composer:v2
+
+      - name: Install PHP Dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress
+
+      - name: Run PHP Code Style Fixer (Laravel Pint)
+        run: ./vendor/bin/pint --test
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Node Dependencies
+        run: npm ci
+
+      - name: Check Build
+        run: npm run build
+

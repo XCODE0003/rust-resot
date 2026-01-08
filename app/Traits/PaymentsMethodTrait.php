@@ -546,14 +546,11 @@ trait PaymentsMethodTrait {
             }
 
             case 46: {
-                //Cryptocloud.plus
-                $price_rub = ($currency == 'USD') ? $price_usd * config('options.exchange_rate_usd', 70) : $price_rub;
-
-                $api_key = config('options.cryptocloud_api_key', '');
-                $shop_id = config('options.cryptocloud_shop_id', '');
+                // Heleket - общий (автоматический выбор валюты)
+                $price_usd = ($currency == 'USD') ? $price_usd : $price_rub / config('options.exchange_rate_usd', 70);
 
                 $donate = Donate::create([
-                    'payment_system' => 'cryptocloud',
+                    'payment_system' => 'heleket',
                     'user_id'        => auth()->user()->id,
                     'amount'         => $price_rub,
                     'bonus_amount'   => $price_amount,
@@ -564,39 +561,45 @@ trait PaymentsMethodTrait {
                     'status'         => 0,
                 ]);
 
-                $header = array(
-                    'Authorization: Token ' . $api_key,
-                );
-                $data = [
-                    'shop_id' => $shop_id,
-                    'amount' => $price,
-                    'order_id' => $donate->id,
-                    'currency' => $currency
-                ];
+                $heleketService = new Heleket();
 
-                $ch = curl_init();
-                curl_setopt($ch, CURLOPT_URL, 'https://api.cryptocloud.plus/v1/invoice/create');
-                curl_setopt($ch, CURLOPT_POST, true);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
-                $server_output = curl_exec($ch);
-                curl_close ($ch);
-
-                $answer = json_decode($server_output, true);
-                if (isset($answer['status']) && $answer['status'] == 'success' && isset($answer['pay_url'])) {
-                    return Redirect::to( $answer['pay_url']);
+                // Получаем доступные сервисы и выбираем первый доступный
+                $services = $heleketService->getPaymentServices();
+                if (!$services || empty($services)) {
+                    $this->alert('danger', __('Нет доступных способов оплаты. Попробуйте позже.'));
+                    return back();
                 }
+
+                // Используем первый доступный сервис
+                $service = $services[0];
+                $network = $service['network'] ?? 'TRON';
+                $currency_heleket = $service['currency'] ?? 'USDT';
+
+                $result = $heleketService->createPayment(
+                    amount: $price_usd,
+                    currency: $currency_heleket,
+                    network: $network,
+                    orderId: (string)$donate->id,
+                    options: [
+                        'url_return' => config('heleket.return_url') ?: url('/heleket/success'),
+                        'url_callback' => config('heleket.callback_url') ?: url('/api/payments/notification/heleket'),
+                    ]
+                );
+
+                if ($result && isset($result['url'])) {
+                    return Redirect::to($result['url']);
+                }
+
+                $this->alert('danger', __('Ошибка создания платежа. Попробуйте позже.'));
+                return back();
             }
 
-            case 47:
-            {
-
-                //AlfaBank
+            case 47: {
+                // Pally.info - Банковская карта (Visa/MasterCard RUB)
                 $price_rub = ($currency == 'USD') ? $price_usd * config('options.exchange_rate_usd', 70) : $price_rub;
 
                 $donate = Donate::create([
-                    'payment_system' => 'alfabank',
+                    'payment_system' => 'pally',
                     'user_id'        => auth()->user()->id,
                     'amount'         => $price_rub,
                     'bonus_amount'   => $price_amount,
@@ -607,34 +610,156 @@ trait PaymentsMethodTrait {
                     'status'         => 0,
                 ]);
 
-                # Логин и пароль от личного кабинета
-                $user = config('options.alfabank_user', "");
-                $password = config('options.alfabank_password', "");
+                $pallyService = new Pally();
 
-                $data = array(
-                    'userName' => $user,
-                    'password' => $password,
-                    'orderNumber' => urlencode($donate->id),
-                    'amount' => urlencode(intval($price * 100)),
-                    'currency' => urlencode($currency == 'USD' ? 840 : 810),
-                    'description' => 'Replenishment of Balance',
-                    'returnUrl' => asset('/alfabank/success'),
-                    'failUrl' => asset('/alfabank/fail'),
+                $result = $pallyService->createBill(
+                    amount: $price_rub,
+                    orderId: (string)$donate->id,
+                    description: __('Пополнение баланса'),
+                    options: [
+                        'currency_in' => 'RUB',
+                        'name' => __('Пополнение баланса'),
+                        'custom' => 'donate_id:' . $donate->id,
+                        'payment_method' => 'BANK_CARD',
+                        'success_url' => config('pally.success_url') ?: url('/pally/success'),
+                        'fail_url' => config('pally.fail_url') ?: url('/pally/fail'),
+                    ]
                 );
 
-                $curl = curl_init();
-                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($curl, CURLOPT_URL, 'https://payment.alfabank.ru/payment/rest/register.do');
-                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
-                curl_setopt($curl, CURLOPT_HEADER, false);
-                curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
-                $response = json_decode(curl_exec($curl), true);
-
-                if (isset($response['formUrl'])) {
-                    return Redirect::to( $response['formUrl']);
+                if ($result && isset($result['link_page_url'])) {
+                    return Redirect::to($result['link_page_url']);
                 }
 
-                $this->alert('danger', __('Произошла ошибка! Попробуйте позже.'));
+                $this->alert('danger', __('Ошибка создания платежа. Попробуйте позже.'));
+                return back();
+            }
+
+            case 49: {
+                // Pally.info - СБП
+                $price_rub = ($currency == 'USD') ? $price_usd * config('options.exchange_rate_usd', 70) : $price_rub;
+
+                $donate = Donate::create([
+                    'payment_system' => 'pally',
+                    'user_id'        => auth()->user()->id,
+                    'amount'         => $price_rub,
+                    'bonus_amount'   => $price_amount,
+                    'item_id'        => $shopitem->id,
+                    'var_id'         => $request->var_id,
+                    'steam_id'       => $steam_id,
+                    'server'         => $server,
+                    'status'         => 0,
+                ]);
+
+                $pallyService = new Pally();
+
+                $result = $pallyService->createBill(
+                    amount: $price_rub,
+                    orderId: (string)$donate->id,
+                    description: __('Пополнение баланса'),
+                    options: [
+                        'currency_in' => 'RUB',
+                        'name' => __('Пополнение баланса'),
+                        'custom' => 'donate_id:' . $donate->id,
+                        'payment_method' => 'SBP',
+                        'success_url' => config('pally.success_url') ?: url('/pally/success'),
+                        'fail_url' => config('pally.fail_url') ?: url('/pally/fail'),
+                    ]
+                );
+
+                if ($result && isset($result['link_page_url'])) {
+                    return Redirect::to($result['link_page_url']);
+                }
+
+                $this->alert('danger', __('Ошибка создания платежа. Попробуйте позже.'));
+                return back();
+            }
+
+            case 51: {
+                // Heleket - Bitcoin
+                $price_usd = ($currency == 'USD') ? $price_usd : $price_rub / config('options.exchange_rate_usd', 70);
+
+                $donate = Donate::create([
+                    'payment_system' => 'heleket',
+                    'user_id'        => auth()->user()->id,
+                    'amount'         => $price_rub,
+                    'bonus_amount'   => $price_amount,
+                    'item_id'        => $shopitem->id,
+                    'var_id'         => $request->var_id,
+                    'steam_id'       => $steam_id,
+                    'server'         => $server,
+                    'status'         => 0,
+                ]);
+
+                $heleketService = new Heleket();
+
+                $result = $heleketService->createPayment(
+                    amount: $price_usd,
+                    currency: 'BTC',
+                    network: 'BTC',
+                    orderId: (string)$donate->id,
+                    options: [
+                        'url_return' => config('heleket.return_url') ?: url('/heleket/success'),
+                        'url_callback' => config('heleket.callback_url') ?: url('/api/payments/notification/heleket'),
+                    ]
+                );
+
+                if ($result && isset($result['url'])) {
+                    return Redirect::to($result['url']);
+                }
+
+                $this->alert('danger', __('Ошибка создания платежа. Попробуйте позже.'));
+                return back();
+            }
+
+            case 52: {
+                // Heleket - USDT (все сети)
+                $price_usd = ($currency == 'USD') ? $price_usd : $price_rub / config('options.exchange_rate_usd', 70);
+
+                $donate = Donate::create([
+                    'payment_system' => 'heleket',
+                    'user_id'        => auth()->user()->id,
+                    'amount'         => $price_rub,
+                    'bonus_amount'   => $price_amount,
+                    'item_id'        => $shopitem->id,
+                    'var_id'         => $request->var_id,
+                    'steam_id'       => $steam_id,
+                    'server'         => $server,
+                    'status'         => 0,
+                ]);
+
+                $heleketService = new Heleket();
+
+                // Получаем все доступные сети для USDT
+                $services = $heleketService->getPaymentServices();
+                $usdtNetworks = [];
+
+                if ($services) {
+                    foreach ($services as $service) {
+                        if (isset($service['currency']) && strtoupper($service['currency']) === 'USDT' && isset($service['is_available']) && $service['is_available']) {
+                            $usdtNetworks[] = $service['network'];
+                        }
+                    }
+                }
+
+                // Используем первую доступную сеть для USDT или TRON по умолчанию
+                $network = !empty($usdtNetworks) ? $usdtNetworks[0] : 'TRON';
+
+                $result = $heleketService->createPayment(
+                    amount: $price_usd,
+                    currency: 'USDT',
+                    network: $network,
+                    orderId: (string)$donate->id,
+                    options: [
+                        'url_return' => config('heleket.return_url') ?: url('/heleket/success'),
+                        'url_callback' => config('heleket.callback_url') ?: url('/api/payments/notification/heleket'),
+                    ]
+                );
+
+                if ($result && isset($result['url'])) {
+                    return Redirect::to($result['url']);
+                }
+
+                $this->alert('danger', __('Ошибка создания платежа. Попробуйте позже.'));
                 return back();
             }
 
@@ -720,7 +845,7 @@ trait PaymentsMethodTrait {
                         'fail_url' => config('pally.fail_url') ?: url('/pally/fail'),
                     ]
                 );
-                dd($result);
+
                 if ($result && isset($result['link_page_url'])) {
                     return Redirect::to($result['link_page_url']);
                 }
