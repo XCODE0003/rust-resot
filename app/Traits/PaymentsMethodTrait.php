@@ -26,19 +26,21 @@ use YooKassa\Client as YClient;
 use URL;
 use Session;
 
-trait PaymentsMethodTrait {
+trait PaymentsMethodTrait
+{
 
-    public function setPayment($request, $shopitem, $price_rub, $price_usd, $qty=1)
+    public function setPayment($request, $shopitem, $price_rub, $price_usd, $qty = 1)
     {
         $server = $request->has('server_id') ? $request->server_id : 1;
         $steam_id = ($request->has('steam_id') && $request->steam_id != '') ? $request->steam_id : auth()->user()->steam_id;
-        $payment_id =  $request->payment_id;
+        $payment_id = $request->payment_id;
         $email = $request->has('email') ? $request->email : '';
         $currency = (app()->getLocale() == 'ru') ? 'RUB' : 'USD';
         $price_rub = abs($price_rub);
         $price_usd = abs($price_usd);
         $price = ($currency == 'USD') ? $price_usd : $price_rub;
-        if ($currency === 'USD') $price_rub = $price_usd * config('options.exchange_rate_usd', 1);
+        if ($currency === 'USD')
+            $price_rub = $price_usd * config('options.exchange_rate_usd', 1);
 
         //Начисляем бонус
         $price_amount = 0;
@@ -77,13 +79,13 @@ trait PaymentsMethodTrait {
 
                 $donate = Donate::create([
                     'payment_system' => 'paymentwall',
-                    'user_id'        => auth()->user()->id,
-                    'amount'         => $price_rub,
-                    'bonus_amount'   => $price_amount,
-                    'item_id'        => $shopitem->id,
-                    'var_id'         => $request->var_id,
-                    'server'         => $server,
-                    'status'         => 0,
+                    'user_id' => auth()->user()->id,
+                    'amount' => $price_rub,
+                    'bonus_amount' => $price_amount,
+                    'item_id' => $shopitem->id,
+                    'var_id' => $request->var_id,
+                    'server' => $server,
+                    'status' => 0,
                 ]);
 
                 session()->put('donate_id', $donate['id']);
@@ -92,16 +94,16 @@ trait PaymentsMethodTrait {
                     'user' . auth()->id(),   // id of the end-user who's making the payment
                     'pw',          // widget code, e.g. pw; can be picked inside of your merchant account
                     array(         // product details for Flexible Widget Call. To let users select the product on Paymentwall's end, leave this array empty
-                                   new Paymentwall_Product(
-                                       $donate['id'],                           // id of the product in your system
-                                       $price,                                   // price
-                                       $currency,                                  // currency code
-                                       'Пополнение баланса для проекта ' . config('app.name'),                      // product name
-                                       Paymentwall_Product::TYPE_FIXED, // this is a time-based product; for one-time products, use Paymentwall_Product::TYPE_FIXED and omit the following 3 array elements
-                                       1,                                      // duration is 1
-                                       Paymentwall_Product::PERIOD_TYPE_MONTH, //               month
-                                       false                                    // recurring
-                                   )
+                        new Paymentwall_Product(
+                            $donate['id'],                           // id of the product in your system
+                            $price,                                   // price
+                            $currency,                                  // currency code
+                            'Пополнение баланса для проекта ' . config('app.name'),                      // product name
+                            Paymentwall_Product::TYPE_FIXED, // this is a time-based product; for one-time products, use Paymentwall_Product::TYPE_FIXED and omit the following 3 array elements
+                            1,                                      // duration is 1
+                            Paymentwall_Product::PERIOD_TYPE_MONTH, //               month
+                            false                                    // recurring
+                        )
                     ),
                     array('email' => config('options.smtp_user', ''))           // additional parameters
                 );
@@ -122,13 +124,13 @@ trait PaymentsMethodTrait {
 
                 $donate = Donate::create([
                     'payment_system' => 'qiwi',
-                    'user_id'        => auth()->user()->id,
-                    'amount'         => $price_rub,
-                    'bonus_amount'   => $price_amount,
-                    'item_id'        => $shopitem->id,
-                    'var_id'         => $request->var_id,
-                    'server'         => $server,
-                    'status'         => 0,
+                    'user_id' => auth()->user()->id,
+                    'amount' => $price_rub,
+                    'bonus_amount' => $price_amount,
+                    'item_id' => $shopitem->id,
+                    'var_id' => $request->var_id,
+                    'server' => $server,
+                    'status' => 0,
                 ]);
 
                 $billPayments = new BillPayments(config('options.qiwi_secret_key', ''));
@@ -137,16 +139,16 @@ trait PaymentsMethodTrait {
 
                 $customFields = ['innerID' => $donate['id']];
                 $fields = [
-                    'amount'             => $price,
-                    'currency'           => $currency,
-                    'pay_source'         => 'qw',
-                    'comment'            => 'Donation for the project ' . config('app.name'),
+                    'amount' => $price,
+                    'currency' => $currency,
+                    'pay_source' => 'qw',
+                    'comment' => 'Donation for the project ' . config('app.name'),
                     'expirationDateTime' => $lifetime,
-                    'email'              => config('options.smtp_user', ''), // e-mail
-                    'account'            => config('options.qiwi_account', ''),
-                    'successUrl'         => config('app.url', '') . 'qiwi/success',
-                    'failUrl'            => config('app.url', '') . 'qiwi/fail',
-                    'customFields'       => $customFields,
+                    'email' => config('options.smtp_user', ''), // e-mail
+                    'account' => config('options.qiwi_account', ''),
+                    'successUrl' => config('app.url', '') . 'qiwi/success',
+                    'failUrl' => config('app.url', '') . 'qiwi/fail',
+                    'customFields' => $customFields,
                 ];
 
                 $response = $billPayments->createBill($billId, $fields);
@@ -162,7 +164,7 @@ trait PaymentsMethodTrait {
             }
 
             case 3: {
-		        //Enot.io
+                //Enot.io
 
                 $price_rub = ($currency == 'USD') ? $price_usd * config('options.exchange_rate_usd', 70) : $price_rub;
 
@@ -172,22 +174,22 @@ trait PaymentsMethodTrait {
                 }
 
                 $params = array(
-                    'account'  => auth()->user()->id,
+                    'account' => auth()->user()->id,
                     'currency' => $currency,
-                    'desc'     => 'Donation for the project ' . config('app.name'),
-                    'sum'      => $price,
+                    'desc' => 'Donation for the project ' . config('app.name'),
+                    'sum' => $price,
                 );
 
                 $donate = Donate::create([
                     'payment_system' => 'enot.io',
-                    'user_id'        => auth()->user()->id,
-                    'amount'         => $price_rub,
-                    'bonus_amount'   => $price_amount,
-                    'item_id'        => $shopitem->id,
-                    'var_id'         => $request->var_id,
-                    'steam_id'       => $steam_id,
-                    'server'         => $server,
-                    'status'         => 0,
+                    'user_id' => auth()->user()->id,
+                    'amount' => $price_rub,
+                    'bonus_amount' => $price_amount,
+                    'item_id' => $shopitem->id,
+                    'var_id' => $request->var_id,
+                    'steam_id' => $steam_id,
+                    'server' => $server,
+                    'status' => 0,
                 ]);
 
                 $sign = $this->sign($params['sum'], $donate->id, config('options.enot_merchant_id', ""), config('options.enot_secret_word', ""));
@@ -201,7 +203,7 @@ trait PaymentsMethodTrait {
             }
 
             case 4: {
-		        //App.cent
+                //App.cent
 
                 $price_rub = ($currency == 'USD') ? $price_usd * config('options.exchange_rate_usd', 70) : $price_rub;
 
@@ -214,13 +216,13 @@ trait PaymentsMethodTrait {
 
                 $donate = Donate::create([
                     'payment_system' => 'app.cent',
-                    'user_id'        => auth()->user()->id,
-                    'amount'         => $price_rub,
-                    'bonus_amount'   => $price_amount,
-                    'item_id'        => $shopitem->id,
-                    'var_id'         => $request->var_id,
-                    'server'         => $server,
-                    'status'         => 0,
+                    'user_id' => auth()->user()->id,
+                    'amount' => $price_rub,
+                    'bonus_amount' => $price_amount,
+                    'item_id' => $shopitem->id,
+                    'var_id' => $request->var_id,
+                    'server' => $server,
+                    'status' => 0,
                 ]);
 
                 $res = $client->post('https://cent.app/api/v1/bill/create', [
@@ -255,14 +257,14 @@ trait PaymentsMethodTrait {
 
                 $donate = Donate::create([
                     'payment_system' => 'freekassa',
-                    'user_id'        => auth()->user()->id,
-                    'amount'         => $price_rub,
-                    'bonus_amount'   => $price_amount,
-                    'item_id'        => $shopitem->id,
-                    'var_id'         => $request->var_id,
-                    'steam_id'       => $steam_id,
-                    'server'         => $server,
-                    'status'         => 0,
+                    'user_id' => auth()->user()->id,
+                    'amount' => $price_rub,
+                    'bonus_amount' => $price_amount,
+                    'item_id' => $shopitem->id,
+                    'var_id' => $request->var_id,
+                    'steam_id' => $steam_id,
+                    'server' => $server,
+                    'status' => 0,
                 ]);
 
                 $sign = md5("{$merchant_id}:{$price}:{$secret_word}:{$currency}:{$donate['id']}");
@@ -275,12 +277,11 @@ trait PaymentsMethodTrait {
                     'currency' => $currency,
                 ];
 
-                return Redirect::to('https://pay.freekassa.ru?'.http_build_query($params));
+                return Redirect::to('https://pay.freekassa.ru?' . http_build_query($params));
             }
 
 
-            case 20:
-            {
+            case 20: {
                 //Pay from Internal Balance
                 if (app()->getLocale() == 'en') {
                     $price = $price_usd * config('options.exchange_rate_usd', 70);
@@ -316,8 +317,7 @@ trait PaymentsMethodTrait {
             }
 
 
-            case 21:
-            {
+            case 21: {
                 //PayPal (Personal account)
 
                 if ($price_rub < 100) {
@@ -327,14 +327,14 @@ trait PaymentsMethodTrait {
 
                 $donate = Donate::create([
                     'payment_system' => 'paypal',
-                    'user_id'        => auth()->user()->id,
-                    'amount'         => $price_rub,
-                    'bonus_amount'   => $price_amount,
-                    'item_id'        => $shopitem->id,
-                    'var_id'         => $request->var_id,
-                    'steam_id'       => $steam_id,
-                    'server'         => $server,
-                    'status'         => 0,
+                    'user_id' => auth()->user()->id,
+                    'amount' => $price_rub,
+                    'bonus_amount' => $price_amount,
+                    'item_id' => $shopitem->id,
+                    'var_id' => $request->var_id,
+                    'steam_id' => $steam_id,
+                    'server' => $server,
+                    'status' => 0,
                 ]);
 
                 $paypal_email = config('options.paypal_email', '');
@@ -347,12 +347,12 @@ trait PaymentsMethodTrait {
                 }
 
                 $dataSet = [
-                    'email'       => $paypal_email,
+                    'email' => $paypal_email,
                     'description' => $description,
-                    'amount'      => $price,
-                    'currency'    => 'USD',
-                    'order_id'    => $donate->id,
-                    'return_url'  => route('account.profile'),
+                    'amount' => $price,
+                    'currency' => 'USD',
+                    'order_id' => $donate->id,
+                    'return_url' => route('account.profile'),
                 ];
 
                 return view('utils.paypal', compact('dataSet'));
@@ -370,14 +370,14 @@ trait PaymentsMethodTrait {
 
                 $donate = Donate::create([
                     'payment_system' => 'yookassa',
-                    'user_id'        => auth()->user()->id,
-                    'amount'         => $price_rub,
-                    'bonus_amount'   => $price_amount,
-                    'item_id'        => $shopitem->id,
-                    'var_id'         => $request->var_id,
-                    'steam_id'       => $steam_id,
-                    'server'         => $server,
-                    'status'         => 0,
+                    'user_id' => auth()->user()->id,
+                    'amount' => $price_rub,
+                    'bonus_amount' => $price_amount,
+                    'item_id' => $shopitem->id,
+                    'var_id' => $request->var_id,
+                    'steam_id' => $steam_id,
+                    'server' => $server,
+                    'status' => 0,
                 ]);
 
                 $merchant_id = config('options.yookassa_merchant_id', "");
@@ -409,21 +409,20 @@ trait PaymentsMethodTrait {
                 }
             }
 
-            case 44:
-            {
+            case 44: {
                 //PayKeeper
                 $price_rub = ($currency == 'USD') ? $price_usd * config('options.exchange_rate_usd', 70) : $price_rub;
 
                 $donate = Donate::create([
                     'payment_system' => 'paykeeper',
-                    'user_id'        => auth()->user()->id,
-                    'amount'         => $price_rub,
-                    'bonus_amount'   => $price_amount,
-                    'item_id'        => $shopitem->id,
-                    'var_id'         => $request->var_id,
-                    'steam_id'       => $steam_id,
-                    'server'         => $server,
-                    'status'         => 0,
+                    'user_id' => auth()->user()->id,
+                    'amount' => $price_rub,
+                    'bonus_amount' => $price_amount,
+                    'item_id' => $shopitem->id,
+                    'var_id' => $request->var_id,
+                    'steam_id' => $steam_id,
+                    'server' => $server,
+                    'status' => 0,
                 ]);
 
                 # Логин и пароль от личного кабинета PayKeeper
@@ -443,9 +442,9 @@ trait PaymentsMethodTrait {
                 # Параметры платежа, сумма - обязательный параметр
                 # Остальные параметры можно не задавать
                 $payment_data = array(
-                    "pay_amount"   => floatval($price),
-                    "clientid"     => auth()->id(),
-                    "orderid"      => $donate->id,
+                    "pay_amount" => floatval($price),
+                    "clientid" => auth()->id(),
+                    "orderid" => $donate->id,
                     "client_email" => auth()->user()->email,
                     "service_name" => 'Replenishment of Balance',
                 );
@@ -463,7 +462,10 @@ trait PaymentsMethodTrait {
                 $php_array = json_decode($response, true);
 
                 # В ответе должно быть заполнено поле token, иначе - ошибка
-                if (isset($php_array['token'])) $token = $php_array['token']; else die();
+                if (isset($php_array['token']))
+                    $token = $php_array['token'];
+                else
+                    die();
 
                 # Готовим запрос 3.4 JSON API на получение счёта
                 $uri = "/change/invoice/preview/";
@@ -478,7 +480,10 @@ trait PaymentsMethodTrait {
                 curl_setopt($curl, CURLOPT_POSTFIELDS, $request);
                 $response = json_decode(curl_exec($curl), true);
                 # В ответе должно быть поле invoice_id, иначе - ошибка
-                if (isset($response['invoice_id'])) $invoice_id = $response['invoice_id']; else die();
+                if (isset($response['invoice_id']))
+                    $invoice_id = $response['invoice_id'];
+                else
+                    die();
 
                 # В этой переменной прямая ссылка на оплату с заданными параметрами
                 $link = "$server_paykeeper/bill/$invoice_id/";
@@ -498,28 +503,28 @@ trait PaymentsMethodTrait {
 
                 $donate = Donate::create([
                     'payment_system' => 'unitpay',
-                    'user_id'        => auth()->user()->id,
-                    'amount'         => $price_rub,
-                    'bonus_amount'   => $price_amount,
-                    'item_id'        => $shopitem->id,
-                    'var_id'         => $request->var_id,
-                    'steam_id'       => $steam_id,
-                    'server'         => $server,
-                    'status'         => 0,
+                    'user_id' => auth()->user()->id,
+                    'amount' => $price_rub,
+                    'bonus_amount' => $price_amount,
+                    'item_id' => $shopitem->id,
+                    'var_id' => $request->var_id,
+                    'steam_id' => $steam_id,
+                    'server' => $server,
+                    'status' => 0,
                 ]);
 
-                $hashStr = $donate->id.'{up}'.$currency.'{up}'.$desc.'{up}'.$price.'{up}'.$secret_key;
+                $hashStr = $donate->id . '{up}' . $currency . '{up}' . $desc . '{up}' . $price . '{up}' . $secret_key;
                 $sign = hash('sha256', $hashStr);
 
                 $cashItems = base64_encode(json_encode([
                     [
-                    "name" => $desc,
-                    "count" => 1,
-                    "price" => floatval($price),
-                    "currency" => $currency,
-                    "nds" => 'none',
-                    "paymentMethod" => 'full_payment',
-                    "type" => "commodity"
+                        "name" => $desc,
+                        "count" => 1,
+                        "price" => floatval($price),
+                        "currency" => $currency,
+                        "nds" => 'none',
+                        "paymentMethod" => 'full_payment',
+                        "type" => "commodity"
                     ]
                 ]));
 
@@ -551,14 +556,14 @@ trait PaymentsMethodTrait {
 
                 $donate = Donate::create([
                     'payment_system' => 'heleket',
-                    'user_id'        => auth()->user()->id,
-                    'amount'         => $price_rub,
-                    'bonus_amount'   => $price_amount,
-                    'item_id'        => $shopitem->id,
-                    'var_id'         => $request->var_id,
-                    'steam_id'       => $steam_id,
-                    'server'         => $server,
-                    'status'         => 0,
+                    'user_id' => auth()->user()->id,
+                    'amount' => $price_rub,
+                    'bonus_amount' => $price_amount,
+                    'item_id' => $shopitem->id,
+                    'var_id' => $request->var_id,
+                    'steam_id' => $steam_id,
+                    'server' => $server,
+                    'status' => 0,
                 ]);
 
                 $heleketService = new Heleket();
@@ -579,7 +584,7 @@ trait PaymentsMethodTrait {
                     amount: $price_usd,
                     currency: $currency_heleket,
                     network: $network,
-                    orderId: (string)$donate->id,
+                    orderId: (string) $donate->id,
                     options: [
                         'url_return' => config('heleket.return_url') ?: url('/heleket/success'),
                         'url_callback' => config('heleket.callback_url') ?: url('/api/payments/notification/heleket'),
@@ -600,21 +605,21 @@ trait PaymentsMethodTrait {
 
                 $donate = Donate::create([
                     'payment_system' => 'pally',
-                    'user_id'        => auth()->user()->id,
-                    'amount'         => $price_rub,
-                    'bonus_amount'   => $price_amount,
-                    'item_id'        => $shopitem->id,
-                    'var_id'         => $request->var_id,
-                    'steam_id'       => $steam_id,
-                    'server'         => $server,
-                    'status'         => 0,
+                    'user_id' => auth()->user()->id,
+                    'amount' => $price_rub,
+                    'bonus_amount' => $price_amount,
+                    'item_id' => $shopitem->id,
+                    'var_id' => $request->var_id,
+                    'steam_id' => $steam_id,
+                    'server' => $server,
+                    'status' => 0,
                 ]);
 
                 $pallyService = new Pally();
 
                 $result = $pallyService->createBill(
                     amount: $price_rub,
-                    orderId: (string)$donate->id,
+                    orderId: (string) $donate->id,
                     description: __('Пополнение баланса'),
                     options: [
                         'currency_in' => 'RUB',
@@ -640,21 +645,21 @@ trait PaymentsMethodTrait {
 
                 $donate = Donate::create([
                     'payment_system' => 'pally',
-                    'user_id'        => auth()->user()->id,
-                    'amount'         => $price_rub,
-                    'bonus_amount'   => $price_amount,
-                    'item_id'        => $shopitem->id,
-                    'var_id'         => $request->var_id,
-                    'steam_id'       => $steam_id,
-                    'server'         => $server,
-                    'status'         => 0,
+                    'user_id' => auth()->user()->id,
+                    'amount' => $price_rub,
+                    'bonus_amount' => $price_amount,
+                    'item_id' => $shopitem->id,
+                    'var_id' => $request->var_id,
+                    'steam_id' => $steam_id,
+                    'server' => $server,
+                    'status' => 0,
                 ]);
 
                 $pallyService = new Pally();
 
                 $result = $pallyService->createBill(
                     amount: $price_rub,
-                    orderId: (string)$donate->id,
+                    orderId: (string) $donate->id,
                     description: __('Пополнение баланса'),
                     options: [
                         'currency_in' => 'RUB',
@@ -676,30 +681,35 @@ trait PaymentsMethodTrait {
 
             case 51: {
                 // Heleket - Bitcoin
-                $price_usd = ($currency == 'USD') ? $price_usd : $price_rub / config('options.exchange_rate_usd', 70);
-
+                $price = ($currency == 'USD') ? $price_usd : $price_rub;
                 $donate = Donate::create([
                     'payment_system' => 'heleket',
-                    'user_id'        => auth()->user()->id,
-                    'amount'         => $price_rub,
-                    'bonus_amount'   => $price_amount,
-                    'item_id'        => $shopitem->id,
-                    'var_id'         => $request->var_id,
-                    'steam_id'       => $steam_id,
-                    'server'         => $server,
-                    'status'         => 0,
+                    'user_id' => auth()->user()->id,
+                    'amount' => $price_rub,
+                    'bonus_amount' => $price_amount,
+                    'item_id' => $shopitem->id,
+                    'var_id' => $request->var_id,
+                    'steam_id' => $steam_id,
+                    'server' => $server,
+                    'status' => 0,
                 ]);
 
                 $heleketService = new Heleket();
 
                 $result = $heleketService->createPayment(
-                    amount: $price_usd,
-                    currency: 'BTC',
-                    network: 'BTC',
-                    orderId: (string)$donate->id,
+                    amount: $price,
+                    currency: $currency,
+                    orderId: (string) $donate->id,
                     options: [
                         'url_return' => config('heleket.return_url') ?: url('/heleket/success'),
                         'url_callback' => config('heleket.callback_url') ?: url('/api/payments/notification/heleket'),
+                        'currencies' => [
+                            [
+                                'currency' => 'BTC',
+                                'network' => 'BTC',
+                            ],
+                        ],
+                        'to_currency' => 'BTC',
                     ]
                 );
 
@@ -713,45 +723,57 @@ trait PaymentsMethodTrait {
 
             case 52: {
                 // Heleket - USDT (все сети)
-                $price_usd = ($currency == 'USD') ? $price_usd : $price_rub / config('options.exchange_rate_usd', 70);
-
+                $price = ($currency == 'USD') ? $price_usd : $price_rub;
                 $donate = Donate::create([
                     'payment_system' => 'heleket',
-                    'user_id'        => auth()->user()->id,
-                    'amount'         => $price_rub,
-                    'bonus_amount'   => $price_amount,
-                    'item_id'        => $shopitem->id,
-                    'var_id'         => $request->var_id,
-                    'steam_id'       => $steam_id,
-                    'server'         => $server,
-                    'status'         => 0,
+                    'user_id' => auth()->user()->id,
+                    'amount' => $price_rub,
+                    'bonus_amount' => $price_amount,
+                    'item_id' => $shopitem->id,
+                    'var_id' => $request->var_id,
+                    'steam_id' => $steam_id,
+                    'server' => $server,
+                    'status' => 0,
                 ]);
 
                 $heleketService = new Heleket();
 
                 // Получаем все доступные сети для USDT
                 $services = $heleketService->getPaymentServices();
-                $usdtNetworks = [];
 
+                $usdtNetworks = [];
+                $except_currencies = [];
                 if ($services) {
                     foreach ($services as $service) {
                         if (isset($service['currency']) && strtoupper($service['currency']) === 'USDT' && isset($service['is_available']) && $service['is_available']) {
                             $usdtNetworks[] = $service['network'];
+                        } else {
+                            $except_currencies[] = [
+                                'currency' => $service['currency'],
+                                'network' => $service['network'],
+                            ];
                         }
                     }
                 }
+                $currencies = [];
 
-                // Используем первую доступную сеть для USDT или TRON по умолчанию
-                $network = !empty($usdtNetworks) ? $usdtNetworks[0] : 'TRON';
+                foreach ($usdtNetworks as $network) {
+                    $currencies[] = [
+                        'currency' => 'USDT',
+                        'network' => $network,
+                    ];
+                }
 
                 $result = $heleketService->createPayment(
-                    amount: $price_usd,
-                    currency: 'USDT',
-                    network: $network,
-                    orderId: (string)$donate->id,
+                    amount: $price,
+                    currency: $currency,
+                    orderId: (string) $donate->id,
                     options: [
                         'url_return' => config('heleket.return_url') ?: url('/heleket/success'),
                         'url_callback' => config('heleket.callback_url') ?: url('/api/payments/notification/heleket'),
+                        'currencies' => $currencies,
+                        'except_currencies' => $except_currencies,
+                        'to_currency' => 'USDT',
                     ]
                 );
 
@@ -763,21 +785,20 @@ trait PaymentsMethodTrait {
                 return back();
             }
 
-            case 48:
-            {
+            case 48: {
                 // Tebex
                 $price_rub = ($currency == 'USD') ? $price_usd * config('options.exchange_rate_usd', 70) : $price_rub;
 
                 $donate = Donate::create([
                     'payment_system' => 'tebex',
-                    'user_id'        => auth()->user()->id,
-                    'amount'         => $price_rub,
-                    'bonus_amount'   => $price_amount,
-                    'item_id'        => $shopitem->id,
-                    'var_id'         => $request->var_id,
-                    'steam_id'       => $steam_id,
-                    'server'         => $server,
-                    'status'         => 0,
+                    'user_id' => auth()->user()->id,
+                    'amount' => $price_rub,
+                    'bonus_amount' => $price_amount,
+                    'item_id' => $shopitem->id,
+                    'var_id' => $request->var_id,
+                    'steam_id' => $steam_id,
+                    'server' => $server,
+                    'status' => 0,
                 ]);
 
                 Log::channel('paymentslog')->info('Robot: Player ' . auth()->user()->name . ' (' . auth()->user()->steam_id . ') ' . 'create tebex payment.');
@@ -822,20 +843,20 @@ trait PaymentsMethodTrait {
 
                 $donate = Donate::create([
                     'payment_system' => 'pally',
-                    'user_id'        => auth()->user()->id,
-                    'amount'         => $price_rub,
-                    'bonus_amount'   => $price_amount,
-                    'item_id'        => $shopitem->id,
-                    'var_id'         => $request->var_id,
-                    'server'         => $server,
-                    'status'         => 0,
+                    'user_id' => auth()->user()->id,
+                    'amount' => $price_rub,
+                    'bonus_amount' => $price_amount,
+                    'item_id' => $shopitem->id,
+                    'var_id' => $request->var_id,
+                    'server' => $server,
+                    'status' => 0,
                 ]);
 
                 $pallyService = new Pally();
 
                 $result = $pallyService->createBill(
                     amount: $price_rub,
-                    orderId: (string)$donate->id,
+                    orderId: (string) $donate->id,
                     description: __('Пополнение баланса'),
                     options: [
                         'currency_in' => 'RUB',
@@ -861,13 +882,13 @@ trait PaymentsMethodTrait {
 
                 $donate = Donate::create([
                     'payment_system' => 'heleket',
-                    'user_id'        => auth()->user()->id,
-                    'amount'         => $price_rub,
-                    'bonus_amount'   => $price_amount,
-                    'item_id'        => $shopitem->id,
-                    'var_id'         => $request->var_id,
-                    'server'         => $server,
-                    'status'         => 0,
+                    'user_id' => auth()->user()->id,
+                    'amount' => $price_rub,
+                    'bonus_amount' => $price_amount,
+                    'item_id' => $shopitem->id,
+                    'var_id' => $request->var_id,
+                    'server' => $server,
+                    'status' => 0,
                 ]);
 
                 $heleketService = new Heleket();
@@ -879,8 +900,7 @@ trait PaymentsMethodTrait {
                 $result = $heleketService->createPayment(
                     amount: $price_usd,
                     currency: $currency_heleket,
-                    network: $network,
-                    orderId: (string)$donate->id,
+                    orderId: (string) $donate->id,
                     options: [
                         'url_return' => config('heleket.return_url') ?: url('/heleket/success'),
                         'url_callback' => config('heleket.callback_url') ?: url('/api/payments/notification/heleket'),
@@ -895,8 +915,7 @@ trait PaymentsMethodTrait {
                 return back();
             }
 
-            case 50:
-            {
+            case 50: {
                 //Tebex OLD
                 /*
                 Log::channel('paymentslog')->info('Robot: Player ' . auth()->user()->name . ' (' . auth()->user()->steam_id . ') ' . 'create tebex payment.');
@@ -940,8 +959,8 @@ trait PaymentsMethodTrait {
             'complete_url' => $complete_url,
             'cancel_url' => $cancel_url,
             'custom' => [
-                'donate_id' => strval($donate_id),
-            ],
+                    'donate_id' => strval($donate_id),
+                ],
         ], JSON_UNESCAPED_SLASHES);
 
         $curl = curl_init();
@@ -952,9 +971,9 @@ trait PaymentsMethodTrait {
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_POSTFIELDS => $json,
             CURLOPT_HTTPHEADER => [
-                "Accept: application/json",
-                "Content-Type: application/json",
-            ],
+                    "Accept: application/json",
+                    "Content-Type: application/json",
+                ],
         ]);
 
         $response = curl_exec($curl);
@@ -973,8 +992,8 @@ trait PaymentsMethodTrait {
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-                "Accept: application/json"
-            ),
+                    "Accept: application/json"
+                ),
         ));
 
         $response = curl_exec($curl);
@@ -995,7 +1014,7 @@ trait PaymentsMethodTrait {
 
     protected function sign($out_amount, $order_id, $merchant_id = 13251, $secret = '')
     {
-        return md5($merchant_id.':'.$out_amount.':'.$secret.':'.$order_id);
+        return md5($merchant_id . ':' . $out_amount . ':' . $secret . ':' . $order_id);
     }
 
     protected function error($message)

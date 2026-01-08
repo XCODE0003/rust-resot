@@ -60,7 +60,7 @@ class Heleket
      * @param array $options Дополнительные параметры
      * @return array|null
      */
-    public function createPayment(float $amount, string $currency, string $network, ?string $orderId = null, array $options = []): ?array
+    public function createPayment(float $amount, string $currency, ?string $orderId = null, array $options = []): ?array
     {
         if (!$this->paymentClient) {
             Log::channel('heleket')->error('Payment client не инициализирован');
@@ -70,7 +70,6 @@ class Heleket
         $data = array_merge([
             'amount' => (string)$amount,
             'currency' => $currency,
-            'network' => $network,
             'order_id' => $orderId,
             'url_return' => $options['url_return'] ?? config('heleket.return_url'),
             'url_callback' => $options['url_callback'] ?? config('heleket.callback_url'),
@@ -80,11 +79,14 @@ class Heleket
 
         // Удаляем пустые значения
         $data = array_filter($data, function($value) {
+            if (is_array($value)) {
+                return true;
+            }
             return $value !== null && $value !== '';
         });
-
         try {
-            return $this->paymentClient->create($data);
+            $result = $this->paymentClient->create($data);
+            return $result;
         } catch (RequestBuilderException $e) {
             Log::channel('heleket')->error('Ошибка создания платежа', [
                 'message' => $e->getMessage(),

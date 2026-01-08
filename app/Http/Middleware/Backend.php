@@ -21,12 +21,16 @@ class Backend extends Middleware
         }
     }
 
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next, ...$guards)
     {
+        // Сначала проверяем аутентификацию через родительский метод
+        $this->authenticate($request, $guards);
+
+        // Затем проверяем роль пользователя
         if (!isset(auth()->user()->role) || auth()->user()->role == 'user') {
             abort(404);
         }
+
         return $next($request);
     }
 }
-
