@@ -583,7 +583,6 @@ trait PaymentsMethodTrait
                 $result = $heleketService->createPayment(
                     amount: $price_usd,
                     currency: $currency_heleket,
-                    network: $network,
                     orderId: (string) $donate->id,
                     options: [
                         'url_return' => config('heleket.return_url') ?: url('/heleket/success'),

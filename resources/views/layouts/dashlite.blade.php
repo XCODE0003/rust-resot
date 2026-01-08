@@ -40,7 +40,7 @@
     <link rel="stylesheet" href="/css/addition.css?ver=1.{{ strtotime(date('d.m.Y H:i:s')) }}">
 
 
-    <script src="https://kit.fontawesome.com/06da8e057b.js" crossorigin="anonymous"></script>
+    <script src="/assets/js/icons.js" crossorigin="anonymous"></script>
 
 
     @stack('head')
