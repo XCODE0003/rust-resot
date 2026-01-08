@@ -265,6 +265,23 @@ class PallyController extends Controller
 
         $invId = $request->input('InvId');
         $outSum = $request->input('OutSum');
+        $signature = $request->input('SignatureValue');
+
+        // Восстанавливаем сессию пользователя на основе заказа
+        $donate = Donate::where('id', $invId)->orWhere('payment_id', $invId)->first();
+
+        if ($donate && $donate->user_id) {
+            // Проверяем подпись для безопасности
+            $pallyService = new Pally();
+            if ($pallyService->verifyPaymentSignature($outSum, $invId, $signature)) {
+                // Восстанавливаем сессию пользователя
+                $user = User::find($donate->user_id);
+                if ($user && !Auth::check()) {
+                    Auth::login($user, true); // true = remember me
+                    $request->session()->regenerate();
+                }
+            }
+        }
 
         return view('pally.fail', [
             'orderId' => $invId,
