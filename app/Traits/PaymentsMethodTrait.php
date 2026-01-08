@@ -865,7 +865,6 @@ trait PaymentsMethodTrait
                     $basket_response = $this->createBasket($base_url, $public_token, $donate->id, $complete_url, $cancel_url);
                 }
 
-                dd($base_url, $public_token, $donate->id, $complete_url, $cancel_url);
                 if (isset($basket_response['data']['ident'])) {
                     $basket_ident = $basket_response['data']['ident'];
 
