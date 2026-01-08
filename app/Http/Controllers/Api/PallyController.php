@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\DonateController;
 use App\Http\Controllers\ShopController;
 use App\Services\Pally;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Donate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
