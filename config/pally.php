@@ -1,4 +1,4 @@
-\<?php
+<?php
 
 return [
     'shop_id' => env('PALLY_SHOP_ID', 'EMvYBxlm1X'),

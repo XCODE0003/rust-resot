@@ -57,8 +57,12 @@
     <meta name="verification" content="f12362585eed9635def7eec69a5aaa" />
     <meta name="yandex-verification" content="0935fc81cc2cbfdf" />
 
-    {!! config('options.google_analitics') !!}
-    {!! config('options.yandex_metric') !!}
+    @if(config('options.google_analitics'))
+        {!! trim(config('options.google_analitics')) !!}
+    @endif
+    @if(config('options.yandex_metric'))
+        {!! trim(config('options.yandex_metric')) !!}
+    @endif
 
 </head>
 <body>
