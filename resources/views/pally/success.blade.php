@@ -9,7 +9,7 @@
                 <h2 style="color: #4CAF50; margin: 15px 0;">{{ __('Платёж успешно выполнен!') }}</h2>
             </div>
             <div style="color: #fff; font-size: 16px; margin-bottom: 30px;">
-                <p>{{ __('Ваш заказ') }} <strong style="color: #4CAF50;">{{ $orderId }}</strong> {{ __('успешно оплачен.') }}</p>
+                <p>{{ __('Ваш заказ') }} {{ __('успешно оплачен.') }}</p>
                 <p style="margin-top: 15px;">{{ __('Сумма платежа') }}: <strong style="color: #4CAF50;">{{ $amount }}</strong> {{ __('руб.') }}</p>
             </div>
             <div style="margin-top: 30px;">

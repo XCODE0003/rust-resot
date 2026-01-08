@@ -367,8 +367,8 @@ Route::middleware('server.config')->group(function () {
     Route::get('/paykeeper/{method}', [\App\Http\Controllers\PaymentsController::class, 'paykeeperStatus'])->name('paykeeper.status');
     Route::get('/alfabank/{method}', [\App\Http\Controllers\PaymentsController::class, 'alfabankStatus'])->name('alfabank.status');
     Route::get('/tebex/{method}', [\App\Http\Controllers\PaymentsController::class, 'tebexStatus'])->name('tebex.status');
-    Route::post('/pally/success', [\App\Http\Controllers\Api\PallyController::class, 'success'])->name('pally.success');
-    Route::post('/pally/fail', [\App\Http\Controllers\Api\PallyController::class, 'fail'])->name('pally.fail');
+    Route::get('/pally/success', [\App\Http\Controllers\Api\PallyController::class, 'success'])->name('pally.success');
+    Route::get('/pally/fail', [\App\Http\Controllers\Api\PallyController::class, 'fail'])->name('pally.fail');
     Route::get('/heleket/success', [\App\Http\Controllers\Api\HeleketController::class, 'success'])->name('heleket.success');
     Route::get('/heleket/fail', [\App\Http\Controllers\Api\HeleketController::class, 'fail'])->name('heleket.fail');
 });
