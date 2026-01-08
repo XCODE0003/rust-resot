@@ -15,6 +15,8 @@ class VerifyCsrfToken extends Middleware
         '/api/payments/notification/app',
         '/cabinet/donate/app',
         'login_steam',
-        'en/login_steam'
+        'en/login_steam',
+        '/pally/success',
+        '/pally/fail'
     ];
 }
