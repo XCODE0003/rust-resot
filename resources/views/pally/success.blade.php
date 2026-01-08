@@ -10,7 +10,7 @@
             </div>
             <div style="color: #fff; font-size: 16px; margin-bottom: 30px;">
                 <p>{{ __('Ваш заказ') }} {{ __('успешно оплачен.') }}</p>
-                <p style="margin-top: 15px;">{{ __('Сумма платежа') }}: <strong style="color: #4CAF50;">{{ $amount }}</strong> {{ __('руб.') }}</p>
+                <p style="margin-top: 15px;">{{ __('Сумма платежа') }}: <strong style="color: #4CAF50;font-family: 'Stem', sans-serif;">{{ $amount }}</strong> {{ __('руб.') }}</p>
             </div>
             <div style="margin-top: 30px;">
                 <a href="{{ route('cabinet') }}" style="display: inline-block; padding: 12px 30px; background: #4CAF50; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background 0.3s;">
