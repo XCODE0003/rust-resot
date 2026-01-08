@@ -784,6 +784,52 @@ trait PaymentsMethodTrait
                 $this->alert('danger', __('Ошибка создания платежа. Попробуйте позже.'));
                 return back();
             }
+            case 53: {
+                $price = ($currency == 'USD') ? $price_usd : $price_rub;
+                $donate = Donate::create([
+                    'payment_system' => 'heleket',
+                    'user_id' => auth()->user()->id,
+                    'amount' => $price_rub,
+                    'bonus_amount' => $price_amount,
+                    'item_id' => $shopitem->id,
+                    'var_id' => $request->var_id,
+                    'steam_id' => $steam_id,
+                    'server' => $server,
+                    'status' => 0,
+                ]);
+
+                $heleketService = new Heleket();
+
+                $services = $heleketService->getPaymentServices();
+                $currencies = [];
+                foreach ($services as $service) {
+                    if (isset($service['is_available']) && $service['is_available']) {
+                        $currencies[] = [
+                            'currency' => $service['currency'],
+                            'network' => $service['network'],
+                        ];
+                    }
+                }
+
+                $result = $heleketService->createPayment(
+                    amount: $price,
+                    currency: $currency,
+                    orderId: (string) $donate->id,
+                    options: [
+                        'url_return' => config('heleket.return_url') ?: url('/heleket/success'),
+                        'url_callback' => config('heleket.callback_url') ?: url('/api/payments/notification/heleket'),
+                        'currencies' => $currencies,
+
+                    ]
+                );
+
+                if ($result && isset($result['url'])) {
+                    return Redirect::to($result['url']);
+                }
+
+                $this->alert('danger', __('Ошибка создания платежа. Попробуйте позже.'));
+                return back();
+            }
 
             case 48: {
                 // Tebex
@@ -959,8 +1005,8 @@ trait PaymentsMethodTrait
             'complete_url' => $complete_url,
             'cancel_url' => $cancel_url,
             'custom' => [
-                    'donate_id' => strval($donate_id),
-                ],
+                'donate_id' => strval($donate_id),
+            ],
         ], JSON_UNESCAPED_SLASHES);
 
         $curl = curl_init();
@@ -971,9 +1017,9 @@ trait PaymentsMethodTrait
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_POSTFIELDS => $json,
             CURLOPT_HTTPHEADER => [
-                    "Accept: application/json",
-                    "Content-Type: application/json",
-                ],
+                "Accept: application/json",
+                "Content-Type: application/json",
+            ],
         ]);
 
         $response = curl_exec($curl);
@@ -992,8 +1038,8 @@ trait PaymentsMethodTrait
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
             CURLOPT_HTTPHEADER => array(
-                    "Accept: application/json"
-                ),
+                "Accept: application/json"
+            ),
         ));
 
         $response = curl_exec($curl);

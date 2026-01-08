@@ -559,6 +559,16 @@
                   <img src="/images/payment-logos/USDT.png">
                 </div>
               </div>
+              <div class="styles__Method-sc-ena6u4-3 payment-item gcQxa-d" data-payment_id="53">
+              <div
+                        class="styles__Icon-sc-h5vgtd-0 gpvUmb styles__MethodIcon-sc-ena6u4-4 kDTdJM"
+                        fill="inherit"
+                >
+                  <div style="display: flex; align-items: center; justify-content: center; height: 100%; font-weight: bold; color: #26a17b; font-size: 12px;">
+                    Crypto
+                  </div>
+                </div>
+              </div>
 
               <!-- <div class="styles__Method-sc-ena6u4-3 payment-item gcQxa-d" data-payment_id="46">
                 <div
