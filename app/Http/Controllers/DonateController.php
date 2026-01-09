@@ -61,7 +61,6 @@ class DonateController extends Controller
 
             // Получаем массив товаров на сумму $amount
             $donate = Donate::where('id', $donate_id)->where('status', 0)->first();
-            dd($donate);
             if ($donate) {
                 $basket_ident = $donate->payment_id;
                 $price_usd = round($donate->amount / config('options.exchange_rate_usd', 70));
@@ -69,7 +68,7 @@ class DonateController extends Controller
 
                 // Добавляем товары в корзину
                 $result = $this->addItemToBasket($base_url, $basket_ident, $items);
-
+                dd($result);
                 if (isset($result['data']['links']['checkout'])) {
                     return Redirect::to($result['data']['links']['checkout']);
                 }
