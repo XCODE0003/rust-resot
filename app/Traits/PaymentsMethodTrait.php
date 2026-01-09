@@ -59,7 +59,6 @@ trait PaymentsMethodTrait
             $payment_id = 45;
             $unitpay_method = 'cardForeign';
         }
-        dd($payment_id);
         switch ($payment_id) {
 
             case 1: {
@@ -832,6 +831,7 @@ trait PaymentsMethodTrait
 
             case 48: {
                 // Tebex
+                dd('tebex');
                 $price_rub = ($currency == 'USD') ? $price_usd * config('options.exchange_rate_usd', 70) : $price_rub;
 
                 $donate = Donate::create([
