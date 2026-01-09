@@ -59,6 +59,7 @@ trait PaymentsMethodTrait
             $payment_id = 45;
             $unitpay_method = 'cardForeign';
         }
+
         switch ($payment_id) {
 
             case 1: {
@@ -855,14 +856,13 @@ trait PaymentsMethodTrait
 
                 // Создаем корзину
                 if (1 === 1) {
-                    $basket_response = @file_get_contents('http://195.133.21.219/tebex_create_basket.php?donate_id=' . $donate->id . '&public_token=' . $public_token . '&access_token=IsgHJbH7iViniKL6eyGWnNgGNDw7vcqf');
+                    $basket_response = @file_get_contents('http://195.133.21.219/tebex_create_basket.php?donate_id=' . $donate->id . '&public_token=' . $public_token . '&access_token=Kfkgqq4A7MR4zr9ZBjzHNPm5a2GeNinW');
                     if ($basket_response && $basket_response != '') {
                         $basket_response = json_decode($basket_response, true);
                     }
                 } else {
                     $basket_response = $this->createBasket($base_url, $public_token, $donate->id, $complete_url, $cancel_url);
                 }
-                dd($basket_response);
                 if (isset($basket_response['data']['ident'])) {
                     $basket_ident = $basket_response['data']['ident'];
 
@@ -872,6 +872,7 @@ trait PaymentsMethodTrait
 
                     // Получаем ссылку на авторизацию
                     $auth_url_response = $this->getBasketAuthUrl($base_url, $public_token, $donate->id, $basket_ident, $return_url);
+                    dd($auth_url_response);
                     if (isset($auth_url_response[0]['url'])) {
                         return Redirect::to($auth_url_response[0]['url']);
                     }
