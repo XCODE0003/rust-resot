@@ -59,7 +59,7 @@ trait PaymentsMethodTrait
             $payment_id = 45;
             $unitpay_method = 'cardForeign';
         }
-
+        dd($payment_id);
         switch ($payment_id) {
 
             case 1: {
