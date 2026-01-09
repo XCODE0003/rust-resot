@@ -371,10 +371,10 @@ class PaymentsController extends Controller
         $secret = config('options.tebex_webhook_Key', "");
         $allowed_ips = ['18.209.80.3', '54.87.231.232', '159.224.90.242'];
 
-        // if (!in_array($request->ip(), $allowed_ips)) {
-        //     Log::channel('tebex')->info("ip denied");
-        //     return new JsonResponse(['error' => ['message' => 'ip denied']]);
-        // }
+        if (!in_array($request->ip(), $allowed_ips)) {
+            Log::channel('tebex')->info("ip denied");
+            return new JsonResponse(['error' => ['message' => 'ip denied']]);
+        }
 
         $json = file_get_contents('php://input');
         $data = json_decode($json);
