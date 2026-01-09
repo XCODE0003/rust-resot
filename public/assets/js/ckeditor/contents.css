@@ -6347,6 +6347,7 @@ img.lightbox-thumbnail {
 	margin-bottom: 6px;
 	text-align: right;
 	color: #e88c1b;
+    text-align-last: right;
 	font-family: "STEM";
 	font-size: 17px;
 	padding-right: 40px;

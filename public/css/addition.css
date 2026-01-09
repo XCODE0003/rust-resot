@@ -599,9 +599,7 @@
     .servers {
         width: 100% !important;
     }
-    .header__lang-submenu {
-        right: -60px !important;
-    }
+
     .desktop {
         display: none;
     }

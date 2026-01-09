@@ -13,7 +13,12 @@
     <div class="inner">
         <div class="container">
             <div class="shop">
-                <div class="shop-description">{{ __('Выберите сервер, на котором вы играете') }}:</div>
+                <div style="display: flex; align-items: center; letter-spacing: 0px; justify-content: center;" class="shop-description">
+                    <span style="line-height: 0px;">
+                    {{ __('Выберите сервер, на котором вы играете') }}
+                    </span>
+                    <span style="font-family: 'Roboto';">:</span>
+                </div>
 
                 <div class="shop-list">
 
