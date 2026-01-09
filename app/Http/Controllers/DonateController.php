@@ -56,12 +56,12 @@ class DonateController extends Controller
     {
         if ($request->has('donate_id') && $request->has('success') && $request->get('success') === 'true') {
             $donate_id = $request->get('donate_id');
-            dd(true);
             $public_token = config('options.tebex_public_token', '');
             $base_url = 'https://headless.tebex.io';
 
             // Получаем массив товаров на сумму $amount
             $donate = Donate::where('id', $donate_id)->where('status', 0)->first();
+            dd($donate);
             if ($donate) {
                 $basket_ident = $donate->payment_id;
                 $price_usd = round($donate->amount / config('options.exchange_rate_usd', 70));
@@ -75,7 +75,6 @@ class DonateController extends Controller
                 }
             }
         }
-        dd(123);
 
         $this->alert('danger', __('Произошла ошибка! Попробуйте позже.'));
         return Redirect::route('account.profile');
