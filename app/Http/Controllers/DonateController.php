@@ -67,7 +67,6 @@ class DonateController extends Controller
                 $items = $this->createGiftCardArray($price_usd);
                 // Добавляем товары в корзину
                 $result = $this->addItemToBasket($base_url, $basket_ident, $items);
-                dd($result);
                 if (isset($result['data']['links']['checkout'])) {
                     return Redirect::to($result['data']['links']['checkout']);
                 }
