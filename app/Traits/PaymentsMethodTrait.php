@@ -873,6 +873,7 @@ trait PaymentsMethodTrait
 
                     // Получаем ссылку на авторизацию
                     $auth_url_response = $this->getBasketAuthUrl($base_url, $public_token, $donate->id, $basket_ident, $return_url);
+                    dd($auth_url_response);
                     if (isset($auth_url_response[0]['url'])) {
                         return Redirect::to($auth_url_response[0]['url']);
                     }
