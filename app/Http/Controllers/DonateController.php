@@ -56,7 +56,7 @@ class DonateController extends Controller
     {
         if ($request->has('donate_id') && $request->has('success') && $request->get('success') === 'true') {
             $donate_id = $request->get('donate_id');
-
+            dd(true);
             $public_token = config('options.tebex_public_token', '');
             $base_url = 'https://headless.tebex.io';
 
@@ -75,6 +75,7 @@ class DonateController extends Controller
                 }
             }
         }
+        dd(123);
 
         $this->alert('danger', __('Произошла ошибка! Попробуйте позже.'));
         return Redirect::route('account.profile');
@@ -85,7 +86,7 @@ class DonateController extends Controller
     //В трейте Методы оплаты с вызовом редиректа на оплату setPayment();
     // Везовы колбеков в \App\Http\Controllers\Api\PaymentsController
     //Редиректы после оплаты в \App\Http\Controllers\PaymentsController
-    
+
     use \App\Traits\PaymentsMethodTrait;
 
 
