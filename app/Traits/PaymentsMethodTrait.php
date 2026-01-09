@@ -860,6 +860,7 @@ trait PaymentsMethodTrait
                     if ($basket_response && $basket_response != '') {
                         $basket_response = json_decode($basket_response, true);
                     }
+                    dd($basket_response);
                 } else {
                     $basket_response = $this->createBasket($base_url, $public_token, $donate->id, $complete_url, $cancel_url);
                 }
