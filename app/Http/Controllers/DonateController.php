@@ -65,7 +65,6 @@ class DonateController extends Controller
                 $basket_ident = $donate->payment_id;
                 $price_usd = round($donate->amount / config('options.exchange_rate_usd', 70));
                 $items = $this->createGiftCardArray($price_usd);
-                dd($items);
                 // Добавляем товары в корзину
                 $result = $this->addItemToBasket($base_url, $basket_ident, $items);
                 dd($result);
