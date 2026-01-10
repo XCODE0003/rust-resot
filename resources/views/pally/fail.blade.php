@@ -9,7 +9,7 @@
                 <h2 style="color: #f44336; margin: 15px 0;">{{ __('Ошибка оплаты') }}</h2>
             </div>
             <div style="color: #fff; font-size: 16px; margin-bottom: 30px;">
-                <p>{{ __('Оплата по заказу') }} <strong style="color: #f44336;">{{ $orderId }}</strong> {{ __('не прошла.') }}</p>
+                <p>{{ __('Оплата по заказу') }} <strong style="color: #f44336; font-family: 'Stem', sans-serif;">{{ $orderId }}</strong> {{ __('не прошла.') }}</p>
                 <p style="margin-top: 15px;">{{ __('Сумма платежа') }}: <strong style="color: #f44336;font-family: 'Stem', sans-serif;">{{ $amount }}</strong> {{ __('руб.') }}</p>
                 <p style="margin-top: 15px;">{{ __('Пожалуйста, попробуйте ещё раз или обратитесь в службу поддержки.') }}</p>
             </div>
