@@ -30,6 +30,7 @@
     "psr/http-message": "^1.0",
     "psr/log": "^1.0 | ^2.0 | ^3.0",
     "qiwi/bill-payments-php-sdk": "^0.2.2",
+    "textalk/websocket": "^1.6",
     "timehunter/laravel-google-recaptcha-v2": "~1.0.0",
     "whichbrowser/parser": "^2.1"
   },
