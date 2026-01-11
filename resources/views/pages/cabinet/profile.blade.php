@@ -250,7 +250,12 @@
                             </div>
                             --}}
 
-                            <div class="styles__Method-sc-ena6u4-3 payment-item gcQxa-d" data-payment_id="21">
+                            <!-- <div class="styles__Method-sc-ena6u4-3 payment-item gcQxa-d" data-payment_id="21">
+                                <div class="styles__Icon-sc-h5vgtd-0 gpvUmb styles__MethodIcon-sc-ena6u4-4 kDTdJM" fill="inherit">
+                                    <img src="/images/payment-logos/PayPal.png">
+                                </div>
+                            </div> -->
+                            <div class="styles__Method-sc-ena6u4-3 payment-item gcQxa-d" data-payment_id="48">
                                 <div class="styles__Icon-sc-h5vgtd-0 gpvUmb styles__MethodIcon-sc-ena6u4-4 kDTdJM" fill="inherit">
                                     <img src="/images/payment-logos/PayPal.png">
                                 </div>

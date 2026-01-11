@@ -125,7 +125,10 @@ class Kernel extends ConsoleKernel
                             $result = json_decode($client[$server->id]->receive());
 
                             Log::channel('rcon_master')->info('Rcon Result: ' . json_encode($result));
-
+                            Log::channel('rcon_master')->info('Message: ' . substr($result->Message, 0, 8) .
+                             'Result: ' . json_encode($result) .
+                             'Result Message: ' . (substr($result->Message, 0, 8) === 'hostname') . '
+                             ');
                             if (isset($result->Message) && substr($result->Message, 0, 8) === 'hostname') {
                                 Log::channel('rcon_master')->info('Rcon online_data: ' . json_encode($result));
                                 Cache::forever('server' . $server->id . ':online_data', $result);
