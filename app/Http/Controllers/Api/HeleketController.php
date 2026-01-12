@@ -30,8 +30,8 @@ class HeleketController extends Controller
     ) {
         Log::channel('heleket')->info('Payment webhook received', $request->all());
 
-        // Проверяем обязательные параметры
-        if (!$request->has(['uuid', 'order_id', 'status', 'payment_status'])) {
+        // Проверяем обязательные параметры (убрали payment_status, так как его нет в данных)
+        if (!$request->has(['uuid', 'order_id', 'status'])) {
             Log::channel('heleket')->error('Missing required parameters', $request->all());
             return response()->json(['error' => 'Missing required parameters'], 400);
         }
@@ -39,7 +39,8 @@ class HeleketController extends Controller
         $uuid = $request->input('uuid');
         $orderId = $request->input('order_id');
         $status = $request->input('status');
-        $paymentStatus = $request->input('payment_status');
+        // payment_status может отсутствовать, используем только status
+        $paymentStatus = $request->input('payment_status'); // опционально
 
         // Находим заказ по order_id
         $donate = Donate::where('id', $orderId)->orWhere('payment_id', $orderId)->orWhere('payment_id', $uuid)->first();
@@ -59,7 +60,8 @@ class HeleketController extends Controller
 
         // Обрабатываем платеж в зависимости от статуса
         // Статусы: check, paid, expired, cancelled
-        if (($status === 'paid' || $paymentStatus === 'paid') && $donate->status === 0) {
+        // Используем только status, так как payment_status отсутствует в данных
+        if ($status === 'paid' && $donate->status === 0) {
             $donate->status = 1;
             $donate->payment_id = $uuid;
             $donate->save();
@@ -78,11 +80,10 @@ class HeleketController extends Controller
             }
 
             return response()->json(['success' => true, 'status' => 'processed'], 200);
-        } elseif (($status === 'expired' || $status === 'cancelled' || $paymentStatus === 'expired' || $paymentStatus === 'cancelled') && $donate->status === 0) {
+        } elseif (in_array($status, ['expired', 'cancelled']) && $donate->status === 0) {
             Log::channel('heleket')->info('Payment expired or cancelled', [
                 'donate_id' => $donate->id,
                 'status' => $status,
-                'payment_status' => $paymentStatus,
             ]);
             // Можно обновить статус на "не оплачено" если нужно
             return response()->json(['success' => true, 'status' => 'expired_or_cancelled'], 200);
