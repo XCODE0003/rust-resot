@@ -36,8 +36,8 @@ trait PaymentsMethodTrait
         $payment_id = $request->payment_id;
         $email = $request->has('email') ? $request->email : '';
         $currency = (app()->getLocale() == 'ru') ? 'RUB' : 'USD';
-        $price_rub = abs($price_rub);
-        $price_usd = abs($price_usd);
+        $price_rub = abs((float) str_replace(',', '.', (string) $price_rub));
+        $price_usd = abs((float) str_replace(',', '.', (string) $price_usd));
         $price = ($currency == 'USD') ? $price_usd : $price_rub;
         if ($currency === 'USD')
             $price_rub = $price_usd * config('options.exchange_rate_usd', 1);
