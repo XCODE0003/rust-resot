@@ -121,8 +121,8 @@ class ShopController extends Controller
         $validator = $this->validator($request->all());
 
         if ($validator->fails()) {
-            $this->alert('danger', __('Ошибка валидатора'));
-            // $this->alert('danger', __('Произошла ошибка! Попробуйте позже.'));
+            // $this->alert('danger', __('Ошибка валидатора'));
+            $this->alert('danger', __('Произошла ошибка! Попробуйте позже.'));
             return back();
         }
 
