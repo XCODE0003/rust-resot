@@ -1,28 +1,35 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<div class="inner">
+    <div class="container">
+        <div class="inner-content" style="max-width: 800px; margin: 50px auto; padding: 40px; background: rgba(0,0,0,0.5); border-radius: 10px; text-align: center;">
             @if($isPaid ?? false)
-                <div class="alert alert-success" role="alert">
-                    <h4 class="alert-heading">{{ __('Платёж успешно выполнен!') }}</h4>
+                <div style="color: #4CAF50; font-size: 24px; margin-bottom: 20px;">
+                    <i class="fa-solid fa-check-circle" style="font-size: 48px; margin-bottom: 15px;"></i>
+                    <h2 style="color: #4CAF50; margin: 15px 0;">{{ __('Платёж успешно выполнен!') }}</h2>
+                </div>
+                <div style="color: #fff; font-size: 16px; margin-bottom: 30px;">
                     <p>{{ __('Ваш заказ') }} <strong>{{ $orderId ?? $uuid }}</strong> {{ __('успешно оплачен.') }}</p>
                     @if($amount)
-                        <p class="mb-0">{{ __('Сумма платежа') }}: <strong>{{ $amount }}</strong></p>
+                        <p style="margin-top: 15px;">{{ __('Сумма платежа') }}: <strong style="color: #4CAF50;font-family: 'Stem', sans-serif;">{{ $amount }}</strong></p>
                     @endif
-                    <hr>
-                    <p class="mb-0">{{ __('Благодарим за платёж!') }}</p>
+                    <p style="margin-top: 15px;">{{ __('Благодарим за платёж!') }}</p>
                 </div>
             @else
-                <div class="alert alert-warning" role="alert">
-                    <h4 class="alert-heading">{{ __('Платёж обрабатывается') }}</h4>
+                <div style="color: #FFA726; font-size: 24px; margin-bottom: 20px;">
+                    <i class="fa-solid fa-clock" style="font-size: 48px; margin-bottom: 15px;"></i>
+                    <h2 style="color: #FFA726; margin: 15px 0;">{{ __('Платёж обрабатывается') }}</h2>
+                </div>
+                <div style="color: #fff; font-size: 16px; margin-bottom: 30px;">
                     <p>{{ __('Ваш заказ') }} <strong>{{ $orderId ?? $uuid }}</strong> {{ __('в процессе обработки.') }}</p>
-                    <p class="mb-0">{{ __('Пожалуйста, подождите подтверждения транзакции.') }}</p>
+                    <p style="margin-top: 15px;">{{ __('Пожалуйста, подождите подтверждения транзакции.') }}</p>
                 </div>
             @endif
-            <div class="text-center mt-4">
-                <a href="{{ route('cabinet') }}" class="btn btn-primary">{{ __('Перейти в кабинет') }}</a>
+            <div style="margin-top: 30px;">
+                <a href="{{ route('cabinet') }}" style="display: inline-block; padding: 12px 30px; background: #4CAF50; color: #fff; text-decoration: none; border-radius: 5px; font-weight: bold; transition: background 0.3s;">
+                    {{ __('Перейти в кабинет') }}
+                </a>
             </div>
         </div>
     </div>

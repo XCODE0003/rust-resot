@@ -944,7 +944,7 @@ trait PaymentsMethodTrait
                     currency: $currency_heleket,
                     orderId: (string) $donate->id,
                     options: [
-                        'url_return' => config('heleket.return_url') ?: url('/heleket/success'),
+                        'url_return' => config('heleket.return_url') ?: url('heleket/success'),
                         'url_callback' => config('heleket.callback_url') ?: url('/api/payments/notification/heleket'),
                     ]
                 );
