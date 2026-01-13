@@ -136,6 +136,7 @@
                                                 <option value="4" @if(isset($promocode) && $promocode->type_reward == 4) selected @endif>{{ __('Кейс') }}</option>
                                                 <option value="5" @if(isset($promocode) && $promocode->type_reward == 5) selected @endif>{{ __('Товары магазина') }}</option>
                                                 <option value="6" @if(isset($promocode) && $promocode->type_reward == 6) selected @endif>{{ __('% к пополнению') }}</option>
+                                                <option value="7" @if(isset($promocode) && $promocode->type_reward == 6) selected @endif>{{ __('Сумма на баланс') }}</option>
                                             </select>
                                         </div>
                                     </div>

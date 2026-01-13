@@ -246,6 +246,21 @@ class PromoCodeController extends Controller
                 $lock->release();
                 return redirect()->route('account.profile', ['topup' => 1]);
             }
+            else if ($promocode->type_reward == 7) {
+                if ($promocode->bonus_amount <= 0) {
+                    $this->alert('danger', __('Произошла ошибка! Попробуйте позже.'));
+                    return back();
+                }
+
+                //Начисляем на баланс пользователя
+                auth()->user()->increment('balance', $promocode->bonus_amount);
+
+                Log::channel('paymentslog')->info('Robot: Player ' . auth()->user()->name . ' (' . auth()->user()->email . ') ' . ' successfully activated the Promo Code and received a balance top up in the amount of $' . $promocode->bonus_amount);
+                $this->alert('success', __('Промокод успешно активирован!') . ' ' . __('Ваш баланс был пополнен на сумму') . ' $' . $promocode->bonus_amount);
+
+                $lock->release();
+                return redirect()->route('account.profile');
+            }
         }
         else {
             Log::channel('paymentslog')->info('Robot: Player ' . auth()->user()->name . ' (' . auth()->user()->email . ') ' . ' could not activate promocode: ' . $request->input('code') . ' due to blocking.');
