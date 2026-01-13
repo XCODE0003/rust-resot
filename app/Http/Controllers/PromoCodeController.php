@@ -251,7 +251,11 @@ class PromoCodeController extends Controller
                     $this->alert('danger', __('Произошла ошибка! Попробуйте позже.'));
                     return back();
                 }
-
+                if (app()->getLocale() == 'ru') {
+                    $bonus_amount = $promocode->bonus_amount * config('options.exchange_rate_usd', 70);
+                } else {
+                    $bonus_amount = $promocode->bonus_amount;
+                }
                 //Начисляем на баланс пользователя
                 auth()->user()->increment('balance', $promocode->bonus_amount);
 
