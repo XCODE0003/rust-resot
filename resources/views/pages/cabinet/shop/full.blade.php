@@ -281,10 +281,10 @@
 
                             <div class="stats-nav tab-nav" @if(!in_array($server->id, [1,2,3,8])) style="display: none;" @endif>
                                 <ul>
-                                    <li class="active" style="margin-bottom: 15px !important;"><span data-href="#main_0">{{ __('Все') }}</span></li>
+                                    <li class="active"><span data-href="#main_0">{{ __('Все') }}</span></li>
                                     @foreach($shopcategories as $shopcategory)
                                         @if($shopcategory->id == 6) @continue @endif
-                                        <li style="margin-bottom: 15px !important;"><span data-href="#main_{{ $shopcategory->id }}">
+                                        <li><span data-href="#main_{{ $shopcategory->id }}">
                                                 @if($shopcategory->id == 19)
                                                     <div class="label cat-label">{{ __('New') }}</div>
                                                 @endif
@@ -1361,7 +1361,7 @@
                     $('#sb__popup-case-{{ $shopcase->id }} .spc__info').html(html);
                 });
             @endforeach
-        
+
         });
 
         $(document).on('click', '.btn-buy-item', function(e){

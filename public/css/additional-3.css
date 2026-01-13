@@ -1127,10 +1127,12 @@ body .inner-header,
   width: 0;
 }
 .tabs .tab-nav ul {
-  justify-content: space-between !important;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
 }
 .tab-nav ul li {
-  width: 176px !important;
+  width: 100% !important;
   margin: 0 5px !important;
 }
 .skinbox__popup {
@@ -1591,9 +1593,7 @@ html.overflow {
 .sib-special .shop-item-buy__content--days {
   display: none;
 }
-.shop-item--special .item {
-  width: 25% !important;
-}
+
 
 .inner {
   background: url(../images/bg/2-inner.jpg) top/100% no-repeat !important;
@@ -1604,7 +1604,7 @@ html.overflow {
 }
 .shop-item--special .shop-item-buy-name--title {
   font-size: 43px !important;
-  top: -65px !important;
+  top: -50px !important;
 }
 .shop-item--special .shop-item-buy__content--price {
   flex-wrap: wrap;
@@ -1927,18 +1927,15 @@ html.overflow {
 .inner.spb—sp-inner.spb-sp-inner-in {
   padding-top: 100px;
 }
-.shop-item--special .item {
-  width: 20% !important;
-  padding: 10px;
-}
+
 .shop-item--special .shop-item-buy-name--title {
-  font-size: 39px !important;
+  font-size: 30px !important;
 }
 .spb-sp-inner-in .shop-item .shop-item-list {
-  row-gap: 30px;
+  row-gap: 15px;
 }
 .sib-special .shop-item-image img {
-  height: 208px;
+  height: 150px;
 }
 .inner.spb—sp-inner.spb-sp-inner-in .shop-item .shop-item-buy {
   padding: 7px 11px 15px !important;
@@ -1949,10 +1946,7 @@ html.overflow {
   .shop-item-buy-name {
   margin-bottom: 4px;
 }
-.inner.spb—sp-inner.spb-sp-inner-in .shop-item .shop-item-list .item {
-  width: 33%;
-  padding: 10px;
-}
+
 .sb__popup-shop .sb-popup__content {
   max-width: fit-content !important;
   padding: 42px 70px;
