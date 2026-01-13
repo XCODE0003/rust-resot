@@ -14,7 +14,7 @@
     <div class="container">
 
         <div class="stats tabs">
-      <div class="stats-content-nav tab-nav">
+      <div class="stats-content-nav tab-nav" style="grid-template-columns: repeat(2, 1fr);">
         <ul>
           @foreach(getservercategories() as $category)
             @php $title = "title_" .app()->getLocale(); @endphp
