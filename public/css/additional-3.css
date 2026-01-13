@@ -1135,6 +1135,9 @@ body .inner-header,
   .tabs .tab-nav ul {
     grid-template-columns: repeat(2, 1fr);
   }
+  .shop-item--special .shop-item-buy-name--title{
+    font-size: 25px !important;
+  }
 }
 .tab-nav ul li {
   width: 100% !important;
