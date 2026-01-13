@@ -14,8 +14,8 @@
     <div class="container">
 
         <div class="stats tabs">
-      <div class="stats-content-nav tab-nav">
-        <ul>
+      <div class="stats-content-nav tab-nav" >
+        <ul style="grid-template-columns: repeat(2, 1fr); max-width: 400px; margin: auto;">
           @foreach(getservercategories() as $category)
             @php $title = "title_" .app()->getLocale(); @endphp
             <li class="@if($loop->iteration == 1){{ 'active' }}@endif"><span data-href="#category_{{ $category->id }}">{{ $category->$title }}</span></li>

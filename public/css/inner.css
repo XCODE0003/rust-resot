@@ -423,7 +423,9 @@
 .inner .shop-item .shop-item-list {
   display: -webkit-box;
   display: -ms-flexbox;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   -webkit-box-pack: center;
@@ -431,10 +433,7 @@
           justify-content: center;
 }
 
-.inner .shop-item .shop-item-list .item {
-  width: 33%;
-  padding: 20px;
-}
+
 
 .inner .shop-item .shop-item-buy {
   background-color: var(--box);
