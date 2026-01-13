@@ -67,6 +67,7 @@
                                         @elseif($promocode->type_reward == 4) {{ __('Кейс') }}
                                         @elseif($promocode->type_reward == 5) {{ __('Товар магазина') }}
                                         @elseif($promocode->type_reward == 6) {{ __('% к пополнению') }}
+                                        @elseif($promocode->type_reward == 7) {{ __('Сумма на баланс') }}
                                         @endif
                                     </span>
                                 </div>

@@ -154,7 +154,7 @@ class PromoCodeController extends Controller
 
                 Log::channel('paymentslog')->info('Robot: Player ' . auth()->user()->name . ' (' . auth()->user()->email . ') ' . ' successfully activated the Promo Code and received a balance top up in the amount of $' . $promocode->bonus_amount);
 
-                $this->alert('success', __('Промокод успешно активирован!') . ' ' . __('Ваш баланс был пополнен на сумму') . ' $' . $promocode->bonus_amount);
+                $this->alert('success', __('Промокод успешно активирован!') . ' ' . __('Ваш баланс был пополнен на сумму') . '' . $promocode->bonus_amount);
 
                 $lock->release();
                 return back();
@@ -256,7 +256,7 @@ class PromoCodeController extends Controller
                 auth()->user()->increment('balance', $promocode->bonus_amount);
 
                 Log::channel('paymentslog')->info('Robot: Player ' . auth()->user()->name . ' (' . auth()->user()->email . ') ' . ' successfully activated the Promo Code and received a balance top up in the amount of $' . $promocode->bonus_amount);
-                $this->alert('success', __('Промокод успешно активирован!') . ' ' . __('Ваш баланс был пополнен на сумму') . ' $' . $promocode->bonus_amount);
+                $this->alert('success', __('Промокод успешно активирован!') . ' ' . __('Ваш баланс был пополнен на сумму') . '' . $promocode->bonus_amount);
 
                 $lock->release();
                 return redirect()->route('account.profile');

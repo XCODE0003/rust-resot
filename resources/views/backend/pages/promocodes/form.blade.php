@@ -136,7 +136,7 @@
                                                 <option value="4" @if(isset($promocode) && $promocode->type_reward == 4) selected @endif>{{ __('Кейс') }}</option>
                                                 <option value="5" @if(isset($promocode) && $promocode->type_reward == 5) selected @endif>{{ __('Товары магазина') }}</option>
                                                 <option value="6" @if(isset($promocode) && $promocode->type_reward == 6) selected @endif>{{ __('% к пополнению') }}</option>
-                                                <option value="7" @if(isset($promocode) && $promocode->type_reward == 6) selected @endif>{{ __('Сумма на баланс') }}</option>
+                                                <option value="7" @if(isset($promocode) && $promocode->type_reward == 7) selected @endif>{{ __('Сумма на баланс') }}</option>
                                             </select>
                                         </div>
                                     </div>
@@ -229,9 +229,23 @@
 
                                 <div class="col-lg-6" id="bonus_amount_percent-form" @if(isset($promocode) && $promocode->type_reward == 6) @else style="display: none" @endif>
                                     <div class="form-group">
-                                        <label class="form-label" for="bonus_amount">{{ __('Процент бонуса к сумме пополнения') }}, %</label>
+                                        <label class="form-label" for="bonus_amount_percent">{{ __('Процент бонуса к сумме пополнения') }}, %</label>
                                         <div class="form-control-wrap">
-                                            <input type="number" min="0" max="100" step="0.1" class="form-control" id="bonus_amount" name="bonus_amount"
+                                            <input type="number" min="0" max="100" step="0.1" class="form-control" id="bonus_amount_percent" name="bonus_amount"
+                                                   @isset($promocode) value="{{ $promocode->bonus_amount }}" @else value="0" @endisset required>
+                                            @error('bonus_amount')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6" id="bonus_amount_balance-form" @if(isset($promocode) && $promocode->type_reward == 7) @else style="display: none" @endif>
+                                    <div class="form-group">
+                                        <label class="form-label" for="bonus_amount_balance">{{ __('Сумма на баланс') }}, $</label>
+                                        <div class="form-control-wrap">
+                                            <input type="number" min="0" step="0.1" class="form-control" id="bonus_amount_balance" name="bonus_amount"
                                                    @isset($promocode) value="{{ $promocode->bonus_amount }}" @else value="0" @endisset required>
                                             @error('bonus_amount')
                                             <div class="invalid-feedback">
@@ -284,6 +298,7 @@
                     $('#shop_item-form').hide();
                     $('#shop_item-form2').hide();
                     $('#bonus_amount_percent-form').hide();
+                    $('#bonus_amount_balance-form').hide();
                     $('#premium_period-form').show();
                 } else if ($(this).find('option:selected').val() == '2') {
                     $('#case_id-form').hide();
@@ -292,6 +307,7 @@
                     $('#shop_item-form').hide();
                     $('#shop_item-form2').hide();
                     $('#bonus_amount_percent-form').hide();
+                    $('#bonus_amount_balance-form').hide();
                     $('#bonus_amount-form').show();
                 } else if ($(this).find('option:selected').val() == '3') {
                     $('#premium_period-form').hide();
@@ -300,6 +316,7 @@
                     $('#shop_item-form').hide();
                     $('#shop_item-form2').hide();
                     $('#bonus_amount_percent-form').hide();
+                    $('#bonus_amount_balance-form').hide();
                     $('#bonus_case_id-form').show();
                 } else if ($(this).find('option:selected').val() == '4') {
                     $('#premium_period-form').hide();
@@ -308,6 +325,7 @@
                     $('#shop_item-form').hide();
                     $('#shop_item-form2').hide();
                     $('#bonus_amount_percent-form').hide();
+                    $('#bonus_amount_balance-form').hide();
                     $('#case_id-form').show();
                 } else if ($(this).find('option:selected').val() == '5') {
                     $('#premium_period-form').hide();
@@ -315,6 +333,7 @@
                     $('#bonus_amount-form').hide();
                     $('#case_id-form').hide();
                     $('#bonus_amount_percent-form').hide();
+                    $('#bonus_amount_balance-form').hide();
                     $('#shop_item-form').show();
                     $('#shop_item-form2').show();
                 } else if ($(this).find('option:selected').val() == '6') {
@@ -324,7 +343,17 @@
                     $('#case_id-form').hide();
                     $('#shop_item-form').hide();
                     $('#shop_item-form2').hide();
+                    $('#bonus_amount_balance-form').hide();
                     $('#bonus_amount_percent-form').show();
+                } else if ($(this).find('option:selected').val() == '7') {
+                    $('#premium_period-form').hide();
+                    $('#bonus_case_id-form').hide();
+                    $('#bonus_amount-form').hide();
+                    $('#case_id-form').hide();
+                    $('#shop_item-form').hide();
+                    $('#shop_item-form2').hide();
+                    $('#bonus_amount_percent-form').hide();
+                    $('#bonus_amount_balance-form').show();
                 }
             });
 
