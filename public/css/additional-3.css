@@ -1982,6 +1982,9 @@ html.overflow {
     max-width: 1180px !important;
     padding: 42px;
   }
+  .inner{
+    padding-bottom: 0px !important;
+  }
   .spc__info .container {
     width: 100%;
   }
