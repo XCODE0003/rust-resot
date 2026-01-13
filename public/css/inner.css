@@ -414,7 +414,18 @@
   letter-spacing: 1px;
   margin-bottom: 40px;
 }
+@media screen and (max-width: 600px) {
+    .shop-item-server p{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .shop-item-list{
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
 
+}
 .inner .shop-item .shop-item-server span {
   color: var(--orange);
   font-weight: bold;
