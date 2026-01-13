@@ -1941,6 +1941,7 @@ html.overflow {
 }
 .sib-special .shop-item-image img {
   height: 150px;
+  width: 150px;
 }
 .inner.spb—sp-inner.spb-sp-inner-in .shop-item .shop-item-buy {
   padding: 7px 11px 15px !important;
