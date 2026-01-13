@@ -592,7 +592,7 @@
                             <div id="btn-buy" class="styles__ApplyButton-sc-ena6u4-10 fyAHtA">
                                 {{ __('Пополнить баланс') }}
                             </div>
-                            <div class="bSqOVl steam-text" >
+                            <div class="bSqOVl steam-text" style="display: none;">
                                 <div style="display: flex;align-items: center;height: 100%;font-size: 14px;">
                                     {{ __('Сумма пополнения зависит от общей стоимости отправленных предметов на обмен') }}. {{ __('К пополнению доступны скины Rust, CS и Dota 2') }}
                                 </div>
