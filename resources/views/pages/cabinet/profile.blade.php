@@ -592,12 +592,12 @@
                             <div id="btn-buy" class="styles__ApplyButton-sc-ena6u4-10 fyAHtA">
                                 {{ __('Пополнить баланс') }}
                             </div>
-                            <div class="bSqOVl steam-text" style="display: none;">
+                            <div class="bSqOVl steam-text" >
                                 <div style="display: flex;align-items: center;height: 100%;font-size: 14px;">
                                     {{ __('Сумма пополнения зависит от общей стоимости отправленных предметов на обмен') }}. {{ __('К пополнению доступны скины Rust, CS и Dota 2') }}
                                 </div>
                             </div>
-                            <a href="https://steamcommunity.com/tradeoffer/new/?partner=913605527&token=N7CKy9bY" id="btn-buy-steam" class="styles__ApplyButton-sc-ena6u4-10 fyAHtA" style="display: none;text-decoration: none;">
+                            <a href="https://steamcommunity.com/tradeoffer/new/?partner=1896100486&token=-G-Xcb1q" id="btn-buy-steam" class="styles__ApplyButton-sc-ena6u4-10 fyAHtA" style="display: none;text-decoration: none;">
                                 {{ __('Пополнить баланс') }}
                             </a>
                         </div>
