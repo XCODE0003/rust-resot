@@ -46,10 +46,7 @@ class ShopController extends Controller
     }
 
     public function show($server_id) {
-        //Cache::forget('page_shop_server'.$server_id);
-        $server = Cache::remember('page_shop_server'.$server_id, '600', function () use($server_id) {
-            return Server::query()->where('id', $server_id)->where('status', 1)->first();
-        });
+        $server = Server::query()->where('id', $server_id)->where('status', 1)->first();
         if (!$server) {
             abort('404');
         }
@@ -60,24 +57,24 @@ class ShopController extends Controller
         $shopsets = [];
         foreach ($shopcategories as $shopcategory) {
 
-            //Cache::forget('page_shop_shopitems_cat'.$shopcategory->id.$server_id);
-            $shopitems_cat = Cache::remember('page_shop_shopitems_cat'.$shopcategory->id.$server_id, '600', function () use($shopcategory,$server_id) {
-                return ShopItem::where(function ($query) use ($server_id) {
+            $shopitems_cat = ShopItem::where(function ($query) use ($server_id) {
                     return $query->where('server', $server_id)
                         ->orWhere('server', 0)
                         ->orWhere('servers', 'LIKE', '%"'.$server_id.'"%');
-                })->where('status', 1)->where('category_id', $shopcategory->id)->orderBy('sort')->get();
-            });
+                })->where('status', 1)
+                  ->where('category_id', $shopcategory->id)
+                  ->orderBy('sort')
+                  ->get();
             $shopitems[$shopcategory->id] = $shopitems_cat;
 
-            //Cache::forget('page_shop_shopsets_cat'.$shopcategory->id.$server_id);
-            $shopsets_cat = Cache::remember('page_shop_shopsets_cat'.$shopcategory->id.$server_id, '600', function () use($shopcategory,$server_id) {
-                return ShopSet::where(function ($query) use ($server_id) {
+            $shopsets_cat = ShopSet::where(function ($query) use ($server_id) {
                     return $query->where('server', $server_id)
                         ->orWhere('server', 0)
                         ->orWhere('servers', 'LIKE', '%"'.$server_id.'"%');
-                })->where('status', 1)->where('category_id', $shopcategory->id)->orderBy('sort')->get();
-            });
+                })->where('status', 1)
+                  ->where('category_id', $shopcategory->id)
+                  ->orderBy('sort')
+                  ->get();
             $shopsets[$shopcategory->id] = $shopsets_cat;
         }
 
@@ -87,19 +84,72 @@ class ShopController extends Controller
                     ->orWhere('server', 0);
             })->where('kind', 2)->orderBy('sort')->get();
         } else {
-
-            //Cache::forget('page_shop_shopcases'.$server_id);
-            $shopcases = Cache::remember('page_shop_shopcases'.$server_id, '600', function () use($server_id) {
-                return Cases::where(function ($query) use ($server_id) {
+            $shopcases = Cases::where(function ($query) use ($server_id) {
                     return $query->where('server', $server_id)
                         ->orWhere('server', 0);
-                })->where('status', 1)->where('kind', 2)->orderBy('sort')->get();
-            });
+                })->where('status', 1)
+                  ->where('kind', 2)
+                  ->orderBy('sort')
+                  ->get();
         }
 
         return view('pages.cabinet.shop.full', compact('server','shopitems', 'shopsets', 'shopcases', 'shopcategories'));
     }
 
+    // public function show($server_id) {
+    //     //Cache::forget('page_shop_server'.$server_id);
+    //     $server = Cache::remember('page_shop_server'.$server_id, '600', function () use($server_id) {
+    //         return Server::query()->where('id', $server_id)->where('status', 1)->first();
+    //     });
+    //     if (!$server) {
+    //         abort('404');
+    //     }
+
+    //     $shopcategories = getshopcategories();
+
+    //     $shopitems = [];
+    //     $shopsets = [];
+    //     foreach ($shopcategories as $shopcategory) {
+
+    //         //Cache::forget('page_shop_shopitems_cat'.$shopcategory->id.$server_id);
+    //         $shopitems_cat = Cache::remember('page_shop_shopitems_cat'.$shopcategory->id.$server_id, '600', function () use($shopcategory,$server_id) {
+    //             return ShopItem::where(function ($query) use ($server_id) {
+    //                 return $query->where('server', $server_id)
+    //                     ->orWhere('server', 0)
+    //                     ->orWhere('servers', 'LIKE', '%"'.$server_id.'"%');
+    //             })->where('status', 1)->where('category_id', $shopcategory->id)->orderBy('sort')->get();
+    //         });
+    //         $shopitems[$shopcategory->id] = $shopitems_cat;
+
+    //         //Cache::forget('page_shop_shopsets_cat'.$shopcategory->id.$server_id);
+    //         $shopsets_cat = Cache::remember('page_shop_shopsets_cat'.$shopcategory->id.$server_id, '600', function () use($shopcategory,$server_id) {
+    //             return ShopSet::where(function ($query) use ($server_id) {
+    //                 return $query->where('server', $server_id)
+    //                     ->orWhere('server', 0)
+    //                     ->orWhere('servers', 'LIKE', '%"'.$server_id.'"%');
+    //             })->where('status', 1)->where('category_id', $shopcategory->id)->orderBy('sort')->get();
+    //         });
+    //         $shopsets[$shopcategory->id] = $shopsets_cat;
+    //     }
+
+    //     if (isset(auth()->user()->id) && auth()->user()->id === 497) {
+    //         $shopcases = Cases::where(function ($query) use ($server) {
+    //             return $query->where('server', $server->id)
+    //                 ->orWhere('server', 0);
+    //         })->where('kind', 2)->orderBy('sort')->get();
+    //     } else {
+
+    //         //Cache::forget('page_shop_shopcases'.$server_id);
+    //         $shopcases = Cache::remember('page_shop_shopcases'.$server_id, '600', function () use($server_id) {
+    //             return Cases::where(function ($query) use ($server_id) {
+    //                 return $query->where('server', $server_id)
+    //                     ->orWhere('server', 0);
+    //             })->where('status', 1)->where('kind', 2)->orderBy('sort')->get();
+    //         });
+    //     }
+
+    //     return view('pages.cabinet.shop.full', compact('server','shopitems', 'shopsets', 'shopcases', 'shopcategories'));
+    // }
     public function show_test() {
 
         abort(404);
