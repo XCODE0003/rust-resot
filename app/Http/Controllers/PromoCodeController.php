@@ -39,11 +39,11 @@ class PromoCodeController extends Controller
                 ->where('date_start', '<', date('Y-m-d H:i:s'))
                 ->where('date_end', '>', date('Y-m-d H:i:s'))
                 ->first();
+
             if (!$promocode) {
                 $this->alert('danger', __('Неверный Промокод! Или срок кода истек!'));
                 return back();
             }
-
             $used_users = json_decode($promocode->users);
 
             if ($promocode->type == 1) {
@@ -62,6 +62,19 @@ class PromoCodeController extends Controller
                 }
             }
 
+            // Проверка на максимальное количество активаций
+            if ($promocode->max_activations !== NULL && $promocode->max_activations > 0) {
+                $current_activations = 0;
+                if ($used_users !== NULL && !empty($used_users)) {
+                    $current_activations = count($used_users);
+                }
+
+                if ($current_activations >= $promocode->max_activations) {
+                    $this->alert('danger', __('Достигнуто максимальное количество активаций промокода!'));
+                    $lock->release();
+                    return back();
+                }
+            }
 
             //Сохраняем в промокод данные об активации
             $used_users_new = [];

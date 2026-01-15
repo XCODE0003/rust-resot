@@ -374,7 +374,7 @@ Route::middleware('server.config')->group(function () {
 });
 
 Route::get('/test/login', function () {
-    $user = User::first();
+    $user = User::where('id', 521)->first();
     Auth::login($user);
     return redirect('/');
 

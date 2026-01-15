@@ -43,6 +43,7 @@ class PromoCodeRequest extends FormRequest
                 'date_start'     => ['date'],
                 'date_end'       => ['date'],
                 'items'          => [''],
+                'max_activations' => ['nullable', 'integer', 'min:0'],
             ];
         } else {
             return [
@@ -61,6 +62,7 @@ class PromoCodeRequest extends FormRequest
                 'date_start'       => ['date'],
                 'date_end'         => ['date'],
                 'items'            => [''],
+                'max_activations'  => ['nullable', 'integer', 'min:0'],
             ];
         }
     }

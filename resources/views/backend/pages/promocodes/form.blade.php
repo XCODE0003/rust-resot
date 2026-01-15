@@ -115,6 +115,24 @@
                             <div class="row g-4">
                                 <div class="col-lg-6">
                                     <div class="form-group">
+                                        <label class="form-label" for="max_activations">{{ __('Максимальное количество активаций') }}</label>
+                                        <div class="form-control-wrap">
+                                            <input type="number" min="0" class="form-control" id="max_activations" name="max_activations"
+                                                   @isset($promocode) value="{{ $promocode->max_activations }}" @else value="{{ old('max_activations', '') }}" @endisset
+                                                   placeholder="{{ __('0 = без ограничений') }}">
+                                            @error('max_activations')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row g-4">
+                                <div class="col-lg-6">
+                                    <div class="form-group">
                                         <label class="form-label" for="type">{{ __('Тип Промокода') }}</label>
                                         <div class="form-control-wrap">
                                             <select id="type" name="type" class="form-select">
@@ -162,7 +180,7 @@
                                         <label class="form-label" for="bonus_amount">{{ __('Сумма Бонуса') }}, $</label>
                                         <div class="form-control-wrap">
                                             <input type="number" min="0" step="0.1" class="form-control" id="bonus_amount" name="bonus_amount"
-                                                   @isset($promocode) value="{{ $promocode->bonus_amount }}" @else value="0" @endisset required>
+                                                   @isset($promocode) value="{{ $promocode->bonus_amount }}" @else value="0" @endisset>
                                             @error('bonus_amount')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -232,7 +250,7 @@
                                         <label class="form-label" for="bonus_amount_percent">{{ __('Процент бонуса к сумме пополнения') }}, %</label>
                                         <div class="form-control-wrap">
                                             <input type="number" min="0" max="100" step="0.1" class="form-control" id="bonus_amount_percent" name="bonus_amount"
-                                                   @isset($promocode) value="{{ $promocode->bonus_amount }}" @else value="0" @endisset required>
+                                                   @isset($promocode) value="{{ $promocode->bonus_amount }}" @else value="0" @endisset>
                                             @error('bonus_amount')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -246,7 +264,7 @@
                                         <label class="form-label" for="bonus_amount_balance">{{ __('Сумма на баланс') }}, $</label>
                                         <div class="form-control-wrap">
                                             <input type="number" min="0" step="0.1" class="form-control" id="bonus_amount_balance" name="bonus_amount"
-                                                   @isset($promocode) value="{{ $promocode->bonus_amount }}" @else value="0" @endisset required>
+                                                   @isset($promocode) value="{{ $promocode->bonus_amount }}" @else value="0" @endisset>
                                             @error('bonus_amount')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -291,6 +309,11 @@
             });
 
             $('#type_reward').on('change', function () {
+                // Включаем все поля обратно (на случай, если они были отключены)
+                $('#bonus_amount, #bonus_amount_percent, #bonus_amount_balance').prop('disabled', false);
+                // Убираем required со всех полей bonus_amount
+                $('#bonus_amount, #bonus_amount_percent, #bonus_amount_balance').removeAttr('required');
+
                 if ($(this).find('option:selected').val() == '1') {
                     $('#case_id-form').hide();
                     $('#bonus_case_id-form').hide();
@@ -309,6 +332,8 @@
                     $('#bonus_amount_percent-form').hide();
                     $('#bonus_amount_balance-form').hide();
                     $('#bonus_amount-form').show();
+                    $('#bonus_amount_percent, #bonus_amount_balance').prop('disabled', true);
+                    $('#bonus_amount').prop('disabled', false).attr('required', 'required');
                 } else if ($(this).find('option:selected').val() == '3') {
                     $('#premium_period-form').hide();
                     $('#case_id-form').hide();
@@ -345,6 +370,8 @@
                     $('#shop_item-form2').hide();
                     $('#bonus_amount_balance-form').hide();
                     $('#bonus_amount_percent-form').show();
+                    $('#bonus_amount, #bonus_amount_balance').prop('disabled', true);
+                    $('#bonus_amount_percent').prop('disabled', false).attr('required', 'required');
                 } else if ($(this).find('option:selected').val() == '7') {
                     $('#premium_period-form').hide();
                     $('#bonus_case_id-form').hide();
@@ -354,7 +381,46 @@
                     $('#shop_item-form2').hide();
                     $('#bonus_amount_percent-form').hide();
                     $('#bonus_amount_balance-form').show();
+                    $('#bonus_amount, #bonus_amount_percent').prop('disabled', true);
+                    $('#bonus_amount_balance').prop('disabled', false).attr('required', 'required');
                 }
+            });
+
+            // Инициализация при загрузке страницы: отключаем скрытые поля и устанавливаем required только для видимого
+            var currentTypeReward = $('#type_reward').val();
+            $('#bonus_amount, #bonus_amount_percent, #bonus_amount_balance').removeAttr('required');
+
+            // Отключаем скрытые поля (disabled поля не валидируются)
+            if (!$('#bonus_amount-form').is(':visible')) {
+                $('#bonus_amount').prop('disabled', true);
+            }
+            if (!$('#bonus_amount_percent-form').is(':visible')) {
+                $('#bonus_amount_percent').prop('disabled', true);
+            }
+            if (!$('#bonus_amount_balance-form').is(':visible')) {
+                $('#bonus_amount_balance').prop('disabled', true);
+            }
+
+            // Устанавливаем required только для видимого поля
+            if (currentTypeReward == '2' && $('#bonus_amount-form').is(':visible')) {
+                $('#bonus_amount').prop('disabled', false).attr('required', 'required');
+            } else if (currentTypeReward == '6' && $('#bonus_amount_percent-form').is(':visible')) {
+                $('#bonus_amount_percent').prop('disabled', false).attr('required', 'required');
+            } else if (currentTypeReward == '7' && $('#bonus_amount_balance-form').is(':visible')) {
+                $('#bonus_amount_balance').prop('disabled', false).attr('required', 'required');
+            }
+
+            // Обработчик отправки формы: отключаем скрытые поля перед валидацией
+            $('form').on('submit', function(e) {
+                // Отключаем все скрытые поля bonus_amount (disabled поля не валидируются)
+                $('#bonus_amount-form:hidden input[name="bonus_amount"]').prop('disabled', true);
+                $('#bonus_amount_percent-form:hidden input[name="bonus_amount"]').prop('disabled', true);
+                $('#bonus_amount_balance-form:hidden input[name="bonus_amount"]').prop('disabled', true);
+
+                // Убираем required со всех скрытых полей на всякий случай
+                $('#bonus_amount-form:hidden input[name="bonus_amount"]').removeAttr('required');
+                $('#bonus_amount_percent-form:hidden input[name="bonus_amount"]').removeAttr('required');
+                $('#bonus_amount_balance-form:hidden input[name="bonus_amount"]').removeAttr('required');
             });
 
             $('#generate-code').on('click', function () {
