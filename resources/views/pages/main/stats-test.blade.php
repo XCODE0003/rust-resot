@@ -1,19 +1,17 @@
-@extends('layouts.main')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
 
-@section('title', __('Статистика') . config('options.main_title_'.app()->getLocale(), '') )
 
-@prepend('meta')
-  <meta name="description" content="View the statistics of your RustResort survival.">
-@endprepend
-
-@section('content')
-
-  <div class="inner-header">{{ __('Статистика') }}</div>
   <div id="rankeval-widget"></div>
 
 
-@endsection
-@push('scripts')
 <script src="https://cdn.rankeval.gg/integration/latest/rankeval-widget.js"></script>
 
-@endpush
+</body>
+</html>
