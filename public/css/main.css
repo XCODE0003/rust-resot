@@ -4,7 +4,9 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-
+#rankeval-widget{
+    font-family: "Salma Pro" !important
+}
 :root {
   --body: #1b1c1d;
   --orange: #e88c1b;
