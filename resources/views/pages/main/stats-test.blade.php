@@ -1,29 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script>
-    // Добавляет header ко всем fetch-запросам на странице
-    (function() {
-      const originalFetch = window.fetch;
-      window.fetch = function(resource, config = {}) {
-        config.headers = config.headers || {};
-        // Добавьте нужный header, например X-Custom-Header
-        config.headers['X-My-Header'] = 'MyHeaderValue';
-        return originalFetch(resource, config);
-      };
-    })();
-    </script>
-</head>
-<body>
+@extends('layouts.main')
 
+@section('title', __('Статистика') . config('options.main_title_'.app()->getLocale(), '') )
+
+@prepend('meta')
+  <meta name="description" content="View the statistics of your RustResort survival.">
+@endprepend
+
+@section('content')
+
+  <div class="inner-header">{{ __('Статистика') }}</div>
 
   <div id="rankeval-widget"></div>
-
+@endsection
+@push('scripts')
 
 <script src="https://cdn.rankeval.gg/integration/latest/rankeval-widget.js"></script>
-
-</body>
-</html>
+@endpush
