@@ -1,15 +1,25 @@
 @extends('layouts.main')
 
-@section('title', __('Статистика') . config('options.main_title_'.app()->getLocale(), '') )
+@section('title', __('Статистика') . config('options.main_title_' . app()->getLocale(), ''))
 
 @prepend('meta')
-  <meta name="description" content="View the statistics of your RustResort survival.">
+    <meta name="description" content="View the statistics of your RustResort survival.">
 @endprepend
 
 @section('content')
-  <div id="rankeval-widget"></div>
+
+    <div class="inner-header">{{ __('Статистика') }}</div>
+
+    <div class="inner">
+
+        <div class="container">
+
+        <div id="rankeval-widget"></div>
+        </div>
+    </div>
+
 @endsection
 @push('scripts')
 
-<script src="https://cdn.rankeval.gg/integration/latest/rankeval-widget.js"></script>
+    <script src="https://cdn.rankeval.gg/integration/latest/rankeval-widget.js"></script>
 @endpush
