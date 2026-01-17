@@ -372,7 +372,9 @@ Route::middleware('server.config')->group(function () {
     Route::match(['get', 'post'], '/pally/success', [\App\Http\Controllers\Api\PallyController::class, 'success'])->name('pally.success');
     Route::match(['get', 'post'], '/pally/fail', [\App\Http\Controllers\Api\PallyController::class, 'fail'])->name('pally.fail');
 });
-
+Route::get('/test/leaderboard', function () {
+    return view('pages.main.stats-test');
+});
 // Route::get('/test/login', function () {
 //     $user = User::where('id', 521)->first();
 //     Auth::login($user);
