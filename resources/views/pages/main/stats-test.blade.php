@@ -7,9 +7,6 @@
 @endprepend
 
 @section('content')
-
-  <div class="inner-header">{{ __('Статистика') }}</div>
-
   <div id="rankeval-widget"></div>
 @endsection
 @push('scripts')
