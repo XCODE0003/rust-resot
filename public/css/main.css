@@ -28,6 +28,133 @@
   --button: #181818;
 }
 
+@media (max-width: 768px) {
+  .v-col-md-12.v-col-lg-7.v-col-12.d-flex.gap-2 {
+    flex-direction: column;
+  }
+  body .v-btn:not(.v-btn--icon,.v-tab).v-btn--variant-text.v-btn--size-default { 
+    max-width: none !important;
+  }
+  .v-card-text.pa-6.d-flex.justify-space-between.leaderboard-title.py-2 {
+    gap: 15px !important;
+  }
+  .v-col-md-4.v-col-lg-3.v-col-3 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+  .v-col-sm-0.v-col-md-0.v-col-lg-4.v-col-4 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+  .v-input.v-input--horizontal.v-input--center-affix.v-input--density-comfortable.v-theme--organizationTheme.v-locale--is-ltr.v-text-field.py-4 {
+    min-width: 100% !important;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+  }
+  .v-sheet.v-theme--organizationTheme.rounded-lg.static-card.no-border.px-4 {
+    gap: 5px !important;
+    padding-top: 10px !important;
+  }
+  .d-flex.align-center.flex-wrap.gap-2 {
+    padding-bottom: 10px !important;
+  }
+  .v-btn.v-btn--variant-outlined.v-btn--size-default.v-btn--density-comfortable.v-btn--variant-text.v-btn--color-default.v-btn--rounded {
+    max-width: 100% !important;
+  }
+  .v-col-5 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+  .d-flex.align-center.gap-4.h-100 .d-flex.gap-2{
+    flex-direction: column !important;
+  }
+
+  div[style*="width: 574px"][style*="height: 574px"][style*="heatmap-opacity"] {
+    width: 300px !important;
+    height: 300px !important;
+    overflow: hidden;
+    position: relative;
+    z-index: 5;
+    --heatmap-opacity: 0.9;
+  }
+
+  .v-card-text.pa-6.d-flex.justify-space-between.leaderboard-title.py-2 {
+    flex-direction: column !important;
+  }
+
+  .v-input.v-input--horizontal.v-input--center-affix.v-input--density-comfortable.v-theme--organizationTheme.v-locale--is-ltr.v-text-field.py-4 {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .v-row.dense {
+    flex-direction: column !important;
+  }
+
+  .v-row.dense  .v-col-4.v-col{
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+  
+  .d-flex.gap-2.justify-space-between.align-center.mb-3.mt-1{
+    flex-direction: column !important;
+    gap: 10px !important;
+    align-items: flex-start !important;
+  }
+  .v-card-title.section-title.pa-4.mb-0.px-4 .d-flex.align-start.gap-2 {
+    flex-direction: column !important;
+  }
+  .d-flex align-start gap-2
+
+  .d-flex.align-center.flex-wrap.gap-2 {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .d-flex.align-center.flex-grow-1 {
+    width: 100% !important;
+  }
+  .v-input.v-input--horizontal.v-input--center-affix.v-input--density-comfortable.v-theme--organizationTheme.v-locale--is-ltr.v-input--dirty.v-text-field.py-4.v-select.v-select--single.v-select--selected {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .v-btn.v-btn--slim {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .v-card-actions.section-actions.pa-0.button-group-rounded {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .v-card-actions.section-actions.pa-0.button-group-rounded .v-btn.v-btn--slim.v-theme--organizationTheme.v-btn--density-default.elevation-0.rounded-lg.v-btn--size-default.v-btn--variant-tonal.flex-grow-1 {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .v-btn.v-btn--block {
+    text-align: center !important;
+  }
+  .v-col .v-row {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .v-col-sm-12.v-col-md-6.v-col-lg-4.v-col-4 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+  .v-card-text.pa-6.d-flex.gap-4 {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  .v-card-text.pa-6.d-flex.gap-4.pa-4 {
+    flex-direction: row !important;
+    gap: 10px !important;
+  }
+  .v-avatar-group.avatar-group {
+    overflow-x: auto !important;
+  }
+}
+
+
+
 body {
   background-color: var(--body);
   font-family: 'Antarctican';
