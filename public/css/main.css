@@ -10,6 +10,9 @@
 .v-list{
     font-family: "Salma Pro" !important;
 }
+.v-overlay__content{
+    font-family: "Salma Pro" !important;
+}
 :root {
   --body: #1b1c1d;
   --orange: #e88c1b;
@@ -35,7 +38,7 @@
   .v-col-md-12.v-col-lg-7.v-col-12.d-flex.gap-2 {
     flex-direction: column;
   }
-  body .v-btn:not(.v-btn--icon,.v-tab).v-btn--variant-text.v-btn--size-default { 
+  body .v-btn:not(.v-btn--icon,.v-tab).v-btn--variant-text.v-btn--size-default {
     max-width: none !important;
   }
   .v-card-text.pa-6.d-flex.justify-space-between.leaderboard-title.py-2 {
@@ -98,7 +101,7 @@
     flex: 0 0 100% !important;
     max-width: 100% !important;
   }
-  
+
   .d-flex.gap-2.justify-space-between.align-center.mb-3.mt-1{
     flex-direction: column !important;
     gap: 10px !important;
@@ -159,7 +162,7 @@
     flex-direction: column;
     flex: 1 0 auto !important;
   }
-  .v-tabs { 
+  .v-tabs {
     height: auto !important;
   }
   .d-flex.align-center.gap-4.h-100 {
