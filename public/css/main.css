@@ -7,6 +7,9 @@
 #rankeval-widget{
     font-family: "Salma Pro" !important
 }
+.v-list{
+    font-family: "Salma Pro" !important;
+}
 :root {
   --body: #1b1c1d;
   --orange: #e88c1b;
