@@ -376,7 +376,7 @@ Route::get('/test/leaderboard', function () {
     return view('pages.main.stats-test');
 });
 // Route::get('/test/login', function () {
-//     $user = User::where('id', 521)->first();
+//     $user = User::first();
 //     Auth::login($user);
 //     return redirect('/');
 

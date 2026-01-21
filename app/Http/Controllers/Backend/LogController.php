@@ -13,7 +13,6 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Storage;
 
 class LogController extends Controller
 {
@@ -83,45 +82,71 @@ class LogController extends Controller
     }
 
     public function gamecurrencylogs() {
-        $log = Storage::disk('local')->get('logs/logs/payments.log');
+        $path = storage_path('logs/payments.log');
+
+        if (!file_exists($path)) {
+            abort(404, 'Log file not found');
+        }
+
+        $log = file_get_contents($path);
         return view('backend.pages.logs.gamecurrencylogs', compact('log'));
     }
 
     public function adminlogs() {
-        $log = Storage::disk('local')->get('logs/logs/admin.log');
+        $path = storage_path('logs/admin.log');
+
+        if (!file_exists($path)) {
+            abort(404, 'Log file not found');
+        }
+
+        $log = file_get_contents($path);
         return view('backend.pages.logs.adminlogs', compact('log'));
     }
 
     public function servererrors() {
-        $log = Storage::disk('local')->get('logs/logs/laravel.log');
+        $path = storage_path('logs/laravel.log');
+
+        if (!file_exists($path)) {
+            abort(404, 'Log file not found');
+        }
+
+        $log = file_get_contents($path);
         return view('backend.pages.logs.servererrors', compact('log'));
     }
 
     public function userlogs(User $user) {
 
-        $admin_log = Storage::disk('local')->get('logs/logs/admin.log');
-        $admin_log_arr = explode("\n", $admin_log);
-        if (!empty($admin_log_arr)) {
-            $logs = '';
-            foreach ($admin_log_arr as $log) {
-                if (strpos($log, $user->name) !== FALSE) {
-                    $logs .= $log . "\n";
+        $admin_log_path = storage_path('logs/admin.log');
+        $admin_log = '';
+        if (file_exists($admin_log_path)) {
+            $admin_log_content = file_get_contents($admin_log_path);
+            $admin_log_arr = explode("\n", $admin_log_content);
+            if (!empty($admin_log_arr)) {
+                $logs = '';
+                foreach ($admin_log_arr as $log) {
+                    if (strpos($log, $user->name) !== FALSE) {
+                        $logs .= $log . "\n";
+                    }
                 }
+                $admin_log = $logs;
             }
         }
-        $admin_log = $logs;
 
-        $payments_log = Storage::disk('local')->get('logs/logs/payments.log');
-        $payments_log_arr = explode("\n", $payments_log);
-        if (!empty($payments_log_arr)) {
-            $logs = '';
-            foreach ($payments_log_arr as $log) {
-                if (strpos($log, $user->name) !== FALSE || strpos($log, "Игроку ID: {$user->id}") !== FALSE  || strpos($log, '"user_id":'.$user->id) !== FALSE) {
-                    $logs .= $log . "\n";
+        $payments_log_path = storage_path('logs/payments.log');
+        $payments_log = '';
+        if (file_exists($payments_log_path)) {
+            $payments_log_content = file_get_contents($payments_log_path);
+            $payments_log_arr = explode("\n", $payments_log_content);
+            if (!empty($payments_log_arr)) {
+                $logs = '';
+                foreach ($payments_log_arr as $log) {
+                    if (strpos($log, $user->name) !== FALSE || strpos($log, "Игроку ID: {$user->id}") !== FALSE  || strpos($log, '"user_id":'.$user->id) !== FALSE) {
+                        $logs .= $log . "\n";
+                    }
                 }
+                $payments_log = $logs;
             }
         }
-        $payments_log = $logs;
 
         return view('backend.pages.logs.userlogs', compact('admin_log', 'payments_log'));
     }
