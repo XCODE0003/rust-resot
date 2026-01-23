@@ -856,7 +856,7 @@ trait PaymentsMethodTrait
 
                 // Создаем корзину
                 if (1 === 1) {
-                    $basket_response = @file_get_contents('http://195.133.21.219/tebex_create_basket.php?donate_id=' . $donate->id . '&public_token=' . $public_token . '&access_token=Kfkgqq4A7MR4zr9ZBjzHNPm5a2GeNinW');
+                    $basket_response = @file_get_contents('http://5.45.123.106/tebex_create_basket.php?donate_id=' . $donate->id . '&public_token=' . $public_token . '&access_token=Kfkgqq4A7MR4zr9ZBjzHNPm5a2GeNinW');
                     if ($basket_response && $basket_response != '') {
                         $basket_response = json_decode($basket_response, true);
                     }
