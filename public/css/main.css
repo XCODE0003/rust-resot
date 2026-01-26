@@ -192,7 +192,7 @@
 
 body {
   background-color: var(--body);
-
+  font-family: 'Antarctican';
   overflow-x: hidden;
   -webkit-transition: .5s;
   transition: .5s;
@@ -884,7 +884,7 @@ section {
   padding: 2px 1px 1px 1px;
   outline: none;
   border: none;
-
+  font-family: 'Antarctican';
   cursor: pointer;
   -webkit-transition: .5s;
   transition: .5s;
