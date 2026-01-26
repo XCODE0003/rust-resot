@@ -585,7 +585,7 @@ trait PaymentsMethodTrait
                     currency: $currency_heleket,
                     orderId: (string) $donate->id,
                     options: [
-                        'url_return' => config('heleket.return_url') ?: url('/heleket/success'),
+                        'url_return' => config('heleket.return_url') ?: url('heleket/success'),
                         'url_callback' => config('heleket.callback_url') ?: url('/api/payments/notification/heleket'),
                     ]
                 );
@@ -700,7 +700,7 @@ trait PaymentsMethodTrait
                     currency: $currency,
                     orderId: (string) $donate->id,
                     options: [
-                        'url_return' => config('heleket.return_url') ?: url('/heleket/success'),
+                        'url_return' => config('heleket.return_url') ?: url('heleket/success'),
                         'url_callback' => config('heleket.callback_url') ?: url('/api/payments/notification/heleket'),
                         'currencies' => [
                             [
@@ -768,7 +768,7 @@ trait PaymentsMethodTrait
                     currency: $currency,
                     orderId: (string) $donate->id,
                     options: [
-                        'url_return' => config('heleket.return_url') ?: url('/heleket/success'),
+                        'url_return' => config('heleket.return_url') ?: url('heleket/success'),
                         'url_callback' => config('heleket.callback_url') ?: url('/api/payments/notification/heleket'),
                         'currencies' => $currencies,
                         'except_currencies' => $except_currencies,
@@ -815,7 +815,7 @@ trait PaymentsMethodTrait
                     currency: $currency,
                     orderId: (string) $donate->id,
                     options: [
-                        'url_return' => config('heleket.return_url') ?: url('/heleket/success'),
+                        'url_return' => config('heleket.return_url') ?: url('heleket/success'),
                         'url_callback' => config('heleket.callback_url') ?: url('/api/payments/notification/heleket'),
                         'currencies' => $currencies,
 
