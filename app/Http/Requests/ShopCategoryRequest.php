@@ -40,6 +40,7 @@ class ShopCategoryRequest extends FormRequest
             'description_es' => ['max:255'],
             'description_uk' => ['max:255'],
             'sort' => ['max:10'],
+            'discount_percent' => ['nullable', 'numeric', 'min:0', 'max:100'],
         ];
     }
 }

@@ -1497,3 +1497,44 @@ if (! function_exists('generationPromoCode')) {
         return $code;
     }
 }
+
+if (! function_exists('getShopItemPrice')) {
+    /**
+     * Получить цену товара со скидкой
+     * Приоритет: скидка товара > скидка категории
+     *
+     * @param \App\Models\ShopItem $shopitem
+     * @param string $currency 'rub' или 'usd'
+     * @return array ['original_price' => float, 'discount_price' => float, 'discount_percent' => float]
+     */
+    function getShopItemPrice($shopitem, $currency = 'rub')
+    {
+        $original_price = ($currency === 'rub') ? $shopitem->price : $shopitem->price_usd;
+        $discount_percent = null;
+
+        // Приоритет: скидка товара > скидка категории
+        if ($shopitem->discount_percent !== null && $shopitem->discount_percent > 0) {
+            $discount_percent = $shopitem->discount_percent;
+        } else {
+            $category = getshopcategory($shopitem->category_id);
+            if ($category && $category->discount_percent !== null && $category->discount_percent > 0) {
+                $discount_percent = $category->discount_percent;
+            }
+        }
+
+        if ($discount_percent !== null && $discount_percent > 0 && $discount_percent <= 100) {
+            $discount_price = $original_price * (1 - $discount_percent / 100);
+            return [
+                'original_price' => $original_price,
+                'discount_price' => round($discount_price, 2),
+                'discount_percent' => $discount_percent
+            ];
+        }
+
+        return [
+            'original_price' => $original_price,
+            'discount_price' => $original_price,
+            'discount_percent' => 0
+        ];
+    }
+}

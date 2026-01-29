@@ -124,6 +124,21 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="discount_percent">{{ __('Скидка для категории') }} (%)</label>
+                                        <div class="form-control-wrap">
+                                            <input type="number" class="form-control" min="0" max="100" step="0.01" id="discount_percent" name="discount_percent"
+                                                   @isset($shopcategory) value="{{ $shopcategory->discount_percent }}" @else value="{{ old('discount_percent', '') }}" @endisset
+                                                   placeholder="{{ __('0 = без скидки, применяется ко всем товарам категории') }}">
+                                            @error('discount_percent')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="row g-4">

@@ -33,6 +33,10 @@
         @foreach($shopcategories as $shopcategory)
 
             @foreach($shopitems[$shopcategory->id] as $shopitem)
+            @php
+                $currency = (app()->getLocale() == 'ru') ? 'rub' : 'usd';
+                $priceData = getShopItemPrice($shopitem, $currency);
+            @endphp
             <div id="sb__popup-item-{{ $shopitem->id }}" class="sb__popup">
             <div class="sb-popup_back"></div>
             <!-- content -->
@@ -63,7 +67,7 @@
                     <input type="hidden" name="payment_id" value="20">
                     <input type="hidden" name="qty" value="1" class="item-qty-value">
                     <input type="hidden" name="amount" value="{{ $shopitem->amount }}" class="item-amount-value">
-                    <input type="hidden" name="item_price" value="@if(app()->getLocale() == 'ru'){{ number_format($shopitem->price, 0, '.', '') }}@else{{ number_format($shopitem->price_usd, 2, '.', '') }}@endif" class="item-price-value">
+                    <input type="hidden" name="item_price" value="@if(app()->getLocale() == 'ru'){{ number_format($priceData['discount_price'], 0, '.', '') }}@else{{ number_format($priceData['discount_price'], 2, '.', '') }}@endif" class="item-price-value">
 
                     @if($shopitem->can_gift === 1)
                         <div class="spc__gift {{ $shopitem->can_gift }}">
@@ -130,21 +134,33 @@
                     <input type="hidden" class="var_id" name="var_id" value="{{ $first_item_var_id }}">
 
                     <!-- cost -->
+                    @php
+                        $currency = (app()->getLocale() == 'ru') ? 'rub' : 'usd';
+                        $priceData = getShopItemPrice($shopitem, $currency);
+                    @endphp
                     <div class="spc__price">
                         <div class="spc-price__text">{{ __('Стоимость') }}:</div>
-                        <div class="spc-price__value"><span class="buy-item-price">@if(app()->getLocale() == 'ru'){{ number_format($shopitem->price, 0, '.', '') }}@else{{ number_format($shopitem->price_usd, 2, '.', '') }}@endif</span> @if(app()->getLocale() == 'ru'){{__('₽')}}@else{{ 'USD' }}@endif</div>
+                        <div class="spc-price__value">
+                            @if($priceData['discount_percent'] > 0)
+                                <span class="buy-item-price-old" style="text-decoration: line-through; opacity: 0.6; margin-right: 8px; font-size: 0.9em;">
+                                    @if(app()->getLocale() == 'ru'){{ number_format($priceData['original_price'], 0, '.', '') }}@else{{ number_format($priceData['original_price'], 2, '.', '') }}@endif
+                                </span>
+                            @endif
+                            <span class="buy-item-price">@if(app()->getLocale() == 'ru'){{ number_format($priceData['discount_price'], 0, '.', '') }}@else{{ number_format($priceData['discount_price'], 2, '.', '') }}@endif</span> @if(app()->getLocale() == 'ru'){{__('₽')}}@else{{ 'USD' }}@endif
+                        </div>
                     </div>
 
                     @if(!isset(auth()->user()->id))
                         <a href="{{ route('login') }}" class="spc__buy">{{ __('Купить') }}</a>
                     @else
-
-                        @if(auth()->user()->balance >= $shopitem->price)
+                        @php
+                            $userBalance = (app()->getLocale() == 'ru') ? auth()->user()->balance : (auth()->user()->balance / config('options.exchange_rate_usd', 70));
+                        @endphp
+                        @if($userBalance >= $priceData['discount_price'])
                             <a class="spc__buy btn-buy-item" data-id="{{ $shopitem->id }}">{{ __('Купить') }}</a>
                         @else
                             <a href="{{ route('account.profile', ['topup' => 1]) }}" class="spc__buy">{{ __('Пополнить баланс') }}</a>
                         @endif
-
                     @endif
 
                 </form>
@@ -397,8 +413,17 @@
                                                                         </div>
                                                                     @endif
                                                                     <div class="shop-item-buy__content--price">
+                                                                        @php
+                                                                            $currency = (app()->getLocale() == 'ru') ? 'rub' : 'usd';
+                                                                            $priceData = getShopItemPrice($shopitem, $currency);
+                                                                        @endphp
                                                                         <div class="shop-item-buy__content--price--cost">
-                                                                            <span class="buy-item-price">@if(app()->getLocale() == 'ru'){{ number_format($shopitem->price, 0, '.', '') }}@else{{ number_format($shopitem->price_usd, 2, '.', '') }}@endif</span> @if(app()->getLocale() == 'ru'){{__('₽')}}@else{{ 'USD' }}@endif
+                                                                            @if($priceData['discount_percent'] > 0)
+                                                                                <span class="buy-item-price-old" style="text-decoration: line-through; opacity: 0.6; margin-right: 8px; font-size: 0.9em;">
+                                                                                    @if(app()->getLocale() == 'ru'){{ number_format($priceData['original_price'], 0, '.', '') }}@else{{ number_format($priceData['original_price'], 2, '.', '') }}@endif
+                                                                                </span>
+                                                                            @endif
+                                                                            <span class="buy-item-price">@if(app()->getLocale() == 'ru'){{ number_format($priceData['discount_price'], 0, '.', '') }}@else{{ number_format($priceData['discount_price'], 2, '.', '') }}@endif</span> @if(app()->getLocale() == 'ru'){{__('₽')}}@else{{ 'USD' }}@endif
                                                                         </div>
                                                                     </div>
 
@@ -503,8 +528,17 @@
                                                             </div>
                                                         @endif
                                                         <div class="shop-item-buy__content--price">
+                                                            @php
+                                                                $currency = (app()->getLocale() == 'ru') ? 'rub' : 'usd';
+                                                                $priceData = getShopItemPrice($shopitem, $currency);
+                                                            @endphp
                                                             <div class="shop-item-buy__content--price--cost">
-                                                                <span class="buy-item-price">@if(app()->getLocale() == 'ru'){{ number_format($shopitem->price, 0, '.', '') }}@else{{ number_format($shopitem->price_usd, 2, '.', '') }}@endif</span> @if(app()->getLocale() == 'ru'){{__('₽')}}@else{{ 'USD' }}@endif
+                                                                @if($priceData['discount_percent'] > 0)
+                                                                    <span class="buy-item-price-old" style="text-decoration: line-through; opacity: 0.6; margin-right: 8px; font-size: 0.9em;">
+                                                                        @if(app()->getLocale() == 'ru'){{ number_format($priceData['original_price'], 0, '.', '') }}@else{{ number_format($priceData['original_price'], 2, '.', '') }}@endif
+                                                                    </span>
+                                                                @endif
+                                                                <span class="buy-item-price">@if(app()->getLocale() == 'ru'){{ number_format($priceData['discount_price'], 0, '.', '') }}@else{{ number_format($priceData['discount_price'], 2, '.', '') }}@endif</span> @if(app()->getLocale() == 'ru'){{__('₽')}}@else{{ 'USD' }}@endif
                                                             </div>
                                                         </div>
 
@@ -664,19 +698,28 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @php
+                                        $currency = (app()->getLocale() == 'ru') ? 'rub' : 'usd';
+                                        $priceData = getShopItemPrice($shopitem, $currency);
+                                    @endphp
                                     <div class="shop-item-buy__content--price">
                                         <div class="shop-item-buy__content--price--text">
                                             {{ __('Стоимость') }}:
                                         </div>
                                         <div class="shop-item-buy__content--price--cost">
-                                            <span class="buy-item-price">@if(app()->getLocale() == 'ru'){{ $shopitem->price }}@else{{ $shopitem->price_usd }}@endif</span> @if(app()->getLocale() == 'ru'){{__('руб.')}}@else{{ 'USD' }}@endif
+                                            @if($priceData['discount_percent'] > 0)
+                                                <span class="buy-item-price-old" style="text-decoration: line-through; opacity: 0.6; margin-right: 8px; font-size: 0.9em;">
+                                                    @if(app()->getLocale() == 'ru'){{ number_format($priceData['original_price'], 0, '.', '') }}@else{{ number_format($priceData['original_price'], 2, '.', '') }}@endif
+                                                </span>
+                                            @endif
+                                            <span class="buy-item-price">@if(app()->getLocale() == 'ru'){{ number_format($priceData['discount_price'], 0, '.', '') }}@else{{ number_format($priceData['discount_price'], 2, '.', '') }}@endif</span> @if(app()->getLocale() == 'ru'){{__('руб.')}}@else{{ 'USD' }}@endif
                                         </div>
                                     </div>
 
                                     @if(!isset(auth()->user()->id))
                                         <a class="shop-item-buy__content--btn" onclick="window.location='{{ route('login') }}';">{{ __('Купить') }}</a>
                                     @else
-                                        <a class="shop-item-buy__content--btn buy buy-item-button" data-itemid="{{ $shopitem->id }}" data-itemname="{{ $shopitem->$name }}" data-itemprice="@if(app()->getLocale() == 'ru'){{ $shopitem->price }}@else{{ $shopitem->price_usd }}@endif" data-varid="{{ $first_item_var_id }}">{{ __('Купить') }}</a>
+                                        <a class="shop-item-buy__content--btn buy buy-item-button" data-itemid="{{ $shopitem->id }}" data-itemname="{{ $shopitem->$name }}" data-itemprice="@if(app()->getLocale() == 'ru'){{ number_format($priceData['discount_price'], 0, '.', '') }}@else{{ number_format($priceData['discount_price'], 2, '.', '') }}@endif" data-varid="{{ $first_item_var_id }}">{{ __('Купить') }}</a>
                                     @endif
 
                                 </div>

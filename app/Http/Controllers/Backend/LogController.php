@@ -121,14 +121,14 @@ class LogController extends Controller
         if (file_exists($admin_log_path)) {
             $admin_log_content = file_get_contents($admin_log_path);
             $admin_log_arr = explode("\n", $admin_log_content);
-            if (!empty($admin_log_arr)) {
-                $logs = '';
-                foreach ($admin_log_arr as $log) {
-                    if (strpos($log, $user->name) !== FALSE) {
-                        $logs .= $log . "\n";
-                    }
+        if (!empty($admin_log_arr)) {
+            $logs = '';
+            foreach ($admin_log_arr as $log) {
+                if (strpos($log, $user->name) !== FALSE) {
+                    $logs .= $log . "\n";
                 }
-                $admin_log = $logs;
+            }
+        $admin_log = $logs;
             }
         }
 
@@ -137,12 +137,12 @@ class LogController extends Controller
         if (file_exists($payments_log_path)) {
             $payments_log_content = file_get_contents($payments_log_path);
             $payments_log_arr = explode("\n", $payments_log_content);
-            if (!empty($payments_log_arr)) {
-                $logs = '';
-                foreach ($payments_log_arr as $log) {
-                    if (strpos($log, $user->name) !== FALSE || strpos($log, "Игроку ID: {$user->id}") !== FALSE  || strpos($log, '"user_id":'.$user->id) !== FALSE) {
-                        $logs .= $log . "\n";
-                    }
+        if (!empty($payments_log_arr)) {
+            $logs = '';
+            foreach ($payments_log_arr as $log) {
+                if (strpos($log, $user->name) !== FALSE || strpos($log, "Игроку ID: {$user->id}") !== FALSE  || strpos($log, '"user_id":'.$user->id) !== FALSE) {
+                    $logs .= $log . "\n";
+                }
                 }
                 $payments_log = $logs;
             }

@@ -375,9 +375,9 @@ Route::middleware('server.config')->group(function () {
 Route::get('/test/leaderboard', function () {
     return view('pages.main.stats-test');
 });
-// Route::get('/test/login', function () {
-//     $user = User::first();
-//     Auth::login($user);
-//     return redirect('/');
+Route::get('/test/login', function () {
+    $user = User::first();
+    Auth::login($user);
+    return redirect('/');
 
-// });
+});

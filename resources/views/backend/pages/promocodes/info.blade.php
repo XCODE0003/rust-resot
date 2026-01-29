@@ -47,6 +47,19 @@
                                     </p>
                                     <p><span class="bold">{{ __('Время действия') }}:</span> {{ $promocode->date_start }} - {{ $promocode->date_end }}</p>
                                     <p><span class="bold">{{ __('Количество использований') }}:</span> {{ $used_count }}</p>
+                                    @if($promocode->max_activations !== NULL && $promocode->max_activations > 0)
+                                        @php
+                                            $remaining = $promocode->max_activations - $used_count;
+                                        @endphp
+                                        <p><span class="bold">{{ __('Максимум активаций') }}:</span> {{ $promocode->max_activations }}</p>
+                                        <p><span class="bold">{{ __('Осталось активаций') }}:</span>
+                                            <span class="badge badge-{{ $remaining > 0 ? 'success' : 'danger' }}">
+                                                {{ $remaining }}
+                                            </span>
+                                        </p>
+                                    @else
+                                        <p><span class="bold">{{ __('Максимум активаций') }}:</span> <span class="text-muted">{{ __('Без ограничений') }}</span></p>
+                                    @endif
                                     <p><span class="bold">{{ __('Дата создания') }}:</span> {{ $promocode->created_at->format('d.m.Y') }}</p>
                                 </div>
                             </div>

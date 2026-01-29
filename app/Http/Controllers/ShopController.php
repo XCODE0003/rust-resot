@@ -201,7 +201,12 @@ class ShopController extends Controller
             }
 
             $qty = 1;
-            $price = $shopitem->price;
+
+            // Получаем цену со скидкой для базовой цены товара
+            $priceData = getShopItemPrice($shopitem, 'rub');
+            $discountPercent = $priceData['discount_percent'];
+            $price = $priceData['discount_price'];
+            $price_usd = getShopItemPrice($shopitem, 'usd')['discount_price'];
 
             if ($request->var_id > 0) {
                 $variations = json_decode($shopitem->variations);
@@ -209,8 +214,8 @@ class ShopController extends Controller
                 //Если товар с кол-вом
                 if (empty($variations)) {
                     $qty = abs(intval($request->qty));
-                    $price = $qty * $shopitem->price;
-                    $price_usd = $qty * $shopitem->price_usd;
+                    $price = $qty * $price;
+                    $price_usd = $qty * $price_usd;
                 } else {
 
                     $variation_find = FALSE;
@@ -218,8 +223,14 @@ class ShopController extends Controller
                         foreach ($variations as $variation) {
                             if ($variation->variation_id == $request->var_id) {
                                 $variation_find = TRUE;
-                                $price = $variation->variation_price;
-                                $price_usd = $variation->variation_price_usd;
+                                // Применяем скидку к цене вариации
+                                if ($discountPercent > 0) {
+                                    $price = $variation->variation_price * (1 - $discountPercent / 100);
+                                    $price_usd = $variation->variation_price_usd * (1 - $discountPercent / 100);
+                                } else {
+                                    $price = $variation->variation_price;
+                                    $price_usd = $variation->variation_price_usd;
+                                }
                                 $amount = 1;
                             }
                         }
@@ -227,8 +238,14 @@ class ShopController extends Controller
                         foreach ($variations as $variation) {
                             if ($variation->quantity_id == $request->var_id) {
                                 $variation_find = TRUE;
-                                $price = $variation->quantity_price;
-                                $price_usd = $variation->quantity_price_usd;
+                                // Применяем скидку к цене вариации
+                                if ($discountPercent > 0) {
+                                    $price = $variation->quantity_price * (1 - $discountPercent / 100);
+                                    $price_usd = $variation->quantity_price_usd * (1 - $discountPercent / 100);
+                                } else {
+                                    $price = $variation->quantity_price;
+                                    $price_usd = $variation->quantity_price_usd;
+                                }
                                 $amount = $variation->quantity_amount;
                             }
                         }
@@ -243,8 +260,8 @@ class ShopController extends Controller
             } else {
                 //Если товар с кол-вом
                 $qty = abs(intval($request->qty));
-                $price = $qty * $shopitem->price;
-                $price_usd = $qty * $shopitem->price_usd;
+                $price = $qty * $price;
+                $price_usd = $qty * $price_usd;
             }
 
             session()->put('donate_prev_url', url()->previous());

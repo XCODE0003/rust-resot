@@ -84,6 +84,28 @@
                                 </div>
                                 <div class="nk-tb-col tb-col-md">
                                     <span class="tb-sub">
+                                        @php
+                                            $used_users = json_decode($promocode->users);
+                                            $current_activations = ($used_users !== NULL && !empty($used_users)) ? count($used_users) : 0;
+                                        @endphp
+                                        @if($promocode->max_activations !== NULL && $promocode->max_activations > 0)
+                                            @php
+                                                $remaining = $promocode->max_activations - $current_activations;
+                                            @endphp
+                                            <span class="badge badge-{{ $remaining > 0 ? 'success' : 'danger' }}">
+                                                {{ $current_activations }} / {{ $promocode->max_activations }}
+                                            </span>
+                                            <br>
+                                            <small class="text-muted">Осталось: {{ $remaining }}</small>
+                                        @else
+                                            <span class="badge badge-secondary">{{ $current_activations }}</span>
+                                            <br>
+                                            <small class="text-muted">Без ограничений</small>
+                                        @endif
+                                    </span>
+                                </div>
+                                <div class="nk-tb-col tb-col-md">
+                                    <span class="tb-sub">
                                         {{ $promocode->created_at->format('d/m/Y H:i') }}
                                     </span>
                                 </div>
