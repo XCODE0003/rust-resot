@@ -149,6 +149,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/account/store/checkout/success', [\App\Http\Controllers\ShopController::class, 'success'])->name('shop.cart.success');
 
             Route::post('/account/store/buy', [\App\Http\Controllers\ShopController::class, 'buy_item'])->name('shop.item.buy');
+            Route::post('/account/store/buy_ajax', [\App\Http\Controllers\ShopController::class, 'buy_item_ajax'])->name('shop.item.buy.ajax');
             Route::post('/account/store/buy_set', [\App\Http\Controllers\ShopController::class, 'buy_set'])->name('shop.set.buy');
 
             Route::get('/account/profile', [\App\Http\Controllers\ProfileController::class, 'index'])->name('account.profile');
@@ -160,6 +161,7 @@ Route::middleware('auth')->group(function () {
             Route::post('/account/inventory/apply', [\App\Http\Controllers\InventoryController::class, 'apply'])->name('account.inventory.apply');
             Route::post('/account/inventory/activateShopItem', [\App\Http\Controllers\InventoryController::class, 'activateShopItem'])->name('account.inventory.activateShopItem');
             Route::post('/account/inventory/sendShopItem', [\App\Http\Controllers\InventoryController::class, 'sendShopItem'])->name('account.inventory.sendShopItem');
+            Route::post('/account/inventory/refundCartItem', [\App\Http\Controllers\InventoryController::class, 'refundCartItem'])->name('account.inventory.refundCartItem');
 
             Route::get('/account/store-test', [\App\Http\Controllers\ShopController::class, 'test'])->name('shop.test');
 

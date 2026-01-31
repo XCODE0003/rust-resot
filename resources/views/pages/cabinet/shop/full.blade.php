@@ -60,7 +60,7 @@
                     </div>
                 @endif
 
-                <form action="{{ route('shop.item.buy') }}" method="POST" id="topup-balance-form-{{ $shopitem->id }}">
+                <form action="{{ route('shop.item.buy') }}" method="POST" id="topup-balance-form-{{ $shopitem->id }}" data-discountpercent="{{ $priceData['discount_percent'] }}" data-baseprice="{{ $priceData['original_price'] }}">
                     @csrf
                     <input type="hidden" name="server_id" value="{{ $server->id }}">
                     <input type="hidden" name="item_id" value="{{ $shopitem->id }}">
@@ -68,6 +68,7 @@
                     <input type="hidden" name="qty" value="1" class="item-qty-value">
                     <input type="hidden" name="amount" value="{{ $shopitem->amount }}" class="item-amount-value">
                     <input type="hidden" name="item_price" value="@if(app()->getLocale() == 'ru'){{ number_format($priceData['discount_price'], 0, '.', '') }}@else{{ number_format($priceData['discount_price'], 2, '.', '') }}@endif" class="item-price-value">
+                    <input type="hidden" class="item-discount-percent" value="{{ $priceData['discount_percent'] }}">
 
                     @if($shopitem->can_gift === 1)
                         <div class="spc__gift {{ $shopitem->can_gift }}">
@@ -356,8 +357,13 @@
                                                 @if($shopcategory->id == 6) @continue @endif
 
                                                     @foreach($shopitems[$shopcategory->id] as $shopitem)
+                                                        @php
+                                                            $currency = (app()->getLocale() == 'ru') ? 'rub' : 'usd';
+                                                            $cardPriceData = getShopItemPrice($shopitem, $currency);
+                                                        @endphp
                                                         <div class="item">
-                                                            <div class="shop-item-buy sib-special shopitem-buy" data-id="{{ $shopitem->id }}">
+                                                            <div class="shop-item-buy sib-special shopitem-buy" data-id="{{ $shopitem->id }}" data-discountpercent="{{ $cardPriceData['discount_percent'] }}">
+                                                                <input type="hidden" class="item-discount-percent" value="{{ $cardPriceData['discount_percent'] }}">
                                                                 <div class="shop-item-buy-name shop-item-buy-name--title">{{ str_replace('ELITEPACK', 'ELITE PACK', str_replace('BUILDINGSKINS', 'BUILDING SKINS', $shopitem->$name)) }}</div>
                                                                 <div class="shop-item-buy-name shop-item-image">
                                                                     <img src="{{ $shopitem->image_url }}" alt="{{ $shopitem->$name }}">
@@ -471,8 +477,13 @@
                                         <div class="shop-item-list">
 
                                         @foreach($shopitems[$shopcategory->id] as $shopitem)
+                                            @php
+                                                $currency = (app()->getLocale() == 'ru') ? 'rub' : 'usd';
+                                                $cardPriceData = getShopItemPrice($shopitem, $currency);
+                                            @endphp
                                             <div class="item">
-                                                <div class="shop-item-buy sib-special shopitem-buy" data-id="{{ $shopitem->id }}">
+                                                <div class="shop-item-buy sib-special shopitem-buy" data-id="{{ $shopitem->id }}" data-discountpercent="{{ $cardPriceData['discount_percent'] }}">
+                                                    <input type="hidden" class="item-discount-percent" value="{{ $cardPriceData['discount_percent'] }}">
                                                     <div class="shop-item-buy-name shop-item-buy-name--title">{{ $shopitem->$name }}</div>
                                                     <div class="shop-item-buy-name shop-item-image">
                                                         <img src="{{ $shopitem->image_url }}" alt="{{ $shopitem->$name }}">
@@ -1350,31 +1361,47 @@
 
         //Кол-во товара
         $(document).on('click', '.amount-plus', function(e){
-            let amount = parseInt($(this).parent().parent().parent().find('.item-amount-value').val());
-            let qty = parseInt($(this).parent().parent().parent().find('.item-qty-value').val());
-            let price = parseFloat($(this).parent().parent().parent().find('.item-price-value').val());
+            let form = $(this).closest('form');
+            let amount = parseInt(form.find('.item-amount-value').val());
+            let qty = parseInt(form.find('.item-qty-value').val());
+            let basePrice = parseFloat(form.find('.item-price-value').val());
+            let discountPercent = parseFloat(form.find('.item-discount-percent').val()) || 0;
 
             qty = qty + 1;
-            amount = amount * qty;
-            price = price * qty;
+            let totalAmount = amount * qty;
+            let price = basePrice * qty;
 
-            $(this).parent().parent().parent().find('.item-qty-value').val(qty);
-            $(this).parent().find('.item-amount').text(amount);
-            $(this).parent().parent().parent().find('.buy-item-price').text(price);
+            form.find('.item-qty-value').val(qty);
+            $(this).parent().find('.item-amount').text(totalAmount);
+            form.find('.buy-item-price').text(Math.round(price));
+
+            // Обновляем старую цену если есть скидка
+            if (discountPercent > 0) {
+                let originalPrice = parseFloat(form.data('baseprice')) * qty;
+                form.find('.buy-item-price-old').text(Math.round(originalPrice));
+            }
         });
         $(document).on('click', '.amount-minus', function(e){
-            let amount = parseInt($(this).parent().parent().parent().find('.item-amount-value').val());
-            let qty = parseInt($(this).parent().parent().parent().find('.item-qty-value').val());
-            let price = parseFloat($(this).parent().parent().parent().find('.item-price-value').val());
+            let form = $(this).closest('form');
+            let amount = parseInt(form.find('.item-amount-value').val());
+            let qty = parseInt(form.find('.item-qty-value').val());
+            let basePrice = parseFloat(form.find('.item-price-value').val());
+            let discountPercent = parseFloat(form.find('.item-discount-percent').val()) || 0;
 
             qty = qty - 1;
             if (qty < 1) qty = 1;
-            amount = amount * qty;
-            price = price * qty;
+            let totalAmount = amount * qty;
+            let price = basePrice * qty;
 
-            $(this).parent().parent().parent().find('.item-qty-value').val(qty);
-            $(this).parent().find('.item-amount').text(amount);
-            $(this).parent().parent().parent().find('.buy-item-price').text(price);
+            form.find('.item-qty-value').val(qty);
+            $(this).parent().find('.item-amount').text(totalAmount);
+            form.find('.buy-item-price').text(Math.round(price));
+
+            // Обновляем старую цену если есть скидка
+            if (discountPercent > 0) {
+                let originalPrice = parseFloat(form.data('baseprice')) * qty;
+                form.find('.buy-item-price-old').text(Math.round(originalPrice));
+            }
         });
 
         $(document).ready(function() {
@@ -1407,14 +1434,243 @@
 
         });
 
+        // AJAX покупка товара
         $(document).on('click', '.btn-buy-item', function(e){
-            if (!$(this).hasClass('disabled')) {
-                $('#topup-balance-form-'+$(this).data('id')).submit();
-                $(this).addClass('disabled');
+            e.preventDefault();
+
+            if ($(this).hasClass('disabled')) {
+                return false;
             }
+
+            let btn = $(this);
+            let itemId = btn.data('id');
+            let form = $('#topup-balance-form-' + itemId);
+
+            btn.addClass('disabled');
+            btn.html('<span class="spinner"></span> {{ __("Покупка...") }}');
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ route("shop.item.buy.ajax") }}',
+                data: form.serialize(),
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    if (response.success) {
+                        // Успешная покупка
+                        showToast('success', response.message, response.item_name);
+
+                        // Обновляем баланс в шапке
+                        if (response.new_balance !== undefined) {
+                            $('.user-balance, .balance-value').text(response.new_balance);
+                        }
+
+                        // Закрываем модалку
+                        btn.closest('.sb__popup').hide();
+
+                    } else {
+                        // Ошибка
+                        showToast('error', response.message);
+
+                        // Если не хватает баланса - показываем доп. информацию
+                        if (response.need_balance) {
+                            showToast('info', '{{ __("Текущий баланс") }}: ' + response.balance + ' ₽, {{ __("нужно") }}: ' + Math.ceil(response.price) + ' ₽');
+                        }
+                    }
+
+                    btn.removeClass('disabled');
+                    btn.html('{{ __("Купить") }}');
+                },
+                error: function(xhr) {
+                    showToast('error', '{{ __("Произошла ошибка! Попробуйте позже.") }}');
+                    btn.removeClass('disabled');
+                    btn.html('{{ __("Купить") }}');
+                }
+            });
+
             return false;
         });
 
+        // Toast уведомления
+        function showToast(type, message, title = '') {
+            let toastContainer = $('#toast-container');
+            if (toastContainer.length === 0) {
+                $('body').append('<div id="toast-container"></div>');
+                toastContainer = $('#toast-container');
+            }
+
+            let icon = '';
+            if (type === 'success') icon = '✓';
+            else if (type === 'error') icon = '✕';
+            else if (type === 'info') icon = 'ℹ';
+
+            let toast = $(`
+                <div class="toast toast-${type}">
+                    <div class="toast-icon">${icon}</div>
+                    <div class="toast-content">
+                        ${title ? '<div class="toast-title">' + title + '</div>' : ''}
+                        <div class="toast-message">${message}</div>
+                    </div>
+                    <div class="toast-close">×</div>
+                </div>
+            `);
+
+            toastContainer.append(toast);
+
+            // Анимация появления
+            setTimeout(() => toast.addClass('show'), 10);
+
+            // Автоматическое скрытие
+            setTimeout(() => {
+                toast.removeClass('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 5000);
+
+            // Закрытие по клику
+            toast.find('.toast-close').on('click', function() {
+                toast.removeClass('show');
+                setTimeout(() => toast.remove(), 300);
+            });
+        }
+
     </script>
+
+    <style>
+        /* Toast уведомления в стиле сайта */
+        #toast-container {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .toast {
+            font-family: 'Stem', sans-serif;
+            display: flex;
+            align-items: center;
+            min-width: 320px;
+            max-width: 420px;
+            padding: 18px 22px;
+            border-radius: 0;
+            background: rgba(30, 30, 35, 0.97);
+            border-top: 3px solid #f77f00;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.4s ease;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .toast-success {
+            border-top-color: #4caf50;
+        }
+
+        .toast-success .toast-icon {
+            color: #4caf50;
+        }
+
+        .toast-error {
+            border-top-color: #f44336;
+        }
+
+        .toast-error .toast-icon {
+            color: #f44336;
+        }
+
+        .toast-info {
+            border-top-color: #f77f00;
+        }
+
+        .toast-info .toast-icon {
+            color: #f77f00;
+        }
+
+        .toast-icon {
+            font-size: 22px;
+            font-weight: bold;
+            margin-right: 16px;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .toast-content {
+            flex: 1;
+            color: #fff;
+        }
+
+        .toast-title {
+            font-family: 'Rust', 'Salma Pro', sans-serif;
+            font-weight: 600;
+            font-size: 13px;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #f77f00;
+        }
+
+        .toast-message {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.4;
+        }
+
+        .toast-close {
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0.5;
+            color: #fff;
+            padding: 4px 8px;
+            margin-left: 12px;
+            transition: opacity 0.2s, color 0.2s;
+        }
+
+        .toast-close:hover {
+            opacity: 1;
+            color: #f77f00;
+        }
+
+        /* Спиннер загрузки */
+        .spinner {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #f77f00;
+            animation: spin 0.8s linear infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 480px) {
+            #toast-container {
+                left: 15px;
+                right: 15px;
+                top: 15px;
+            }
+
+            .toast {
+                min-width: auto;
+                max-width: none;
+            }
+        }
+    </style>
 
 @endpush

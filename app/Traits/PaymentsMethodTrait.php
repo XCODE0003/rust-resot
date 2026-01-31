@@ -299,7 +299,7 @@ trait PaymentsMethodTrait
 
                     //Начисляем купленый товар
                     $shopController = new ShopController;
-                    if ($shopController->send_item(auth()->id(), $shopitem->id, $request->var_id, $steam_id, $server, $qty)) {
+                    if ($shopController->send_item(auth()->id(), $shopitem->id, $request->var_id, $steam_id, $server, $qty, true, true, $price)) {
 
                         //Уменьшаем баланс пользователя
                         auth()->user()->decrement('balance', $price);

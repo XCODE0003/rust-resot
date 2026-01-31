@@ -93,7 +93,10 @@ class ProfileController extends Controller
         //Кейсы
         $inventory_cases = $inventory->getCasesList();
 
-        return view('pages.cabinet.profile', compact('items', 'inventory_items', 'inventory_shopitems', 'inventory_services', 'inventory_deposit_bonus_coupons', 'inventory_balance_coupons', 'inventory_cases', 'vips', 'services'));
+        //Корзина покупок (товары, которые можно вернуть)
+        $cart_items = $inventory->getCartItems();
+
+        return view('pages.cabinet.profile', compact('items', 'inventory_items', 'inventory_shopitems', 'inventory_services', 'inventory_deposit_bonus_coupons', 'inventory_balance_coupons', 'inventory_cases', 'cart_items', 'vips', 'services'));
     }
 
     public function setTradeUrl(Request $request)

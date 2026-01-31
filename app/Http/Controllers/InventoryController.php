@@ -507,4 +507,123 @@ class InventoryController extends Controller
             ->get();
     }
 
+    public function getCartItems() {
+        $shopcart = ShopCart::where('user_id', auth()->id())->first();
+        if (!$shopcart || $shopcart->items === NULL) {
+            return collect([]);
+        }
+        return collect(json_decode($shopcart->items));
+    }
+
+    /**
+     * Возврат товара из корзины с возвратом средств (AJAX)
+     */
+    public function refundCartItem(Request $request)
+    {
+        // Проверяем авторизацию
+        if (!auth()->check()) {
+            if ($request->ajax()) {
+                return response()->json(['success' => false, 'message' => __('Необходимо авторизоваться')], 401);
+            }
+            $this->alert('danger', __('Необходимо авторизоваться'));
+            return back();
+        }
+
+        if (!$request->has('cart_item_id')) {
+            if ($request->ajax()) {
+                return response()->json(['success' => false, 'message' => __('Произошла ошибка! Попробуйте позже.')]);
+            }
+            $this->alert('danger', __('Произошла ошибка! Попробуйте позже.'));
+            return back();
+        }
+
+        $cart_item_id = intval($request->cart_item_id);
+
+        // Записываем блок в кеш (защита от множественных кликов)
+        $lock = Cache::lock('cart_refund_' . auth()->id() . '_' . $cart_item_id . '_lock', 10);
+        if (!$lock->get()) {
+            Log::channel('paymentslog')->info('Robot: Player ' . auth()->user()->name . ' (' . auth()->user()->email . ') failed to refund cart item ' . $cart_item_id . ' due to blocking (double click protection).');
+            if ($request->ajax()) {
+                return response()->json(['success' => false, 'message' => __('Запрос уже обрабатывается, подождите...')]);
+            }
+            $this->alert('danger', __('Запрос уже обрабатывается, подождите...'));
+            return back();
+        }
+
+        $shopcart = ShopCart::where('user_id', auth()->id())->first();
+        if (!$shopcart || $shopcart->items === NULL) {
+            $lock->release();
+            if ($request->ajax()) {
+                return response()->json(['success' => false, 'message' => __('Корзина пуста')]);
+            }
+            $this->alert('danger', __('Корзина пуста'));
+            return back();
+        }
+
+        $items = json_decode($shopcart->items);
+        $items_new = [];
+        $item_to_refund = null;
+
+        // Ищем товар для возврата
+        foreach ($items as $item) {
+            if ($item->id == $cart_item_id) {
+                $item_to_refund = $item;
+            } else {
+                $items_new[] = $item;
+            }
+        }
+
+        if (!$item_to_refund) {
+            $lock->release();
+            if ($request->ajax()) {
+                return response()->json(['success' => false, 'message' => __('Товар не найден в корзине')]);
+            }
+            $this->alert('danger', __('Товар не найден в корзине'));
+            return back();
+        }
+
+        // Получаем информацию о товаре
+        $shopitem = ShopItem::find($item_to_refund->item_id);
+
+        // Если это услуга - удаляем из инвентаря
+        if ($shopitem && $shopitem->is_command === 1) {
+            $inventory = Inventory::where('user_id', auth()->id())
+                ->where('shop_item_id', $item_to_refund->item_id)
+                ->where('variation_id', $item_to_refund->var_id)
+                ->first();
+            if ($inventory) {
+                $inventory->delete();
+            }
+        }
+
+        // Возвращаем деньги по цене покупки
+        $refund_price = floatval($item_to_refund->price);
+        auth()->user()->increment('balance', $refund_price);
+
+        // Сохраняем корзину без возвращенного товара
+        $shopcart->items = json_encode($items_new);
+        $shopcart->total = count($items_new);
+        $shopcart->save();
+
+        $item_name = $shopitem ? $shopitem->{'name_' . app()->getLocale()} : __('Товар');
+
+        Log::channel('paymentslog')->info('Robot: Player ' . auth()->user()->name . ' (' . auth()->user()->email . ') successfully refunded cart item: ' . ($shopitem ? $shopitem->name_en : 'ID:' . $item_to_refund->item_id) . ' Price: ' . $refund_price);
+
+        $lock->release();
+
+        if ($request->ajax()) {
+            return response()->json([
+                'success' => true,
+                'message' => __('Товар успешно возвращён!'),
+                'item_name' => $item_name,
+                'refund_price' => number_format($refund_price, 0),
+                'new_balance' => auth()->user()->balance,
+                'cart_item_id' => $cart_item_id
+            ]);
+        }
+
+        $this->alert('success', __('Товар успешно возвращён!') . ' ' . $item_name . '. ' . __('На баланс возвращено') . ': ' . number_format($refund_price, 0) . ' ₽');
+        return back();
+    }
+
 }

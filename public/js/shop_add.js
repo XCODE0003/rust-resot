@@ -10,15 +10,46 @@ $('.buy-item-button').on('click', function () {
 });
 
 $('.variation').on('change', function () {
-    $(this).parent().parent().parent().parent().find('.buy-item-button').attr('data-itemprice', $(this).parent().find('option:selected').attr('data-varprice'));
-    $(this).parent().parent().parent().parent().find('.buy-item-button').attr('data-varid', $(this).parent().find('option:selected').attr('data-varid'));
-    $(this).parent().parent().parent().parent().find('.buy-item-price').text($(this).parent().find('option:selected').attr('data-varprice'));
+    // Ищем контейнер - либо форма, либо карточка товара
+    let container = $(this).closest('form');
+    if (container.length === 0) {
+        container = $(this).closest('.shop-item-buy');
+    }
+
+    let basePrice = parseFloat($(this).find('option:selected').attr('data-varprice'));
+    let discountPercent = parseFloat(container.find('.item-discount-percent').val()) || parseFloat(container.data('discountpercent')) || 0;
+    let discountedPrice = discountPercent > 0 ? basePrice * (1 - discountPercent / 100) : basePrice;
+
+    container.find('.buy-item-button').attr('data-itemprice', discountedPrice);
+    container.find('.buy-item-button').attr('data-varid', $(this).find('option:selected').attr('data-varid'));
+    container.find('.buy-item-price').text(Math.round(discountedPrice));
+    container.find('.var_id').val($(this).find('option:selected').attr('data-varid'));
+
+    // Обновляем старую цену если есть скидка
+    if (discountPercent > 0) {
+        container.find('.buy-item-price-old').text(Math.round(basePrice));
+    }
+
+    // Обновляем скрытое поле цены
+    container.find('.item-price-value').val(Math.round(discountedPrice));
 });
 
 $('.variation-shopitem').on('change', function () {
-    let price = parseFloat($(this).parent().find('option:selected').attr('data-varprice'));
-    $(this).parent().parent().parent().parent().find('.var_id').val($(this).parent().find('option:selected').attr('data-varid'));
-    $(this).parent().parent().parent().parent().find('.buy-item-price').text(price);
+    let form = $(this).closest('form');
+    let basePrice = parseFloat($(this).find('option:selected').attr('data-varprice'));
+    let discountPercent = parseFloat(form.find('.item-discount-percent').val()) || parseFloat(form.data('discountpercent')) || 0;
+    let discountedPrice = discountPercent > 0 ? basePrice * (1 - discountPercent / 100) : basePrice;
+
+    form.find('.var_id').val($(this).find('option:selected').attr('data-varid'));
+    form.find('.buy-item-price').text(Math.round(discountedPrice));
+
+    // Обновляем старую цену если есть скидка
+    if (discountPercent > 0) {
+        form.find('.buy-item-price-old').text(Math.round(basePrice));
+    }
+
+    // Обновляем скрытое поле цены
+    form.find('.item-price-value').val(Math.round(discountedPrice));
 });
 
 

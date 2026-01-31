@@ -62,9 +62,9 @@ class ShopController extends Controller
                         ->orWhere('server', 0)
                         ->orWhere('servers', 'LIKE', '%"'.$server_id.'"%');
                 })->where('status', 1)
-                  ->where('category_id', $shopcategory->id)
-                  ->orderBy('sort')
-                  ->get();
+                    ->where('category_id', $shopcategory->id)
+                    ->orderBy('sort')
+                    ->get();
             $shopitems[$shopcategory->id] = $shopitems_cat;
 
             $shopsets_cat = ShopSet::where(function ($query) use ($server_id) {
@@ -72,9 +72,9 @@ class ShopController extends Controller
                         ->orWhere('server', 0)
                         ->orWhere('servers', 'LIKE', '%"'.$server_id.'"%');
                 })->where('status', 1)
-                  ->where('category_id', $shopcategory->id)
-                  ->orderBy('sort')
-                  ->get();
+                    ->where('category_id', $shopcategory->id)
+                    ->orderBy('sort')
+                    ->get();
             $shopsets[$shopcategory->id] = $shopsets_cat;
         }
 
@@ -88,9 +88,9 @@ class ShopController extends Controller
                     return $query->where('server', $server_id)
                         ->orWhere('server', 0);
                 })->where('status', 1)
-                  ->where('kind', 2)
-                  ->orderBy('sort')
-                  ->get();
+                    ->where('kind', 2)
+                    ->orderBy('sort')
+                    ->get();
         }
 
         return view('pages.cabinet.shop.full', compact('server','shopitems', 'shopsets', 'shopcases', 'shopcategories'));
@@ -228,8 +228,8 @@ class ShopController extends Controller
                                     $price = $variation->variation_price * (1 - $discountPercent / 100);
                                     $price_usd = $variation->variation_price_usd * (1 - $discountPercent / 100);
                                 } else {
-                                    $price = $variation->variation_price;
-                                    $price_usd = $variation->variation_price_usd;
+                                $price = $variation->variation_price;
+                                $price_usd = $variation->variation_price_usd;
                                 }
                                 $amount = 1;
                             }
@@ -243,8 +243,8 @@ class ShopController extends Controller
                                     $price = $variation->quantity_price * (1 - $discountPercent / 100);
                                     $price_usd = $variation->quantity_price_usd * (1 - $discountPercent / 100);
                                 } else {
-                                    $price = $variation->quantity_price;
-                                    $price_usd = $variation->quantity_price_usd;
+                                $price = $variation->quantity_price;
+                                $price_usd = $variation->quantity_price_usd;
                                 }
                                 $amount = $variation->quantity_amount;
                             }
@@ -276,7 +276,154 @@ class ShopController extends Controller
         return back();
     }
 
-    public function send_item($user_id, $item_id, $var_id=0, $steam_id='', $server_id=1, $qty=1, $save_statistics=true)
+    /**
+     * AJAX покупка товара с баланса
+     */
+    public function buy_item_ajax(Request $request)
+    {
+        if (!auth()->check()) {
+            return response()->json([
+                'success' => false,
+                'message' => __('Необходимо авторизоваться')
+            ], 401);
+        }
+
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => __('Произошла ошибка! Попробуйте позже.')
+            ]);
+        }
+
+        $item_id = intval($request->item_id);
+        $lock = Cache::lock('shop_buy_item'.auth()->id().$item_id.'_lock', 30);
+
+        if (!$lock->get()) {
+            return response()->json([
+                'success' => false,
+                'message' => __('Произошла ошибка! Попробуйте позже.')
+            ]);
+        }
+
+        $server_id = $request->server_id;
+        $shopitem = ShopItem::where('id', $item_id)->where(function ($query) use ($server_id) {
+            return $query->where('server', $server_id)
+                ->orWhere('server', 0)
+                ->orWhere('servers', 'LIKE', '%"' . $server_id . '"%');
+        })->where('status', 1)->first();
+
+        if (!$shopitem) {
+            $lock->release();
+            return response()->json([
+                'success' => false,
+                'message' => __('Товар не найден')
+            ]);
+        }
+
+        // Проверяем подарок
+        if ($shopitem->can_gift !== 1 && $request->has('steam_id') && $request->steam_id != '') {
+            $lock->release();
+            return response()->json([
+                'success' => false,
+                'message' => __('Этот товар нельзя подарить')
+            ]);
+        }
+
+        $qty = 1;
+        $priceData = getShopItemPrice($shopitem, 'rub');
+        $discountPercent = $priceData['discount_percent'];
+        $price = $priceData['discount_price'];
+
+        if ($request->var_id > 0) {
+            $variations = json_decode($shopitem->variations);
+
+            if (empty($variations)) {
+                $qty = abs(intval($request->qty));
+                $price = $qty * $price;
+            } else {
+                $variation_find = FALSE;
+                if (isset($variations[0]->variation_id)) {
+                    foreach ($variations as $variation) {
+                        if ($variation->variation_id == $request->var_id) {
+                            $variation_find = TRUE;
+                            if ($discountPercent > 0) {
+                                $price = $variation->variation_price * (1 - $discountPercent / 100);
+                            } else {
+                                $price = $variation->variation_price;
+                            }
+                        }
+                    }
+                } elseif (isset($variations[0]->quantity_id)) {
+                    foreach ($variations as $variation) {
+                        if ($variation->quantity_id == $request->var_id) {
+                            $variation_find = TRUE;
+                            if ($discountPercent > 0) {
+                                $price = $variation->quantity_price * (1 - $discountPercent / 100);
+                            } else {
+                                $price = $variation->quantity_price;
+                            }
+                            $qty = $variation->quantity_amount;
+                        }
+                    }
+                }
+
+                if (!$variation_find) {
+                    $lock->release();
+                    return response()->json([
+                        'success' => false,
+                        'message' => __('Вариация не найдена')
+                    ]);
+                }
+            }
+        } else {
+            $qty = abs(intval($request->qty));
+            $price = $qty * $price;
+        }
+
+        // Проверяем баланс
+        if (auth()->user()->balance < $price) {
+            $lock->release();
+            return response()->json([
+                'success' => false,
+                'message' => __('Недостаточно средств на балансе'),
+                'need_balance' => true,
+                'price' => $price,
+                'balance' => auth()->user()->balance
+            ]);
+        }
+
+        // Определяем steam_id получателя
+        $steam_id = $request->steam_id ?? '';
+        if (empty($steam_id)) {
+            $steam_id = auth()->user()->steam_id;
+        }
+
+        // Отправляем товар (без показа alert, т.к. это AJAX), передаём цену со скидкой
+        if ($this->send_item(auth()->id(), $shopitem->id, $request->var_id, $steam_id, $server_id, $qty, true, false, $price)) {
+            // Уменьшаем баланс
+            auth()->user()->decrement('balance', $price);
+
+            $lock->release();
+
+            $name = "name_" . app()->getLocale();
+            return response()->json([
+                'success' => true,
+                'message' => __('Товар успешно куплен!'),
+                'item_name' => $shopitem->$name,
+                'new_balance' => auth()->user()->balance
+            ]);
+        }
+
+        $lock->release();
+        return response()->json([
+            'success' => false,
+            'message' => __('Произошла ошибка при отправке товара')
+        ]);
+    }
+
+    public function send_item($user_id, $item_id, $var_id=0, $steam_id='', $server_id=1, $qty=1, $save_statistics=true, $show_alert=true, $paid_price=null)
     {
         /*
         $shopitem = ShopItem::where('id', $item_id)->where(function ($query) use ($server_id) {
@@ -290,13 +437,13 @@ class ShopController extends Controller
         $server = Server::where('id', $server_id)->where('status', 1)->first();
 
         if (!$shopitem || !$server) {
-            $this->alert('danger', __('Произошла ошибка! Попробуйте позже.'));
+            if ($show_alert) $this->alert('danger', __('Произошла ошибка! Попробуйте позже.'));
             return FALSE;
         }
 
         $buy_user = User::find($user_id);
         if (!$buy_user) {
-            $this->alert('danger', __('Произошла ошибка! Попробуйте позже.'));
+            if ($show_alert) $this->alert('danger', __('Произошла ошибка! Попробуйте позже.'));
             return FALSE;
         }
 
@@ -385,7 +532,7 @@ class ShopController extends Controller
                 Log::channel('paymentslog')->info('Robot: Player ' . $user->name . ' (' . $user->email . ') ' . 'successfully bought in the store Product ' . $shopitem->name_en . ' (item_id: ' . $shopitem->item_id . ') in quantity ' . $shopitem->amount . '. Server: ' . $server_name . '. SteamID: ' . $steam_id . '. Command: ' . $command);
             }
 
-            $this->alert('success', __('Товар успешно куплен! Он был отправлен вам в игру!'));
+            if ($show_alert) $this->alert('success', __('Товар успешно куплен! Он был отправлен вам в игру!'));
             return TRUE;
 
         }
@@ -433,10 +580,13 @@ class ShopController extends Controller
                 }
             }
 
+            // Используем цену покупки, если передана, иначе базовую цену
+            $item_price = ($paid_price !== null) ? ($paid_price / $qty) : $shopitem->price;
+
             for($i=0; $i<$qty; $i++) {
                 $items[] = [
                     'id'        => $shopcart->items_index,
-                    'price'     => $shopitem->price,
+                    'price'     => $item_price,
                     'item_id'   => $shopitem->id,
                     'rust_id'   => $shopitem->item_id,
                     'var_id'    => $var_id,
@@ -460,11 +610,11 @@ class ShopController extends Controller
                 Log::channel('paymentslog')->info('Robot: Player ' . $user->name . ' (' . $user->email . ') ' . 'successfully bought in the store Product ' . $shopitem->name_en . ' (item_id: ' . $shopitem->item_id . ') in quantity ' . $qty . '. Server: ' . $server_name . '. SteamID: ' . $steam_id);
             }
 
-            $this->alert('success', __('Товар успешно куплен! Проверьте свою корзину покупок.'));
+            if ($show_alert) $this->alert('success', __('Товар успешно куплен! Проверьте свою корзину покупок.'));
             return TRUE;
         }
 
-        $this->alert('danger', __('Произошла ошибка! Попробуйте позже.'));
+        if ($show_alert) $this->alert('danger', __('Произошла ошибка! Попробуйте позже.'));
         return FALSE;
     }
 
