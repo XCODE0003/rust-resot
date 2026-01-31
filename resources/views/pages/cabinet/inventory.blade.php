@@ -24,7 +24,7 @@
                     <div class="page-bonus-prize type-0" id="cart-item-{{ $cart_item->id }}">
                         <div class="quality-type"></div>
                         <img src="{{ $shopitem->image_url }}" alt="{{ $shopitem->$name }}">
-                        <span>{{ $shopitem->$name }}</span>
+                        <span style="margin-bottom: 12px;">{{ $shopitem->$name }}</span>
                         <span class="bonus-price" style="color: #4caf50;">
                             {{ number_format($cart_item->price, 0) }} {{ __('₽') }}
                         </span>
@@ -194,7 +194,7 @@
                         </span>
 
                         @if(isset($item->is_item) && $item->is_item == 1)
-                            <div class="action-btns activate-btns">
+                            <div class="action-btns activate-btns fade-in-btn">
                                 <form action="{{ route('account.inventory.sendShopItem') }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="inventory_id" value="{{ $inventory_shopitem->id }}">
@@ -239,5 +239,20 @@
 
     </div>
 
+    <style>
+        .fade-in-btn {
+            opacity: 0;
+            animation: fadeInBtn 0.5s ease forwards;
+        }
+
+        @keyframes fadeInBtn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
 
 </section>
