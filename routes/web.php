@@ -152,6 +152,7 @@ Route::middleware('auth')->group(function () {
             Route::post('/account/store/buy', [\App\Http\Controllers\ShopController::class, 'buy_item'])->name('shop.item.buy');
             Route::post('/account/store/buy_ajax', [\App\Http\Controllers\ShopController::class, 'buy_item_ajax'])->name('shop.item.buy.ajax');
             Route::post('/account/store/buy_set', [\App\Http\Controllers\ShopController::class, 'buy_set'])->name('shop.set.buy');
+            Route::post('/account/store/buy_set_ajax', [\App\Http\Controllers\ShopController::class, 'buy_set_ajax'])->name('shop.set.buy.ajax');
 
             Route::get('/account/profile', [\App\Http\Controllers\ProfileController::class, 'index'])->name('account.profile');
             Route::post('/account/profile/setTradeUrl', [\App\Http\Controllers\ProfileController::class, 'setTradeUrl'])->name('account.profile.setTradeUrl');

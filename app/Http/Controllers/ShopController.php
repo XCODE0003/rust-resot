@@ -638,6 +638,120 @@ class ShopController extends Controller
         return FALSE;
     }
 
+    public function buy_set_ajax(Request $request)
+    {
+        if (!auth()->check()) {
+            return response()->json([
+                'success' => false,
+                'message' => __('Необходимо авторизоваться')
+            ], 401);
+        }
+
+        $validator = $this->validatorSet($request->all());
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => __('Произошла ошибка! Попробуйте позже.')
+            ]);
+        }
+
+        $set_id = intval($request->set_id);
+        $qty = abs(intval($request->qty));
+        $steam_id = ($request->has('steam_id') && $request->steam_id != '') ? $request->steam_id : auth()->user()->steam_id;
+
+        $lock = Cache::lock('shop_buy_set'.auth()->id().$set_id.'_lock', 30);
+
+        if (!$lock->get()) {
+            return response()->json([
+                'success' => false,
+                'message' => __('Произошла ошибка! Попробуйте позже.')
+            ]);
+        }
+
+        $server_id = $request->server_id;
+        $shopset = ShopSet::where('id', $set_id)->where(function ($query) use ($server_id) {
+            return $query->where('server', $server_id)
+                ->orWhere('server', 0)
+                ->orWhere('servers', 'LIKE', '%"' . $server_id . '"%');
+        })->where('status', 1)->first();
+
+        if (!$shopset) {
+            $lock->release();
+            return response()->json([
+                'success' => false,
+                'message' => __('Сет не найден')
+            ]);
+        }
+
+        // Проверяем подарок
+        if ($shopset->can_gift !== 1 && $request->has('steam_id') && $request->steam_id != '') {
+            $lock->release();
+            return response()->json([
+                'success' => false,
+                'message' => __('Этот сет нельзя подарить')
+            ]);
+        }
+
+        // Рассчитываем цену со скидкой
+        $priceData = getShopSetPrice($shopset, 'rub');
+        $price = $qty * $priceData['discount_price'];
+
+        // Проверяем баланс
+        $balance = floatval(auth()->user()->balance);
+        $priceFloat = floatval($price);
+
+        if ($balance < $priceFloat) {
+            $lock->release();
+            return response()->json([
+                'success' => false,
+                'message' => __('Недостаточно средств на балансе'),
+                'need_balance' => true,
+                'price' => number_format($priceFloat, 2, ',', ' '),
+                'balance' => number_format($balance, 2, '.', '')
+            ]);
+        }
+
+        // Начисляем купленный сет
+        if ($this->send_set(auth()->id(), $shopset->id, $steam_id, $server_id, $qty)) {
+            // Уменьшаем баланс
+            auth()->user()->decrement('balance', $priceFloat);
+            auth()->user()->refresh();
+
+            $newBalance = floatval(auth()->user()->balance);
+
+            // Форматируем баланс
+            if (app()->getLocale() != 'ru') {
+                $formattedBalance = $newBalance / config('options.exchange_rate_usd', 70);
+            } else {
+                $formattedBalance = $newBalance;
+            }
+            $formattedBalance = number_format($formattedBalance, 2, '.', ' ');
+
+            if (app()->getLocale() == 'ru') {
+                $formattedBalance = $formattedBalance . ' руб.';
+            } else {
+                $formattedBalance = '$' . $formattedBalance;
+            }
+
+            $lock->release();
+
+            $name = "name_" . app()->getLocale();
+            return response()->json([
+                'success' => true,
+                'message' => __('Товар успешно куплен!'),
+                'item_name' => $shopset->$name,
+                'new_balance' => $formattedBalance
+            ]);
+        }
+
+        $lock->release();
+        return response()->json([
+            'success' => false,
+            'message' => __('Произошла ошибка! Попробуйте позже.')
+        ]);
+    }
+
     public function buy_set(Request $request)
     {
         $validator = $this->validatorSet($request->all());

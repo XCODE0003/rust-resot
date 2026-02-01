@@ -277,7 +277,7 @@
                                     $userBalance = (app()->getLocale() == 'ru') ? auth()->user()->balance : (auth()->user()->balance / config('options.exchange_rate_usd', 70));
                                 @endphp
                                 @if($userBalance >= $setPriceData['discount_price'])
-                                    <a class="spc__buy btn-buy-item" data-id="{{ $shopset->id }}">{{ __('Купить') }}</a>
+                                    <a class="spc__buy btn-buy-set" data-id="{{ $shopset->id }}">{{ __('Купить') }}</a>
                                 @else
                                     <a href="{{ route('account.profile', ['topup' => 1]) }}" class="spc__buy">{{ __('Пополнить баланс') }}</a>
                                 @endif
@@ -1492,6 +1492,66 @@
             $.ajax({
                 type: 'POST',
                 url: '{{ route("shop.item.buy.ajax") }}',
+                data: form.serialize(),
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    if (response.success) {
+                        // Успешная покупка
+                        showToast('success', response.message, response.item_name);
+
+                        // Обновляем баланс в шапке
+                        if (response.new_balance !== undefined) {
+                            $('.account-balance, .user-balance, .balance-value').text(response.new_balance);
+                        }
+
+                        // Закрываем модалку и убираем блокировку скролла
+                        btn.closest('.sb__popup').hide();
+                        $('html').removeClass('overflow');
+                        $('body').removeClass('hidden').css('overflow', '');
+
+                    } else {
+                        // Ошибка
+                        showToast('error', response.message);
+
+                        // Если не хватает баланса - показываем доп. информацию
+                        if (response.need_balance) {
+                            showToast('info', '{{ __("Текущий баланс") }}: ' + response.balance + ' ₽, {{ __("нужно") }}: ' + Math.ceil(response.price) + ' ₽');
+                        }
+                    }
+
+                    btn.removeClass('disabled');
+                    btn.html('{{ __("Купить") }}');
+                },
+                error: function(xhr) {
+                    showToast('error', '{{ __("Произошла ошибка! Попробуйте позже.") }}');
+                    btn.removeClass('disabled');
+                    btn.html('{{ __("Купить") }}');
+                }
+            });
+
+            return false;
+        });
+
+        // AJAX покупка сета
+        $(document).on('click', '.btn-buy-set', function(e){
+            e.preventDefault();
+
+            if ($(this).hasClass('disabled')) {
+                return false;
+            }
+
+            let btn = $(this);
+            let setId = btn.data('id');
+            let form = $('#topup-balance-form-' + setId);
+
+            btn.addClass('disabled');
+            btn.html('<span class="spinner"></span> {{ __("Покупка...") }}');
+
+            $.ajax({
+                type: 'POST',
+                url: '{{ route("shop.set.buy.ajax") }}',
                 data: form.serialize(),
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}'
