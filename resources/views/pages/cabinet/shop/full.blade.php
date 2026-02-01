@@ -362,7 +362,8 @@
                                                             $cardPriceData = getShopItemPrice($shopitem, $currency);
                                                         @endphp
                                                         <div class="item">
-                                                            <div class="shop-item-buy sib-special shopitem-buy" data-id="{{ $shopitem->id }}" data-discountpercent="{{ $cardPriceData['discount_percent'] }}">
+                                                            <div class="shop-item-buy sib-special shopitem-buy {{ $cardPriceData['discount_percent'] > 0 ? 'discount-item' : '' }}" data-id="{{ $shopitem->id }}" data-discountpercent="{{ $cardPriceData['discount_percent'] }}">
+                                                            <div class="discount-item-percent">-{{ (int)$cardPriceData['discount_percent'] }}%</div>
                                                                 <input type="hidden" class="item-discount-percent" value="{{ $cardPriceData['discount_percent'] }}">
                                                                 <div class="shop-item-buy-name shop-item-buy-name--title">{{ str_replace('ELITEPACK', 'ELITE PACK', str_replace('BUILDINGSKINS', 'BUILDING SKINS', $shopitem->$name)) }}</div>
                                                                 <div class="shop-item-buy-name shop-item-image">
@@ -440,8 +441,9 @@
 
                                                     @foreach($shopsets[$shopcategory->id] as $shopset)
                                                         <div class="item">
-                                                            <div class="shop-item-buy sib-special shopitem-buy" data-id="{{ $shopset->id }}">
-                                                                <div class="shop-item-buy-name shop-item-buy-name--title">{{ $shopset->$name }}</div>
+                                                            <div class="shop-item-buy sib-special shopitem-buy {{ $cardPriceData['discount_percent'] > 0 ? 'discount-item' : '' }}" data-id="{{ $shopset->id }}">
+                                                            <div class="discount-item-percent">-{{ (int)$cardPriceData['discount_percent'] }}%</div>
+                                                            <div class="shop-item-buy-name shop-item-buy-name--title">{{ $shopset->$name }}</div>
                                                                 <div class="shop-item-buy-name shop-item-image">
                                                                     <div class="label">{{ __('New') }}</div>
                                                                     <img src="{{ $shopset->image_url }}" alt="{{ $shopset->$name }}">
@@ -482,7 +484,7 @@
                                                 $cardPriceData = getShopItemPrice($shopitem, $currency);
                                             @endphp
                                             <div class="item">
-                                                <div class="shop-item-buy sib-special shopitem-buy" data-id="{{ $shopitem->id }}" data-discountpercent="{{ $cardPriceData['discount_percent'] }}">
+                                                <div class="shop-item-buy sib-special shopitem-buy {{ $cardPriceData['discount_percent'] > 0 ? 'discount-item' : '' }}" data-id="{{ $shopitem->id }}" data-discountpercent="{{ $cardPriceData['discount_percent'] }}">
                                                     <input type="hidden" class="item-discount-percent" value="{{ $cardPriceData['discount_percent'] }}">
                                                     <div class="shop-item-buy-name shop-item-buy-name--title">{{ $shopitem->$name }}</div>
                                                     <div class="shop-item-buy-name shop-item-image">
@@ -562,7 +564,9 @@
 
                                             @foreach($shopsets[$shopcategory->id] as $shopset)
                                                 <div class="item">
-                                                    <div class="shop-item-buy sib-special shopitem-buy" data-id="{{ $shopset->id }}">
+                                                    <div class="shop-item-buy sib-special shopitem-buy {{ $cardPriceData['discount_percent'] > 0 ? 'discount-item' : '' }}" data-id="{{ $shopset->id }}">
+
+                                                    <div class="discount-item-percent">-{{ (int)$cardPriceData['discount_percent'] }}%</div>
                                                         <div class="shop-item-buy-name shop-item-buy-name--title">{{ $shopset->$name }}</div>
                                                         <div class="shop-item-buy-name shop-item-image">
                                                             <div class="label">{{ __('New') }}</div>
@@ -1463,11 +1467,13 @@
 
                         // Обновляем баланс в шапке
                         if (response.new_balance !== undefined) {
-                            $('.user-balance, .balance-value').text(response.new_balance);
+                            $('.account-balance, .user-balance, .balance-value').text(response.new_balance);
                         }
 
-                        // Закрываем модалку
+                        // Закрываем модалку и убираем блокировку скролла
                         btn.closest('.sb__popup').hide();
+                        $('html').removeClass('overflow');
+                        $('body').removeClass('hidden').css('overflow', '');
 
                     } else {
                         // Ошибка
@@ -1611,7 +1617,6 @@
         }
 
         .toast-title {
-            font-family: 'Rust', 'Salma Pro', sans-serif;
             font-weight: 600;
             font-size: 13px;
             margin-bottom: 4px;

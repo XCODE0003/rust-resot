@@ -63,6 +63,8 @@ $(".spc__close, .sb-popup_back").click(function () {
     display: "none",
   });
    $("body").removeClass("hidden");
+   $("html").removeClass("overflow");
+   $("body").css("overflow", "");
 });
 $(".spc-gift__text").click(function () {
   $(".spc__gift").toggleClass("active");

@@ -2557,7 +2557,29 @@
 .action-btns button:hover {
     opacity: 0.7;
 }
-
+.discount-item{
+    position: relative;
+}
+.discount-item-percent{
+    display: none;
+}
+.discount-item .discount-item-percent {
+    content: '';
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    background-size: contain;
+    font-family: 'Antarctican';
+    background-image: url(/assets/img/discount.png);
+    width: 48px;
+    height: 48px;
+}
 .action-btns button i {
     margin-left: 30px;
     font-size: 18px;

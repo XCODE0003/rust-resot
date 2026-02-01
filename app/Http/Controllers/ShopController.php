@@ -382,15 +382,18 @@ class ShopController extends Controller
             $price = $qty * $price;
         }
 
-        // Проверяем баланс
-        if (auth()->user()->balance < $price) {
+        // Проверяем баланс (приводим к float для корректного сравнения)
+        $balance = floatval(auth()->user()->balance);
+        $priceFloat = floatval($price);
+
+        if ($balance < $priceFloat) {
             $lock->release();
             return response()->json([
                 'success' => false,
                 'message' => __('Недостаточно средств на балансе'),
                 'need_balance' => true,
-                'price' => $price,
-                'balance' => auth()->user()->balance
+                'price' => number_format($priceFloat, 2, ',', ' '),
+                'balance' => number_format($balance, 2, '.', '')
             ]);
         }
 
@@ -401,9 +404,27 @@ class ShopController extends Controller
         }
 
         // Отправляем товар (без показа alert, т.к. это AJAX), передаём цену со скидкой
-        if ($this->send_item(auth()->id(), $shopitem->id, $request->var_id, $steam_id, $server_id, $qty, true, false, $price)) {
+        if ($this->send_item(auth()->id(), $shopitem->id, $request->var_id, $steam_id, $server_id, $qty, true, false, $priceFloat)) {
             // Уменьшаем баланс
-            auth()->user()->decrement('balance', $price);
+            auth()->user()->decrement('balance', $priceFloat);
+
+            // Обновляем модель, чтобы получить актуальный баланс
+            auth()->user()->refresh();
+            $newBalance = floatval(auth()->user()->balance);
+
+            // Форматируем баланс так же, как в getCurrentUserBalance()
+            if (app()->getLocale() != 'ru') {
+                $formattedBalance = $newBalance / config('options.exchange_rate_usd', 70);
+            } else {
+                $formattedBalance = $newBalance;
+            }
+            $formattedBalance = number_format($formattedBalance, 2, '.', ' ');
+
+            if (app()->getLocale() == 'ru') {
+                $formattedBalance = $formattedBalance . ' руб.';
+            } else {
+                $formattedBalance = '$' . $formattedBalance;
+            }
 
             $lock->release();
 
@@ -412,7 +433,7 @@ class ShopController extends Controller
                 'success' => true,
                 'message' => __('Товар успешно куплен!'),
                 'item_name' => $shopitem->$name,
-                'new_balance' => auth()->user()->balance
+                'new_balance' => $formattedBalance
             ]);
         }
 

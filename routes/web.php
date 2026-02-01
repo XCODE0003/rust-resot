@@ -128,6 +128,7 @@ Route::middleware('auth')->group(function () {
         Route::middleware('visit.statistics')->group(function () {
 
             Route::get('/stats', [\App\Http\Controllers\StatsController::class, 'index'])->name('stats');
+            Route::get('/stats_off', [\App\Http\Controllers\StatsController::class, 'index'])->name('stats');
             Route::get('/stats_old', [\App\Http\Controllers\StatsController::class, 'stats_old'])->name('stats.old');
             Route::get('/stats/{player}', [\App\Http\Controllers\StatsController::class, 'account_stats'])->name('account.stats');
 
