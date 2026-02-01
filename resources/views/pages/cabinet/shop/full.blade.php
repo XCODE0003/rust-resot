@@ -171,6 +171,10 @@
 
 
             @foreach($shopsets[$shopcategory->id] as $shopset)
+                @php
+                    $currency = (app()->getLocale() == 'ru') ? 'rub' : 'usd';
+                    $setPriceData = getShopSetPrice($shopset, $currency);
+                @endphp
                 <div id="sb__popup-item-{{ $shopset->id }}" class="sb__popup">
                     <div class="sb-popup_back"></div>
                     <!-- content -->
@@ -222,14 +226,15 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('shop.set.buy') }}" method="POST" id="topup-balance-form-{{ $shopset->id }}">
+                        <form action="{{ route('shop.set.buy') }}" method="POST" id="topup-balance-form-{{ $shopset->id }}" data-discountpercent="{{ $setPriceData['discount_percent'] }}" data-baseprice="{{ $setPriceData['original_price'] }}">
                             @csrf
                             <input type="hidden" name="server_id" value="{{ $server->id }}">
                             <input type="hidden" name="set_id" value="{{ $shopset->id }}">
                             <input type="hidden" name="payment_id" value="20">
                             <input type="hidden" name="qty" value="1" class="item-qty-value">
                             <input type="hidden" name="amount" value="{{ $shopset->amount }}" class="item-amount-value">
-                            <input type="hidden" name="item_price" value="@if(app()->getLocale() == 'ru'){{ number_format($shopset->price, 0, '.', '') }}@else{{ number_format($shopset->price_usd, 2, '.', '') }}@endif" class="item-price-value">
+                            <input type="hidden" name="item_price" value="@if(app()->getLocale() == 'ru'){{ number_format($setPriceData['discount_price'], 0, '.', '') }}@else{{ number_format($setPriceData['discount_price'], 2, '.', '') }}@endif" class="item-price-value">
+                            <input type="hidden" class="item-discount-percent" value="{{ $setPriceData['discount_percent'] }}">
 
                             @if($shopset->can_gift === 1)
                                 <div class="spc__gift {{ $shopset->can_gift }}">
@@ -255,14 +260,23 @@
                             <!-- cost -->
                             <div class="spc__price">
                                 <div class="spc-price__text">{{ __('Стоимость') }}:</div>
-                                <div class="spc-price__value"><span class="buy-item-price">@if(app()->getLocale() == 'ru'){{ number_format($shopset->price, 0, '.', '') }}@else{{ number_format($shopset->price_usd, 2, '.', '') }}@endif</span> @if(app()->getLocale() == 'ru'){{__('₽')}}@else{{ 'USD' }}@endif</div>
+                                <div class="spc-price__value">
+                                    @if($setPriceData['discount_percent'] > 0)
+                                        <span class="buy-item-price-old" style="text-decoration: line-through; opacity: 0.6; margin-right: 8px; font-size: 0.9em;">
+                                            @if(app()->getLocale() == 'ru'){{ number_format($setPriceData['original_price'], 0, '.', '') }}@else{{ number_format($setPriceData['original_price'], 2, '.', '') }}@endif
+                                        </span>
+                                    @endif
+                                    <span class="buy-item-price">@if(app()->getLocale() == 'ru'){{ number_format($setPriceData['discount_price'], 0, '.', '') }}@else{{ number_format($setPriceData['discount_price'], 2, '.', '') }}@endif</span> @if(app()->getLocale() == 'ru'){{__('₽')}}@else{{ 'USD' }}@endif
+                                </div>
                             </div>
 
                             @if(!isset(auth()->user()->id))
                                 <a href="{{ route('login') }}" class="spc__buy">{{ __('Купить') }}</a>
                             @else
-
-                                @if(auth()->user()->balance >= $shopset->price)
+                                @php
+                                    $userBalance = (app()->getLocale() == 'ru') ? auth()->user()->balance : (auth()->user()->balance / config('options.exchange_rate_usd', 70));
+                                @endphp
+                                @if($userBalance >= $setPriceData['discount_price'])
                                     <a class="spc__buy btn-buy-item" data-id="{{ $shopset->id }}">{{ __('Купить') }}</a>
                                 @else
                                     <a href="{{ route('account.profile', ['topup' => 1]) }}" class="spc__buy">{{ __('Пополнить баланс') }}</a>
@@ -440,9 +454,15 @@
                                                     @endforeach
 
                                                     @foreach($shopsets[$shopcategory->id] as $shopset)
+                                                        @php
+                                                            $currency = (app()->getLocale() == 'ru') ? 'rub' : 'usd';
+                                                            $setCardPriceData = getShopSetPrice($shopset, $currency);
+                                                        @endphp
                                                         <div class="item">
-                                                            <div class="shop-item-buy sib-special shopitem-buy {{ $cardPriceData['discount_percent'] > 0 ? 'discount-item' : '' }}" data-id="{{ $shopset->id }}">
-                                                            <div class="discount-item-percent">-{{ (int)$cardPriceData['discount_percent'] }}%</div>
+                                                            <div class="shop-item-buy sib-special shopitem-buy {{ $setCardPriceData['discount_percent'] > 0 ? 'discount-item' : '' }}" data-id="{{ $shopset->id }}" data-discountpercent="{{ $setCardPriceData['discount_percent'] }}">
+                                                            @if($setCardPriceData['discount_percent'] > 0)
+                                                                <div class="discount-item-percent">-{{ (int)$setCardPriceData['discount_percent'] }}%</div>
+                                                            @endif
                                                             <div class="shop-item-buy-name shop-item-buy-name--title">{{ $shopset->$name }}</div>
                                                                 <div class="shop-item-buy-name shop-item-image">
                                                                     <div class="label">{{ __('New') }}</div>
@@ -459,7 +479,12 @@
                                                                 <div class="shop-item-buy__content">
                                                                     <div class="shop-item-buy__content--price">
                                                                         <div class="shop-item-buy__content--price--cost">
-                                                                            <span class="buy-item-price">@if(app()->getLocale() == 'ru'){{ number_format($shopset->price, 0, '.', '') }}@else{{ number_format($shopset->price_usd, 2, '.', '') }}@endif</span> @if(app()->getLocale() == 'ru'){{__('₽')}}@else{{ 'USD' }}@endif
+                                                                            @if($setCardPriceData['discount_percent'] > 0)
+                                                                                <span class="buy-item-price-old" style="text-decoration: line-through; opacity: 0.6; margin-right: 8px; font-size: 0.9em;">
+                                                                                    @if(app()->getLocale() == 'ru'){{ number_format($setCardPriceData['original_price'], 0, '.', '') }}@else{{ number_format($setCardPriceData['original_price'], 2, '.', '') }}@endif
+                                                                                </span>
+                                                                            @endif
+                                                                            <span class="buy-item-price">@if(app()->getLocale() == 'ru'){{ number_format($setCardPriceData['discount_price'], 0, '.', '') }}@else{{ number_format($setCardPriceData['discount_price'], 2, '.', '') }}@endif</span> @if(app()->getLocale() == 'ru'){{__('₽')}}@else{{ 'USD' }}@endif
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -563,10 +588,16 @@
                                         @endforeach
 
                                             @foreach($shopsets[$shopcategory->id] as $shopset)
+                                                @php
+                                                    $currency = (app()->getLocale() == 'ru') ? 'rub' : 'usd';
+                                                    $setCardPriceData = getShopSetPrice($shopset, $currency);
+                                                @endphp
                                                 <div class="item">
-                                                    <div class="shop-item-buy sib-special shopitem-buy {{ $cardPriceData['discount_percent'] > 0 ? 'discount-item' : '' }}" data-id="{{ $shopset->id }}">
+                                                    <div class="shop-item-buy sib-special shopitem-buy {{ $setCardPriceData['discount_percent'] > 0 ? 'discount-item' : '' }}" data-id="{{ $shopset->id }}" data-discountpercent="{{ $setCardPriceData['discount_percent'] }}">
 
-                                                    <div class="discount-item-percent">-{{ (int)$cardPriceData['discount_percent'] }}%</div>
+                                                    @if($setCardPriceData['discount_percent'] > 0)
+                                                        <div class="discount-item-percent">-{{ (int)$setCardPriceData['discount_percent'] }}%</div>
+                                                    @endif
                                                         <div class="shop-item-buy-name shop-item-buy-name--title">{{ $shopset->$name }}</div>
                                                         <div class="shop-item-buy-name shop-item-image">
                                                             <div class="label">{{ __('New') }}</div>
@@ -584,7 +615,12 @@
 
                                                             <div class="shop-item-buy__content--price">
                                                                 <div class="shop-item-buy__content--price--cost">
-                                                                    <span class="buy-item-price">@if(app()->getLocale() == 'ru'){{ number_format($shopset->price, 0, '.', '') }}@else{{ number_format($shopset->price_usd, 2, '.', '') }}@endif</span> @if(app()->getLocale() == 'ru'){{__('₽')}}@else{{ 'USD' }}@endif
+                                                                    @if($setCardPriceData['discount_percent'] > 0)
+                                                                        <span class="buy-item-price-old" style="text-decoration: line-through; opacity: 0.6; margin-right: 8px; font-size: 0.9em;">
+                                                                            @if(app()->getLocale() == 'ru'){{ number_format($setCardPriceData['original_price'], 0, '.', '') }}@else{{ number_format($setCardPriceData['original_price'], 2, '.', '') }}@endif
+                                                                        </span>
+                                                                    @endif
+                                                                    <span class="buy-item-price">@if(app()->getLocale() == 'ru'){{ number_format($setCardPriceData['discount_price'], 0, '.', '') }}@else{{ number_format($setCardPriceData['discount_price'], 2, '.', '') }}@endif</span> @if(app()->getLocale() == 'ru'){{__('₽')}}@else{{ 'USD' }}@endif
                                                                 </div>
                                                             </div>
 

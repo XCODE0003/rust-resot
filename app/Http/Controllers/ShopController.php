@@ -92,7 +92,7 @@ class ShopController extends Controller
                     ->orderBy('sort')
                     ->get();
         }
-
+        dd($shopitems);
         return view('pages.cabinet.shop.full', compact('server','shopitems', 'shopsets', 'shopcases', 'shopcategories'));
     }
 
@@ -674,10 +674,15 @@ class ShopController extends Controller
                 return back();
             }
 
-            $price = $qty * $shopset->price;
-            $price_usd = $qty * $shopset->price_usd;
+            // Рассчитываем цену со скидкой
+            $currency = (app()->getLocale() == 'ru') ? 'rub' : 'usd';
+            $priceData = getShopSetPrice($shopset, $currency);
+            $price = $qty * $priceData['discount_price'];
 
-            if (auth()->user()->balance < $price) {
+            // Для проверки баланса используем цену в рублях
+            $priceRub = (app()->getLocale() == 'ru') ? $price : ($price * config('options.exchange_rate_usd', 70));
+
+            if (auth()->user()->balance < $priceRub) {
                 $lock->release();
                 $this->alert('danger', __('Недостаточно средств на балансе'));
                 return back();
@@ -686,13 +691,8 @@ class ShopController extends Controller
             //Начисляем купленый товар
             if ($this->send_set(auth()->id(), $shopset->id, $steam_id, $server_id, $qty)) {
 
-                //Уменьшаем баланс пользователя
-                if (app()->getLocale() == 'en') {
-                    $price = $price_usd * config('options.exchange_rate_usd', 70);
-                    auth()->user()->decrement('balance', $price);
-                } else {
-                    auth()->user()->decrement('balance', $price);
-                }
+                //Уменьшаем баланс пользователя (используем цену в рублях)
+                auth()->user()->decrement('balance', $priceRub);
 
                 $lock->release();
                 return back();

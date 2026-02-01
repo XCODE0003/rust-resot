@@ -1537,4 +1537,38 @@ if (! function_exists('getShopItemPrice')) {
             'discount_percent' => 0
         ];
     }
+
+    if (!function_exists('getShopSetPrice')) {
+        function getShopSetPrice($shopset, $currency = 'rub')
+        {
+            $original_price = ($currency === 'rub') ? $shopset->price : $shopset->price_usd;
+            $discount_percent = null;
+
+            // Проверяем скидку сета
+            if ($shopset->discount_percent !== null && $shopset->discount_percent > 0) {
+                $discount_percent = $shopset->discount_percent;
+            } else {
+                // Если у сета нет скидки, проверяем скидку категории
+                $category = getshopcategory($shopset->category_id);
+                if ($category && $category->discount_percent !== null && $category->discount_percent > 0) {
+                    $discount_percent = $category->discount_percent;
+                }
+            }
+
+            if ($discount_percent !== null && $discount_percent > 0 && $discount_percent <= 100) {
+                $discount_price = $original_price * (1 - $discount_percent / 100);
+                return [
+                    'original_price' => $original_price,
+                    'discount_price' => round($discount_price, 2),
+                    'discount_percent' => $discount_percent
+                ];
+            }
+
+            return [
+                'original_price' => $original_price,
+                'discount_price' => $original_price,
+                'discount_percent' => 0
+            ];
+        }
+    }
 }
