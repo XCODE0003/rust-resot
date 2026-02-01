@@ -144,6 +144,21 @@
                                     </div>
                                 </div>
 
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="discount_percent">{{ __('Процент скидки') }} (%)</label>
+                                        <div class="form-control-wrap">
+                                            <input type="number" min="0" max="100" class="form-control" id="discount_percent" name="discount_percent"
+                                                   @isset($shopset) value="{{ $shopset->discount_percent }}" @else value="{{ old('discount_percent', 0) }}" @endisset>
+                                            @error('discount_percent')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
 
                             <!-- Tabs -->
