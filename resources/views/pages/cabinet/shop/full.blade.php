@@ -465,7 +465,7 @@
                                                             @endif
                                                             <div class="shop-item-buy-name shop-item-buy-name--title">{{ $shopset->$name }}</div>
                                                                 <div class="shop-item-buy-name shop-item-image">
-                                                                    <div class="label">{{ __('New') }}</div>
+
                                                                     <img src="{{ $shopset->image_url }}" alt="{{ $shopset->$name }}">
                                                                 </div>
 
@@ -600,7 +600,7 @@
                                                     @endif
                                                         <div class="shop-item-buy-name shop-item-buy-name--title">{{ $shopset->$name }}</div>
                                                         <div class="shop-item-buy-name shop-item-image">
-                                                            <div class="label">{{ __('New') }}</div>
+
                                                             <img src="{{ $shopset->image_url }}" alt="{{ $shopset->$name }}">
                                                         </div>
 
