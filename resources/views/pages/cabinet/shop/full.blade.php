@@ -1517,7 +1517,6 @@
 
                         // Если не хватает баланса - показываем доп. информацию
                         if (response.need_balance) {
-                            showToast('info', '{{ __("Текущий баланс") }}: ' + response.balance + ' ₽, {{ __("нужно") }}: ' + Math.ceil(response.price) + ' ₽');
                         }
                     }
 
@@ -1577,7 +1576,7 @@
 
                         // Если не хватает баланса - показываем доп. информацию
                         if (response.need_balance) {
-                            showToast('info', '{{ __("Текущий баланс") }}: ' + response.balance + ' ₽, {{ __("нужно") }}: ' + Math.ceil(response.price) + ' ₽');
+                            let price = typeof response.price === 'number' && !isNaN(response.price) ? Math.ceil(response.price) : '--';
                         }
                     }
 
