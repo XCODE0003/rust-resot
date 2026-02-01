@@ -92,7 +92,7 @@ class ShopController extends Controller
                     ->orderBy('sort')
                     ->get();
         }
-        dd($shopitems);
+        // dd($shopitems);
         return view('pages.cabinet.shop.full', compact('server','shopitems', 'shopsets', 'shopcases', 'shopcategories'));
     }
 
