@@ -222,13 +222,15 @@ class ShopController extends Controller
                         foreach ($variations as $variation) {
                             if ($variation->variation_id == $request->var_id) {
                                 $variation_find = TRUE;
+                                $varPrice = floatval($variation->variation_price);
+                                $varPriceUsd = floatval($variation->variation_price_usd);
                                 // Применяем скидку к цене вариации
                                 if ($discountPercent > 0) {
-                                    $price = $variation->variation_price * (1 - $discountPercent / 100);
-                                    $price_usd = $variation->variation_price_usd * (1 - $discountPercent / 100);
+                                    $price = $varPrice * (1 - $discountPercent / 100);
+                                    $price_usd = $varPriceUsd * (1 - $discountPercent / 100);
                                 } else {
-                                $price = $variation->variation_price;
-                                $price_usd = $variation->variation_price_usd;
+                                    $price = $varPrice;
+                                    $price_usd = $varPriceUsd;
                                 }
                                 $amount = 1;
                             }
@@ -237,15 +239,17 @@ class ShopController extends Controller
                         foreach ($variations as $variation) {
                             if ($variation->quantity_id == $request->var_id) {
                                 $variation_find = TRUE;
+                                $varPrice = floatval($variation->quantity_price);
+                                $varPriceUsd = floatval($variation->quantity_price_usd);
                                 // Применяем скидку к цене вариации
                                 if ($discountPercent > 0) {
-                                    $price = $variation->quantity_price * (1 - $discountPercent / 100);
-                                    $price_usd = $variation->quantity_price_usd * (1 - $discountPercent / 100);
+                                    $price = $varPrice * (1 - $discountPercent / 100);
+                                    $price_usd = $varPriceUsd * (1 - $discountPercent / 100);
                                 } else {
-                                $price = $variation->quantity_price;
-                                $price_usd = $variation->quantity_price_usd;
+                                    $price = $varPrice;
+                                    $price_usd = $varPriceUsd;
                                 }
-                                $amount = $variation->quantity_amount;
+                                $amount = intval($variation->quantity_amount);
                             }
                         }
                     }
@@ -347,10 +351,11 @@ class ShopController extends Controller
                     foreach ($variations as $variation) {
                         if ($variation->variation_id == $request->var_id) {
                             $variation_find = TRUE;
+                            $varPrice = floatval($variation->variation_price);
                             if ($discountPercent > 0) {
-                                $price = $variation->variation_price * (1 - $discountPercent / 100);
+                                $price = $varPrice * (1 - $discountPercent / 100);
                             } else {
-                                $price = $variation->variation_price;
+                                $price = $varPrice;
                             }
                         }
                     }
@@ -358,12 +363,13 @@ class ShopController extends Controller
                     foreach ($variations as $variation) {
                         if ($variation->quantity_id == $request->var_id) {
                             $variation_find = TRUE;
+                            $varPrice = floatval($variation->quantity_price);
                             if ($discountPercent > 0) {
-                                $price = $variation->quantity_price * (1 - $discountPercent / 100);
+                                $price = $varPrice * (1 - $discountPercent / 100);
                             } else {
-                                $price = $variation->quantity_price;
+                                $price = $varPrice;
                             }
-                            $qty = $variation->quantity_amount;
+                            $qty = intval($variation->quantity_amount);
                         }
                     }
                 }
