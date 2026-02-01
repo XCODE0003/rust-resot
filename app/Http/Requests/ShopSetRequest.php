@@ -41,6 +41,7 @@ class ShopSetRequest extends FormRequest
             'sort'        => ['max:10'],
             'amount'      => ['max:20'],
             'discount_percent' => ['nullable', 'integer', 'min:0', 'max:100'],
+            'disable_category_discount' => ['nullable', 'boolean'],
             'image'       => ['required_without:edit', 'image'],
         ];
     }

@@ -29,6 +29,7 @@ class ShopItemRequest extends FormRequest
             'price'                => ['required', 'max:12'],
             'price_usd'            => ['required', 'max:12'],
             'discount_percent'     => ['nullable', 'numeric', 'min:0', 'max:100'],
+            'disable_category_discount' => ['nullable', 'boolean'],
             'item_id'              => ['max:20'],
             'status'               => ['required', 'max:1'],
             'server'               => ['required', 'max:10'],

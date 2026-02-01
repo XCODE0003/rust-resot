@@ -1514,8 +1514,10 @@ if (! function_exists('getShopItemPrice')) {
 
         // Приоритет: скидка товара > скидка категории
         if ($shopitem->discount_percent !== null && $shopitem->discount_percent > 0) {
+            // У товара есть своя скидка
             $discount_percent = $shopitem->discount_percent;
-        } else {
+        } elseif (!$shopitem->disable_category_discount) {
+            // Если скидка категории не отключена для этого товара
             $category = getshopcategory($shopitem->category_id);
             if ($category && $category->discount_percent !== null && $category->discount_percent > 0) {
                 $discount_percent = $category->discount_percent;
@@ -1546,9 +1548,10 @@ if (! function_exists('getShopItemPrice')) {
 
             // Проверяем скидку сета
             if ($shopset->discount_percent !== null && $shopset->discount_percent > 0) {
+                // У сета есть своя скидка
                 $discount_percent = $shopset->discount_percent;
-            } else {
-                // Если у сета нет скидки, проверяем скидку категории
+            } elseif (!$shopset->disable_category_discount) {
+                // Если скидка категории не отключена для этого сета
                 $category = getshopcategory($shopset->category_id);
                 if ($category && $category->discount_percent !== null && $category->discount_percent > 0) {
                     $discount_percent = $category->discount_percent;

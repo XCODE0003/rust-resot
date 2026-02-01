@@ -159,6 +159,20 @@
                                     </div>
                                 </div>
 
+                                <div class="col-lg-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="disable_category_discount">{{ __('Отключить скидку категории') }}</label>
+                                        <div class="form-control-wrap">
+                                            <div class="custom-control custom-switch">
+                                                <input type="hidden" name="disable_category_discount" value="0">
+                                                <input type="checkbox" class="custom-control-input" id="disable_category_discount" name="disable_category_discount" value="1"
+                                                       @if(isset($shopset) && $shopset->disable_category_discount) checked @endif>
+                                                <label class="custom-control-label" for="disable_category_discount">{{ __('Не применять скидку категории к этому сету') }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
 
                             <!-- Tabs -->

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 class ShopSet extends Model
 {
     protected $fillable = [
-      'items', 'status', 'category_id', 'servers', 'server', 'price', 'price_usd', 'sort', 'amount', 'can_gift', 'discount_percent', 'image',
+      'items', 'status', 'category_id', 'servers', 'server', 'price', 'price_usd', 'sort', 'amount', 'can_gift', 'discount_percent', 'disable_category_discount', 'image',
       'name_ru', 'name_en', 'name_de', 'name_fr', 'name_it', 'name_es', 'name_uk',
       'short_description_ru','short_description_en', 'short_description_de','short_description_fr', 'short_description_it','short_description_es', 'short_description_uk',
       'description_ru', 'description_en', 'description_de', 'description_fr', 'description_it', 'description_es', 'description_uk'

@@ -71,14 +71,14 @@
 
     @yield('body')
 
-    <script src="/js/jquery-3.6.0.min.js"></script>
-    <script src="/js/swiper.js"></script>
-    <script src="/js/main.js"></script>
-    <script src="/js/nav.js"></script>
-    <script src="/js/loading.js"></script>
-    <script src="/js/shop.js"></script>
-    <script src="/js/shop_add.js?ver=1.122"></script>
-    <script src="/js/snowfall.js"></script>
+    <script src="/js/jquery-3.6.0.min.js?ver={{ strtotime(date('d.m.Y H:i:s')) }}"></script>
+    <script src="/js/swiper.js?ver={{ strtotime(date('d.m.Y H:i:s')) }}"></script>
+    <script src="/js/main.js?ver={{ strtotime(date('d.m.Y H:i:s')) }}"></script>
+    <script src="/js/nav.js?ver={{ strtotime(date('d.m.Y H:i:s')) }}"></script>
+    <script src="/js/loading.js?ver={{ strtotime(date('d.m.Y H:i:s')) }}"></script>
+    <script src="/js/shop.js?ver={{ strtotime(date('d.m.Y H:i:s')) }}"></script>
+    <script src="/js/shop_add.js?ver={{ strtotime(date('d.m.Y H:i:s')) }}"></script>
+    <script src="/js/snowfall.js?ver={{ strtotime(date('d.m.Y H:i:s')) }}"></script>
 
     @stack('scripts')
 
