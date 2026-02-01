@@ -2907,3 +2907,7 @@
 .cat-label {
     top: -12px;
 }
+
+.v-col-12.v-col.text-center.d-flex.align-center.justify-center.gap-2.text-medium-emphasis.py-4 {
+    display: none !important;
+}
