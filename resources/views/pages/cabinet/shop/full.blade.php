@@ -510,6 +510,7 @@
                                             @endphp
                                             <div class="item">
                                                 <div class="shop-item-buy sib-special shopitem-buy {{ $cardPriceData['discount_percent'] > 0 ? 'discount-item' : '' }}" data-id="{{ $shopitem->id }}" data-discountpercent="{{ $cardPriceData['discount_percent'] }}">
+                                                    <div class="discount-item-percent">-{{ (int)$cardPriceData['discount_percent'] }}%</div>
                                                     <input type="hidden" class="item-discount-percent" value="{{ $cardPriceData['discount_percent'] }}">
                                                     <div class="shop-item-buy-name shop-item-buy-name--title">{{ $shopitem->$name }}</div>
                                                     <div class="shop-item-buy-name shop-item-image">
