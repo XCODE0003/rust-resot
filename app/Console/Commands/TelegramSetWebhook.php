@@ -15,9 +15,9 @@ class TelegramSetWebhook extends Command
 
     public function handle()
     {
-        $token = env('TELEGRAM_BOT_TOKEN');
+        $token = config('telegram.bot_token');
 
-        if (empty($token) || $token === 'YOUR-BOT-TOKEN') {
+        if (empty($token)) {
             $this->error('TELEGRAM_BOT_TOKEN не настроен в .env');
             return 1;
         }
@@ -48,7 +48,7 @@ class TelegramSetWebhook extends Command
 
     protected function setWebhook(Api $telegram): void
     {
-        $webhookUrl = env('TELEGRAM_WEBHOOK_URL');
+        $webhookUrl = config('telegram.webhook_url');
 
         if (empty($webhookUrl)) {
             $this->error('TELEGRAM_WEBHOOK_URL не настроен в .env');

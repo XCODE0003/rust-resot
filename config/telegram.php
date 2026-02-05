@@ -3,6 +3,16 @@
 return [
     /*
     |--------------------------------------------------------------------------
+    | Telegram Bot Settings
+    |--------------------------------------------------------------------------
+    */
+    'bot_token' => env('TELEGRAM_BOT_TOKEN', ''),
+    'webhook_url' => env('TELEGRAM_WEBHOOK_URL', ''),
+    'allowed_ids' => env('TELEGRAM_ALLOWED_IDS', ''),
+
+
+    /*
+    |--------------------------------------------------------------------------
     | Your Telegram Bots
     |--------------------------------------------------------------------------
     | You may use multiple bots at once using the manager class. Each bot

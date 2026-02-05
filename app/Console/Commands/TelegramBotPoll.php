@@ -43,9 +43,9 @@ class TelegramBotPoll extends Command
      */
     public function handle()
     {
-        $token = env('TELEGRAM_BOT_TOKEN');
+        $token = config('telegram.bot_token');
 
-        if (empty($token) || $token === 'YOUR-BOT-TOKEN') {
+        if (empty($token)) {
             $this->error('TELEGRAM_BOT_TOKEN не настроен в .env');
             return 1;
         }
@@ -203,7 +203,7 @@ class TelegramBotPoll extends Command
      */
     protected function isAllowed(int $telegramId): bool
     {
-        $allowedIds = explode(',', env('TELEGRAM_ALLOWED_IDS', ''));
+        $allowedIds = explode(',', config('telegram.allowed_ids', ''));
         $allowedIds = array_map('trim', $allowedIds);
         $allowedIds = array_filter($allowedIds);
 

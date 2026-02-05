@@ -35,7 +35,7 @@ class TelegramBotController extends Controller
      */
     public function __construct()
     {
-        $this->telegram = new Api(env('TELEGRAM_BOT_TOKEN'));
+        $this->telegram = new Api(config('telegram.bot_token'));
     }
 
     /**
@@ -135,7 +135,7 @@ class TelegramBotController extends Controller
      */
     protected function isAllowed(int $telegramId): bool
     {
-        $allowedIds = explode(',', env('TELEGRAM_ALLOWED_IDS', ''));
+        $allowedIds = explode(',', config('telegram.allowed_ids', ''));
         $allowedIds = array_map('trim', $allowedIds);
         $allowedIds = array_filter($allowedIds);
 
@@ -148,7 +148,7 @@ class TelegramBotController extends Controller
     public function setWebhook(Request $request)
     {
         try {
-            $webhookUrl = env('TELEGRAM_WEBHOOK_URL');
+            $webhookUrl = config('telegram.webhook_url');
 
             if (empty($webhookUrl)) {
                 return response()->json([
