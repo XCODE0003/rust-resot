@@ -24,7 +24,11 @@ class PromoCode extends Model
         'items',
         'shop_item_id',
         'variation_id',
-        'max_activations'
+        'max_activations',
+        'is_created_bot'
+    ];
+    protected $casts = [
+        'is_created_bot' => 'boolean',
     ];
 
 }

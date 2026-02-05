@@ -75,5 +75,6 @@ class Kernel extends HttpKernel
         'server.status' => ServerStatusMiddleware::class,
         'server.config' => \App\Http\Middleware\ServerConfig::class,
         'visit.statistics' => \App\Http\Middleware\VisitStatistics::class,
+        'promo.api.key' => \App\Http\Middleware\VerifyPromoApiKey::class,
     ];
 }

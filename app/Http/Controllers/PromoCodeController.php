@@ -38,6 +38,7 @@ class PromoCodeController extends Controller
             $promocode = PromoCode::where('code', $code)
                 ->where('date_start', '<', date('Y-m-d H:i:s'))
                 ->where('date_end', '>', date('Y-m-d H:i:s'))
+                ->where('is_created_bot', false)
                 ->first();
 
             if (!$promocode) {

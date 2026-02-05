@@ -58,4 +58,28 @@ Route::middleware('server.config')->group(function () {
     Route::any('delivery_requests/checkStatusFromWaxpeer', [\App\Http\Controllers\Api\DeliveryRequestController::class, 'checkStatusFromWaxpeer']);
     Route::any('delivery_requests/buyItemsFromSkinsback', [\App\Http\Controllers\Api\DeliveryRequestController::class, 'buyItemsFromSkinsback']);
     Route::any('delivery_requests/checkStatusFromSkinsback', [\App\Http\Controllers\Api\DeliveryRequestController::class, 'checkStatusFromSkinsback']);
+
+});
+
+// ============================================================
+// Telegram Bot Webhook
+// ============================================================
+Route::post('telegram/webhook', [\App\Http\Controllers\Api\TelegramBotController::class, 'webhook']);
+
+// Telegram Bot Management (защищено API ключом)
+Route::middleware('promo.api.key')->group(function () {
+    Route::get('telegram/set-webhook', [\App\Http\Controllers\Api\TelegramBotController::class, 'setWebhook']);
+    Route::get('telegram/remove-webhook', [\App\Http\Controllers\Api\TelegramBotController::class, 'removeWebhook']);
+    Route::get('telegram/webhook-info', [\App\Http\Controllers\Api\TelegramBotController::class, 'getWebhookInfo']);
+});
+
+// ============================================================
+// Promo Code API для Rust плагина
+// ============================================================
+Route::middleware('promo.api.key')->group(function () {
+    // GET /api/promo/get - Получить список активных промокодов
+    Route::get('promo/get', [\App\Http\Controllers\Api\PromoApiController::class, 'getPromos']);
+    
+    // POST /api/activate - Активировать промокод
+    Route::post('activate', [\App\Http\Controllers\Api\PromoApiController::class, 'activate']);
 });

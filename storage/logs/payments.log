@@ -52,3 +52,5 @@
 [2026-02-01 14:52:59] local.INFO: Robot: Player DarkMouseMike (admin732@wizardcp.com) successfully bought in the store Product MP5A4 (item_id: 0) in quantity 1. Server: Monday 2X. SteamID: 76561198062887950  
 [2026-02-01 14:54:18] local.INFO: Robot: Player DarkMouseMike (admin732@wizardcp.com) successfully bought in the store Product Sprinkler (item_id: 0) in quantity 1. Server: Monday 2X. SteamID: 76561198062887950  
 [2026-02-01 14:55:32] local.INFO: Robot: Player DarkMouseMike (admin732@wizardcp.com) successfully bought in the store Product Wood (item_id: 0) in quantity 1. Server: Monday 2X. SteamID: 76561198062887950  
+[2026-02-05 13:07:41] local.INFO: Robot: Player DarkMouseMike (admin732@wizardcp.com)  successfully activated the Promo Code and received a balance top up in the amount of $50  
+[2026-02-05 13:17:06] local.INFO: Robot: Player DarkMouseMike (admin732@wizardcp.com)  could not activate promocode: if ($used_user->user_id due to blocking.  

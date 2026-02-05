@@ -18,6 +18,7 @@
     "guzzlehttp/guzzle": "^7.0.1",
     "heleket/php-sdk": "^1.0",
     "iignatov/lightopenid": "^1.0",
+    "irazasyed/telegram-bot-sdk": "^3.9",
     "josiasmontag/laravel-recaptchav3": "^0.6.0",
     "laravel/framework": "^8.40",
     "laravel/tinker": "^2.5",
