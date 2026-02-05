@@ -156,7 +156,7 @@ class TelegramBotPoll extends Command
 
             $this->telegram->sendMessage([
                 'chat_id' => $chatId,
-                'text' => '⛔ Нет доступа1. Ваш Telegram ID не в списке разрешённых.',
+                'text' => '⛔ Нет доступа. Ваш Telegram ID не в списке разрешённых.',
             ]);
 
             return;
