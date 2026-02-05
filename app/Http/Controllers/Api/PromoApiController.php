@@ -65,12 +65,26 @@ class PromoApiController extends Controller
      */
     public function activate(Request $request)
     {
+        // Пробуем получить данные из JSON body
+        $data = $request->json()->all();
 
-        $promoCode = strtolower($request->input('promo', ''));
-        $steamId = $request->input('steam_id', '');
-        $serverIp = $request->input('server_ip', '');
+        // Если пусто, пробуем декодировать raw content
+        if (empty($data)) {
+            $rawContent = $request->getContent();
+            $data = json_decode($rawContent, true) ?? [];
+        }
+
+        // Если всё ещё пусто, пробуем обычный input
+        if (empty($data)) {
+            $data = $request->all();
+        }
+
+        $promoCode = strtolower($data['promo'] ?? '');
+        $steamId = $data['steam_id'] ?? '';
+        $serverIp = $data['server_ip'] ?? '';
+
         Log::channel('adminlog')->info("Promo API: Activation attempt - promo: {$promoCode}, steam_id: {$steamId}, server_ip: {$serverIp}");
-Log::channel('adminlog')->info($request->all());
+
         if (empty($promoCode) || empty($steamId)) {
             Log::channel('adminlog')->warning("Promo API: Missing required fields - promo: {$promoCode}, steam_id: {$steamId}");
             return response()->json(['error' => 'Missing required fields'], 400);
