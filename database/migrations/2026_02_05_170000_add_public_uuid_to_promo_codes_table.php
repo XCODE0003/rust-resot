@@ -13,8 +13,9 @@ class AddPublicUuidToPromoCodesTable extends Migration
      */
     public function up()
     {
+        // Добавляем колонку
         Schema::table('promo_codes', function (Blueprint $table) {
-            $table->uuid('public_uuid')->nullable()->after('id');
+            $table->string('public_uuid', 36)->nullable()->after('id');
         });
 
         // Заполняем UUID для существующих записей
@@ -24,9 +25,9 @@ class AddPublicUuidToPromoCodesTable extends Migration
                 ->update(['public_uuid' => (string) Str::uuid()]);
         });
 
-        // Делаем поле NOT NULL и добавляем уникальный индекс
+        // Добавляем уникальный индекс (сработает если все значения уникальны)
         Schema::table('promo_codes', function (Blueprint $table) {
-            $table->uuid('public_uuid')->nullable(false)->unique()->change();
+            $table->unique('public_uuid');
         });
     }
 
@@ -36,6 +37,7 @@ class AddPublicUuidToPromoCodesTable extends Migration
     public function down()
     {
         Schema::table('promo_codes', function (Blueprint $table) {
+            $table->dropUnique(['public_uuid']);
             $table->dropColumn('public_uuid');
         });
     }
