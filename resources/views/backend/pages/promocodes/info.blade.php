@@ -62,7 +62,7 @@
                                     @endif
                                     <p><span class="bold">{{ __('Дата создания') }}:</span> {{ $promocode->created_at->format('d.m.Y') }}</p>
 
-                                    @if($promocode->is_created_bot && $promocode->public_uuid)
+                                    @if($promocode->public_uuid)
                                     <div class="mt-3 pt-3 border-top">
                                         <p><span class="bold">{{ __('Публичная статистика') }}:</span></p>
                                         <div class="input-group" style="max-width: 500px;">

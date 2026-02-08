@@ -14,9 +14,7 @@ class PublicPromoController extends Controller
      */
     public function show(string $uuid)
     {
-        $promo = PromoCode::where('public_uuid', $uuid)
-            ->where('is_created_bot', true)
-            ->first();
+        $promo = PromoCode::where('public_uuid', $uuid)->first();
 
         if (!$promo) {
             abort(404);
