@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Donate;
 use App\Models\PromoCode;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -26,14 +27,28 @@ class PublicPromoController extends Controller
 
         // Собираем steam_id для статистики донатов
         $steamIds = [];
+        $userIds = [];
+        
         foreach ($users as $user) {
             if (isset($user['steam_id']) && !empty($user['steam_id'])) {
                 $steamIds[] = $user['steam_id'];
             }
+            if (isset($user['user_id']) && !empty($user['user_id'])) {
+                $userIds[] = $user['user_id'];
+            }
+        }
+
+        // Получаем steam_id пользователей по user_id
+        if (!empty($userIds)) {
+            $userSteamIds = User::whereIn('id', $userIds)
+                ->whereNotNull('steam_id')
+                ->pluck('steam_id')
+                ->toArray();
+            $steamIds = array_unique(array_merge($steamIds, $userSteamIds));
         }
 
         // Кэшируем агрегаты на 5 минут
-        $cacheKey = "promo_stats_{$promo->id}";
+        $cacheKey = "promo_stats_{$promo->id}_v2";
         $donateStats = Cache::remember($cacheKey, 300, function () use ($steamIds) {
             if (empty($steamIds)) {
                 return [
@@ -45,7 +60,6 @@ class PublicPromoController extends Controller
             }
 
             $stats = Donate::whereIn('steam_id', $steamIds)
-                ->where('status', 1)
                 ->selectRaw('
                     COUNT(*) as total_count,
                     COALESCE(SUM(amount), 0) as total_amount,
@@ -66,7 +80,6 @@ class PublicPromoController extends Controller
         $donations = collect();
         if (!empty($steamIds)) {
             $donations = Donate::whereIn('steam_id', $steamIds)
-                ->where('status', 1)
                 ->orderBy('created_at', 'desc')
                 ->paginate(50);
         }
@@ -75,7 +88,6 @@ class PublicPromoController extends Controller
         $dailyStats = collect();
         if (!empty($steamIds)) {
             $dailyStats = Donate::whereIn('steam_id', $steamIds)
-                ->where('status', 1)
                 ->where('created_at', '>=', now()->subDays(30))
                 ->selectRaw('DATE(created_at) as date, SUM(amount) as total, COUNT(*) as count')
                 ->groupBy('date')
@@ -103,6 +115,7 @@ class PublicPromoController extends Controller
                 'donateStats' => $donateStats,
                 'donations' => $donations,
                 'dailyStats' => $dailyStats,
+                'steamIds' => $steamIds,
             ])
             ->header('X-Robots-Tag', 'noindex, nofollow');
     }
