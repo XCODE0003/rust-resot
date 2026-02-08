@@ -61,6 +61,32 @@
                                         <p><span class="bold">{{ __('Максимум активаций') }}:</span> <span class="text-muted">{{ __('Без ограничений') }}</span></p>
                                     @endif
                                     <p><span class="bold">{{ __('Дата создания') }}:</span> {{ $promocode->created_at->format('d.m.Y') }}</p>
+
+                                    @if($promocode->is_created_bot && $promocode->public_uuid)
+                                    <div class="mt-3 pt-3 border-top">
+                                        <p><span class="bold">{{ __('Публичная статистика') }}:</span></p>
+                                        <div class="input-group" style="max-width: 500px;">
+                                            <input type="text" class="form-control" id="public-url" value="{{ route('promo.public', ['uuid' => $promocode->public_uuid]) }}" readonly>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-primary" type="button" onclick="copyPublicUrl()">
+                                                    <em class="icon ni ni-copy"></em> {{ __('Копировать') }}
+                                                </button>
+                                                <a href="{{ route('promo.public', ['uuid' => $promocode->public_uuid]) }}" target="_blank" class="btn btn-outline-secondary">
+                                                    <em class="icon ni ni-external"></em> {{ __('Открыть') }}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <script>
+                                        function copyPublicUrl() {
+                                            var copyText = document.getElementById("public-url");
+                                            copyText.select();
+                                            copyText.setSelectionRange(0, 99999);
+                                            navigator.clipboard.writeText(copyText.value);
+                                            alert('{{ __("Ссылка скопирована!") }}');
+                                        }
+                                    </script>
+                                    @endif
                                 </div>
                             </div>
                         </div>

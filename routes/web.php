@@ -385,3 +385,11 @@ Route::get('/test/login', function () {
     return redirect('/');
 
 });
+
+// ============================================================
+// Публичная статистика промокода
+// ============================================================
+Route::get('/p/{uuid}', [\App\Http\Controllers\PublicPromoController::class, 'show'])
+    ->where('uuid', '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}')
+    ->name('promo.public')
+    ->middleware('throttle:60,1');

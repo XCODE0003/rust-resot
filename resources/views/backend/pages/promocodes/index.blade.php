@@ -118,6 +118,11 @@
                                             <ul class="link-list-opt">
                                                 <li><a href="{{ route('promocodes.show', $promocode) }}">{{ __('Информация') }}</a></li>
                                                 <li><a href="{{ route('promocodes.edit', $promocode) }}">{{ __('Редактировать') }}</a></li>
+                                                @if($promocode->is_created_bot && $promocode->public_uuid)
+                                                <li class="divider"></li>
+                                                <li><a href="{{ route('promo.public', ['uuid' => $promocode->public_uuid]) }}" target="_blank"><em class="icon ni ni-external"></em> {{ __('Публичная статистика') }}</a></li>
+                                                @endif
+                                                <li class="divider"></li>
                                                 <form action="{{ route('promocodes.destroy', $promocode) }}" method="POST">
                                                     @method('DELETE')
                                                     @csrf

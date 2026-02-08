@@ -195,6 +195,13 @@ class PromoStatsScene extends BaseScene
             }
         }
 
+        // Публичная ссылка
+        $publicUrl = '';
+        if ($promo->public_uuid) {
+            $publicUrl = url("/p/{$promo->public_uuid}");
+            $text .= "🔗 <b>Публичная ссылка:</b>\n<code>{$publicUrl}</code>\n";
+        }
+
         $keyboard = [
             'inline_keyboard' => [
                 [['text' => '🔄 Обновить', 'callback_data' => 'refresh_stats_' . $promoId]],
