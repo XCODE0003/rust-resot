@@ -74,7 +74,6 @@ class PromoApiController extends Controller
             $data = json_decode($rawContent, true) ?? [];
         }
 
-        // Если всё ещё пусто, пробуем обычный input
         if (empty($data)) {
             $data = $request->all();
         }
@@ -118,12 +117,26 @@ class PromoApiController extends Controller
             // Парсим текущих пользователей
             $users = json_decode($promo->users, true) ?? [];
 
-            // Проверка на повторную активацию по steam_id
+            // Проверка: можно активировать раз в 14 дней
+            $lastActivationAt = null;
             foreach ($users as $user) {
-                // Проверяем как steam_id (новый формат), так и user_id (старый формат, на всякий случай)
                 if (isset($user['steam_id']) && $user['steam_id'] === $steamId) {
-                    Log::channel('adminlog')->warning("Promo API: Already activated - promo: {$promoCode}, steam_id: {$steamId}");
-                    return response()->json(['error' => 'Already activated'], 409);
+                    $date = $user['date'] ?? null;
+                    if ($date && (!$lastActivationAt || strtotime($date) > strtotime($lastActivationAt))) {
+                        $lastActivationAt = $date;
+                    }
+                }
+            }
+
+            if ($lastActivationAt !== null) {
+                $daysSince = (strtotime($now->format('Y-m-d H:i:s')) - strtotime($lastActivationAt)) / 86400;
+                if ($daysSince < 14) {
+                    $daysLeft = ceil(14 - $daysSince);
+                    Log::channel('adminlog')->warning("Promo API: Too soon - promo: {$promoCode}, steam_id: {$steamId}, days_left: {$daysLeft}");
+                    return response()->json([
+                        'error' => 'Already activated',
+                        'retry_after_days' => (int) $daysLeft,
+                    ], 409);
                 }
             }
 
