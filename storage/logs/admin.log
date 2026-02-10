@@ -58,3 +58,9 @@
 [2026-02-05 13:16:17] local.WARNING: Promo API: Already activated - promo: amsdlkasmkdams, steam_id: 7656119806121887195110  
 [2026-02-08 11:56:48] local.INFO: admin DarkMouseMike: Generate a promo codes in amount 1. Parameters: {"_token":"uMmo6gakCuMhwMTDwvldyfoRhsvXslUl7Xmjcnei","title":"asdasd","amount":"1","date_start":"2026-02-08T13:56","date_end":"2026-02-09T13:56","type":"2","type_reward":"1","premium_period":"3","bonus_amount":"0","case_id":"1","shop_item_id":"0","variation_id":"0"}  
 [2026-02-08 11:57:43] local.INFO: admin DarkMouseMike: Update a promo code. Parameters: {"id":564,"public_uuid":"36571f34-f371-4672-9750-e834b381dadd","title":"asdasd","code":"UzXvu1","type":"2","type_reward":"1","user_id":null,"users":null,"date_start":"2026-02-08T13:56","date_end":"2026-02-09T13:56","max_activations":"1","items":null,"bonus_amount":0,"case_id":"1","bonus_case_id":"1","premium_period":"3","shop_item_id":"0","variation_id":"0","server_id":0,"created_at":"2026-02-08T08:56:48.000000Z","updated_at":"2026-02-08T08:57:43.000000Z","is_created_bot":false}  
+[2026-02-10 10:37:40] local.INFO: Promo API: Activation attempt - promo: sosal, steam_id: 765611980000011011000, server_ip: theyarki  
+[2026-02-10 10:37:40] local.WARNING: Promo API: Promo not found - sosal  
+[2026-02-10 10:37:47] local.INFO: Promo API: Activation attempt - promo: theyarki, steam_id: 765611980000011011000, server_ip: theyarki  
+[2026-02-10 10:37:47] local.WARNING: Promo API: Promo not found - theyarki  
+[2026-02-10 10:37:51] local.INFO: Promo API: Activation attempt - promo: theyarki, steam_id: 7656119800000111011000, server_ip: theyarki  
+[2026-02-10 10:37:51] local.WARNING: Promo API: Promo not found - theyarki  

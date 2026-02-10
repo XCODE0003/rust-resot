@@ -25,31 +25,47 @@ class PublicPromoController extends Controller
         $users = json_decode($promo->users, true) ?? [];
         $totalActivations = count($users);
 
-        // Собираем steam_id для статистики донатов
-        $steamIds = [];
+        // Собираем steam_id + дату активации для статистики донатов
+        $steamIdActivations = [];
         $userIds = [];
         
         foreach ($users as $user) {
-            if (isset($user['steam_id']) && !empty($user['steam_id'])) {
-                $steamIds[] = $user['steam_id'];
+            $activationDate = $user['date'] ?? null;
+            
+            if (isset($user['steam_id']) && !empty($user['steam_id']) && $activationDate) {
+                $steamIdActivations[$user['steam_id']] = $activationDate;
             }
             if (isset($user['user_id']) && !empty($user['user_id'])) {
-                $userIds[] = $user['user_id'];
+                $userIds[] = [
+                    'user_id' => $user['user_id'],
+                    'activation_date' => $activationDate,
+                ];
             }
         }
 
         // Получаем steam_id пользователей по user_id
         if (!empty($userIds)) {
-            $userSteamIds = User::whereIn('id', $userIds)
+            $usersData = User::whereIn('id', array_column($userIds, 'user_id'))
                 ->whereNotNull('steam_id')
-                ->pluck('steam_id')
-                ->toArray();
-            $steamIds = array_unique(array_merge($steamIds, $userSteamIds));
+                ->get(['id', 'steam_id']);
+            
+            foreach ($usersData as $userData) {
+                $activation = collect($userIds)->firstWhere('user_id', $userData->id);
+                if ($activation && isset($activation['activation_date'])) {
+                    // Берём самую раннюю дату активации для этого steam_id
+                    if (!isset($steamIdActivations[$userData->steam_id]) || 
+                        strtotime($activation['activation_date']) < strtotime($steamIdActivations[$userData->steam_id])) {
+                        $steamIdActivations[$userData->steam_id] = $activation['activation_date'];
+                    }
+                }
+            }
         }
 
+        $steamIds = array_keys($steamIdActivations);
+
         // Кэшируем агрегаты на 5 минут
-        $cacheKey = "promo_stats_{$promo->id}_v2";
-        $donateStats = Cache::remember($cacheKey, 300, function () use ($steamIds) {
+        $cacheKey = "promo_stats_{$promo->id}_v3";
+        $donateStats = Cache::remember($cacheKey, 300, function () use ($steamIds, $steamIdActivations) {
             if (empty($steamIds)) {
                 return [
                     'total_count' => 0,
@@ -59,8 +75,19 @@ class PublicPromoController extends Controller
                 ];
             }
 
-            $stats = Donate::whereIn('steam_id', $steamIds)
-                ->selectRaw('
+            // Подзапрос для фильтрации донатов только после активации
+            $query = Donate::whereIn('steam_id', $steamIds)
+                ->where('status', 1)
+                ->where(function ($q) use ($steamIdActivations) {
+                    foreach ($steamIdActivations as $steamId => $activationDate) {
+                        $q->orWhere(function ($subQ) use ($steamId, $activationDate) {
+                            $subQ->where('steam_id', $steamId)
+                                ->where('created_at', '>=', $activationDate);
+                        });
+                    }
+                });
+
+            $stats = $query->selectRaw('
                     COUNT(*) as total_count,
                     COALESCE(SUM(amount), 0) as total_amount,
                     MIN(created_at) as first_donation_at,
@@ -80,6 +107,15 @@ class PublicPromoController extends Controller
         $donations = collect();
         if (!empty($steamIds)) {
             $donations = Donate::whereIn('steam_id', $steamIds)
+                ->where('status', 1)
+                ->where(function ($q) use ($steamIdActivations) {
+                    foreach ($steamIdActivations as $steamId => $activationDate) {
+                        $q->orWhere(function ($subQ) use ($steamId, $activationDate) {
+                            $subQ->where('steam_id', $steamId)
+                                ->where('created_at', '>=', $activationDate);
+                        });
+                    }
+                })
                 ->orderBy('created_at', 'desc')
                 ->paginate(50);
         }
@@ -88,7 +124,16 @@ class PublicPromoController extends Controller
         $dailyStats = collect();
         if (!empty($steamIds)) {
             $dailyStats = Donate::whereIn('steam_id', $steamIds)
+                ->where('status', 1)
                 ->where('created_at', '>=', now()->subDays(30))
+                ->where(function ($q) use ($steamIdActivations) {
+                    foreach ($steamIdActivations as $steamId => $activationDate) {
+                        $q->orWhere(function ($subQ) use ($steamId, $activationDate) {
+                            $subQ->where('steam_id', $steamId)
+                                ->where('created_at', '>=', $activationDate);
+                        });
+                    }
+                })
                 ->selectRaw('DATE(created_at) as date, SUM(amount) as total, COUNT(*) as count')
                 ->groupBy('date')
                 ->orderBy('date', 'desc')
