@@ -259,7 +259,7 @@ class Kernel extends ConsoleKernel
                                         $lock_shop->release();
                                     }
                                 } catch (\Exception $ex) {
-                                    Log::channel('rcon_master')->info('Rcon Send command error! Server ID: ' . $server->id);
+                                    Log::channel('rcon_master')->info('Rcon Send command error! Server ID: ' . $server->id . 'Error: '. $ex);
                                 }
                             }
 
