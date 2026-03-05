@@ -36,6 +36,7 @@
     "whichbrowser/parser": "^2.1"
   },
   "require-dev": {
+    "cweagans/composer-patches": "^1.7",
     "facade/ignition": "^2.5",
     "fakerphp/faker": "^1.9.1",
     "laravel/sail": "^1.0.1",
@@ -86,6 +87,11 @@
   "extra": {
     "laravel": {
       "dont-discover": []
+    },
+    "patches": {
+      "irazasyed/telegram-bot-sdk": {
+        "Fix GuzzleHttp Promise unwrap() for guzzlehttp/promises v2": "patches/telegram-bot-sdk-guzzle-promises-v2.patch"
+      }
     }
   },
   "config": {
@@ -94,7 +100,10 @@
     },
     "optimize-autoloader": true,
     "preferred-install": "dist",
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "cweagans/composer-patches": true
+    }
   },
   "minimum-stability": "stable",
   "prefer-stable": true
