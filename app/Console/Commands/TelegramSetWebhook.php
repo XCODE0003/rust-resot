@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Http\TelegramGuzzleHttpClient;
 use Illuminate\Console\Command;
 use Telegram\Bot\Api;
 use Telegram\Bot\Exceptions\TelegramSDKException;
@@ -22,7 +23,7 @@ class TelegramSetWebhook extends Command
             return 1;
         }
 
-        $telegram = new Api($token);
+        $telegram = new Api($token, false, new TelegramGuzzleHttpClient());
         $action = $this->argument('action');
 
         try {

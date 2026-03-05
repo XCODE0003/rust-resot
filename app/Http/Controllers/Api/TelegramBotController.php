@@ -8,6 +8,7 @@ use App\Telegram\Scenes\PromoCreateScene;
 use App\Telegram\Scenes\PromoListScene;
 use App\Telegram\Scenes\PromoStatsScene;
 use App\Telegram\Services\ConversationService;
+use App\Http\TelegramGuzzleHttpClient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Telegram\Bot\Api;
@@ -35,7 +36,11 @@ class TelegramBotController extends Controller
      */
     public function __construct()
     {
-        $this->telegram = new Api(config('telegram.bot_token'));
+        $this->telegram = new Api(
+            config('telegram.bot_token'),
+            false,
+            new TelegramGuzzleHttpClient()
+        );
     }
 
     /**

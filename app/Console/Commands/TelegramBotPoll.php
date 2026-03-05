@@ -7,6 +7,7 @@ use App\Telegram\Scenes\PromoCreateScene;
 use App\Telegram\Scenes\PromoListScene;
 use App\Telegram\Scenes\PromoStatsScene;
 use App\Telegram\Services\ConversationService;
+use App\Http\TelegramGuzzleHttpClient;
 use Illuminate\Console\Command;
 use Telegram\Bot\Api;
 use Telegram\Bot\Exceptions\TelegramSDKException;
@@ -50,7 +51,7 @@ class TelegramBotPoll extends Command
             return 1;
         }
 
-        $this->telegram = new Api($token);
+        $this->telegram = new Api($token, false, new TelegramGuzzleHttpClient());
 
         // Удаляем webhook если был установлен
         try {
