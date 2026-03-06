@@ -226,6 +226,7 @@ class Kernel extends ConsoleKernel
                             $rcon_ip = $options->rcon_ip ?? '';
                             $rcon_passw = $options->rcon_passw ?? '';
 
+                            Log::channel('rcon_master')->info('Client: ' . json_encode($client[$server->id]) . 'Rcon connect string:' . "ws://" . $rcon_ip . "/" . $rcon_passw);
                             try {
                                 $client[$server->id] = new Client("ws://" . $rcon_ip . "/" . $rcon_passw);
                                 Log::channel('rcon_master')->info('Command Connect success! Server ID: ' . $server->id);
