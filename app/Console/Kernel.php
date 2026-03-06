@@ -109,7 +109,9 @@ class Kernel extends ConsoleKernel
                 //Get the server online date
 
                 foreach (getservers() as $server) {
-
+                    Log::channel('rcon_master')->info('Server: ' . $server->id);
+                    Log::channel('rcon_master')->info('Connect string: ' . "ws://" . $rcon_ip . "/" . $rcon_passw);
+                    Log::channel('rcon_master')->info('Client: ' . json_encode($client[$server->id]));
                     try {
 
                         if (isset($client[$server->id]) && $client[$server->id]) {
@@ -137,7 +139,7 @@ class Kernel extends ConsoleKernel
                         }
 
                     } catch (\Exception $ex) {
-                        Log::channel('rcon_master')->info('Rcon error get online data!');
+                        Log::channel('rcon_master')->info('Rcon error get online data! Error: ' . $ex);
                     }
 
                 }
