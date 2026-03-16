@@ -133,15 +133,20 @@ class RconConnectionManager
         return true;
     }
     
-    public function sendCommand($server_id, $command, $timeout = 5)
+    public function sendCommand($server_id, $command, $timeout = 5, &$lastError = null)
     {
         $connection = $this->getConnection($server_id);
         
         if (!$connection) {
+            $lastError = "No connection available";
             Log::channel('rcon_master')->error("No connection available for server {$server_id}");
             return false;
         }
         
+        if (config('rcon.proxy') && $timeout === 5) {
+            $timeout = config('rcon.proxy_timeout', 15);
+        }
+
         try {
             $connection->setTimeout($timeout);
             
@@ -162,7 +167,8 @@ class RconConnectionManager
             
             return $result;
         } catch (\Exception $ex) {
-            Log::channel('rcon_master')->error("Failed to send command to server {$server_id}: {$ex->getMessage()}");
+            $lastError = $ex->getMessage();
+            Log::channel('rcon_master')->error("Failed to send command to server {$server_id}: {$lastError}");
             $this->disconnect($server_id);
             return false;
         }

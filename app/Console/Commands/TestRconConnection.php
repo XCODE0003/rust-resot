@@ -40,7 +40,8 @@ class TestRconConnection extends Command
             if ($manager->connect($server->id)) {
                 $this->info("✓ Connected successfully");
                 
-                $result = $manager->sendCommand($server->id, 'status');
+                $err = null;
+                $result = $manager->sendCommand($server->id, 'status', 5, $err);
                 
                 if ($result && isset($result->Message)) {
                     $this->info("✓ Command sent successfully");
@@ -55,6 +56,9 @@ class TestRconConnection extends Command
                     }
                 } else {
                     $this->error("✗ Failed to send command or no response");
+                    if ($err) {
+                        $this->line("<fg=red>Ошибка: {$err}</>");
+                    }
                 }
                 
                 $manager->disconnect($server->id);

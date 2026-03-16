@@ -723,3 +723,41 @@
 [2026-03-13 15:54:06] local.INFO: Server 3 online data received  
 [2026-03-13 15:54:06] local.INFO: Server 3 online: 28/200, queued: 0  
 [2026-03-13 15:54:06] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-16 20:19:39] local.INFO: Connected to server 2  
+[2026-03-16 20:19:40] local.INFO: Command sent to server 2: status  
+[2026-03-16 20:19:45] local.WARNING: Error closing connection for server 2: Client read timeout  
+[2026-03-16 20:19:45] local.INFO: Connected to server 3  
+[2026-03-16 20:19:47] local.INFO: Command sent to server 3: status  
+[2026-03-16 20:19:52] local.WARNING: Error closing connection for server 3: Client read timeout  
+[2026-03-16 20:20:30] local.INFO: Connected to server 2  
+[2026-03-16 20:20:32] local.ERROR: Failed to send command to server 2: Undefined array key "fragment_size"  
+[2026-03-16 20:20:32] local.WARNING: Error closing connection for server 2: Undefined array key "fragment_size"  
+[2026-03-16 20:20:32] local.INFO: Connected to server 3  
+[2026-03-16 20:20:35] local.ERROR: Failed to send command to server 3: Undefined array key "fragment_size"  
+[2026-03-16 20:20:35] local.WARNING: Error closing connection for server 3: Undefined array key "fragment_size"  
+[2026-03-16 20:21:54] local.INFO: Connected to server 2  
+[2026-03-16 20:21:56] local.ERROR: Failed to send command to server 2: Undefined array key "fragment_size"  
+[2026-03-16 20:21:56] local.WARNING: Error closing connection for server 2: Undefined array key "fragment_size"  
+[2026-03-16 20:21:56] local.INFO: Connected to server 3  
+[2026-03-16 20:21:59] local.ERROR: Failed to send command to server 3: Undefined array key "fragment_size"  
+[2026-03-16 20:21:59] local.WARNING: Error closing connection for server 3: Undefined array key "fragment_size"  
+[2026-03-16 20:22:33] local.INFO: Connected to server 2  
+[2026-03-16 20:22:35] local.ERROR: Failed to send command to server 2: Undefined array key "fragment_size"  
+[2026-03-16 20:22:35] local.WARNING: Error closing connection for server 2: Undefined array key "fragment_size"  
+[2026-03-16 20:22:35] local.INFO: Connected to server 3  
+[2026-03-16 20:22:37] local.ERROR: Failed to send command to server 3: Undefined array key "fragment_size"  
+[2026-03-16 20:22:37] local.WARNING: Error closing connection for server 3: Undefined array key "fragment_size"  
+[2026-03-16 20:22:43] local.INFO: Connected to server 2  
+[2026-03-16 20:22:45] local.ERROR: Failed to send command to server 2: Undefined array key "fragment_size"  
+[2026-03-16 20:22:45] local.WARNING: Error closing connection for server 2: Undefined array key "fragment_size"  
+[2026-03-16 20:22:45] local.INFO: Connected to server 3  
+[2026-03-16 20:22:47] local.ERROR: Failed to send command to server 3: Undefined array key "fragment_size"  
+[2026-03-16 20:22:47] local.WARNING: Error closing connection for server 3: Undefined array key "fragment_size"  
+[2026-03-16 20:22:50] local.INFO: Connected to server 2  
+[2026-03-16 20:22:53] local.ERROR: Failed to send command to server 2: Undefined array key "fragment_size"  
+[2026-03-16 20:22:53] local.WARNING: Error closing connection for server 2: Undefined array key "fragment_size"  
+[2026-03-16 20:22:53] local.INFO: Connected to server 3  
+[2026-03-16 20:22:55] local.ERROR: Failed to send command to server 3: Undefined array key "fragment_size"  
+[2026-03-16 20:22:55] local.WARNING: Error closing connection for server 3: Undefined array key "fragment_size"  
+[2026-03-16 20:23:19] local.INFO: Connected to server 2  
+[2026-03-16 20:23:22] local.INFO: Command sent to server 2: status  

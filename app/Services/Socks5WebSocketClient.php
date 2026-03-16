@@ -111,7 +111,11 @@ class Socks5WebSocketClient
         $stream = $socksClient->connect("tcp://{$host}:{$port}");
         $socket = $this->getStreamResource($stream);
 
-        $this->connection = new Connection($socket, $this->options);
+        $connectionOptions = array_merge(
+            ['fragment_size' => 4096, 'timeout' => $this->options['timeout']],
+            $this->options
+        );
+        $this->connection = new Connection($socket, $connectionOptions);
         $this->connection->setLogger(new NullLogger());
         $this->connection->setTimeout($this->options['timeout']);
 
@@ -134,11 +138,8 @@ class Socks5WebSocketClient
 
         $this->connection->write($header);
 
-        $response = '';
-        do {
-            $buffer = $this->connection->gets(1024);
-            $response .= $buffer;
-        } while (strpos($response, "\r\n\r\n") === false);
+        // Читаем только заголовки до \r\n\r\n (getLine не захватывает байты WebSocket-фрейма)
+        $response = $this->connection->getLine(8192, "\r\n\r\n");
 
         if (!preg_match('#Sec-WebSocket-Accept:\s*(.*)$#mUi', $response, $matches)) {
             throw new ConnectionException('Invalid upgrade response: ' . substr($response, 0, 200));
