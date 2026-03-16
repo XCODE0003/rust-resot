@@ -50,20 +50,24 @@ class Handler extends ExceptionHandler
             return redirect()->back();
         }
 
-        // Показывать сообщение ошибки в ответе (для отладки, отключить после)
-        if (env('APP_SHOW_ERROR_IN_RESPONSE', false)) {
+        // Для AJAX-запросов всегда показываем детальную ошибку
+        if ($request->expectsJson() || $request->ajax()) {
             $message = $e->getMessage();
             $code = method_exists($e, 'getStatusCode') ? $e->getStatusCode() : 500;
 
-            if ($request->expectsJson() || $request->ajax()) {
-                return response()->json([
-                    'success' => false,
-                    'message' => $message,
-                    'error' => $message,
-                    'file' => $e->getFile(),
-                    'line' => $e->getLine(),
-                ], $code >= 400 ? $code : 500);
-            }
+            return response()->json([
+                'success' => false,
+                'message' => $message ?: 'Server Error',
+                'error' => $message,
+                'file' => $e->getFile(),
+                'line' => $e->getLine(),
+                'trace' => config('app.debug') ? $e->getTraceAsString() : null,
+            ], $code >= 400 ? $code : 500);
+        }
+
+        // Показывать сообщение ошибки в ответе (для отладки, отключить после)
+        if (env('APP_SHOW_ERROR_IN_RESPONSE', false)) {
+            $message = $e->getMessage();
 
             return response(
                 '<h1>Ошибка</h1><pre>' . e($message) . '</pre>' .
