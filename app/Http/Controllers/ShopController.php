@@ -413,16 +413,15 @@ class ShopController extends Controller
             $steam_id = auth()->user()->steam_id;
         }
 
-        // Отправляем товар (без показа alert, т.к. это AJAX), передаём цену со скидкой
-        if ($this->send_item(auth()->id(), $shopitem->id, $request->var_id, $steam_id, $server_id, $qty, true, false, $priceFloat)) {
-            // Уменьшаем баланс
-            auth()->user()->decrement('balance', $priceFloat);
+        // Сначала списываем баланс (быстро) и освобождаем lock — RCON может быть медленным
+        auth()->user()->decrement('balance', $priceFloat);
+        $lock->release();
 
-            // Обновляем модель, чтобы получить актуальный баланс
+        // Отправляем товар (RCON — может занимать несколько секунд, lock уже снят)
+        if ($this->send_item(auth()->id(), $shopitem->id, $request->var_id, $steam_id, $server_id, $qty, true, false, $priceFloat)) {
             auth()->user()->refresh();
             $newBalance = floatval(auth()->user()->balance);
 
-            // Форматируем баланс так же, как в getCurrentUserBalance()
             if (app()->getLocale() != 'ru') {
                 $formattedBalance = $newBalance / config('options.exchange_rate_usd', 70);
             } else {
@@ -436,8 +435,6 @@ class ShopController extends Controller
                 $formattedBalance = '$' . $formattedBalance;
             }
 
-            $lock->release();
-
             $name = "name_" . app()->getLocale();
             return response()->json([
                 'success' => true,
@@ -447,7 +444,8 @@ class ShopController extends Controller
             ]);
         }
 
-        $lock->release();
+        // Ошибка отправки — возвращаем средства
+        auth()->user()->increment('balance', $priceFloat);
         return response()->json([
             'success' => false,
             'message' => __('Произошла ошибка при отправке товара')
@@ -728,15 +726,15 @@ class ShopController extends Controller
             ]);
         }
 
-        // Начисляем купленный сет
-        if ($this->send_set(auth()->id(), $shopset->id, $steam_id, $server_id, $qty)) {
-            // Уменьшаем баланс
-            auth()->user()->decrement('balance', $priceFloat);
-            auth()->user()->refresh();
+        // Сначала списываем баланс и освобождаем lock — RCON может быть медленным
+        auth()->user()->decrement('balance', $priceFloat);
+        $lock->release();
 
+        // Отправляем сет (RCON — lock уже снят)
+        if ($this->send_set(auth()->id(), $shopset->id, $steam_id, $server_id, $qty)) {
+            auth()->user()->refresh();
             $newBalance = floatval(auth()->user()->balance);
 
-            // Форматируем баланс
             if (app()->getLocale() != 'ru') {
                 $formattedBalance = $newBalance / config('options.exchange_rate_usd', 70);
             } else {
@@ -750,8 +748,6 @@ class ShopController extends Controller
                 $formattedBalance = '$' . $formattedBalance;
             }
 
-            $lock->release();
-
             $name = "name_" . app()->getLocale();
             return response()->json([
                 'success' => true,
@@ -761,7 +757,8 @@ class ShopController extends Controller
             ]);
         }
 
-        $lock->release();
+        // Ошибка отправки — возвращаем средства
+        auth()->user()->increment('balance', $priceFloat);
         return response()->json([
             'success' => false,
             'message' => __('Произошла ошибка! Попробуйте позже.')
@@ -817,15 +814,17 @@ class ShopController extends Controller
                 return back();
             }
 
-            //Начисляем купленый товар
+            // Сначала списываем баланс и освобождаем lock — RCON может быть медленным
+            auth()->user()->decrement('balance', $priceRub);
+            $lock->release();
+
+            // Отправляем сет (RCON — lock уже снят)
             if ($this->send_set(auth()->id(), $shopset->id, $steam_id, $server_id, $qty)) {
-
-                //Уменьшаем баланс пользователя (используем цену в рублях)
-                auth()->user()->decrement('balance', $priceRub);
-
-                $lock->release();
                 return back();
             }
+
+            // Ошибка отправки — возвращаем средства
+            auth()->user()->increment('balance', $priceRub);
         }
         $this->alert('danger', __('Произошла ошибка! Попробуйте позже.'));
         return back();
