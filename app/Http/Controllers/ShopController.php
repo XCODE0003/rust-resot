@@ -457,7 +457,7 @@ class ShopController extends Controller
                 'trace' => $e->getTraceAsString(),
                 'request' => $request->except(['_token']),
             ]);
-            
+
             return response()->json([
                 'success' => false,
                 'message' => 'Ошибка: ' . $e->getMessage()
@@ -783,7 +783,7 @@ class ShopController extends Controller
                 'trace' => $e->getTraceAsString(),
                 'request' => $request->except(['_token']),
             ]);
-            
+
             return response()->json([
                 'success' => false,
                 'message' => 'Ошибка: ' . $e->getMessage()

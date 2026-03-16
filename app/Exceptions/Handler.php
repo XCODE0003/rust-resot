@@ -50,18 +50,25 @@ class Handler extends ExceptionHandler
             return redirect()->back();
         }
 
-        // Для AJAX-запросов всегда показываем детальную ошибку
+        // Для AJAX-запросов показываем детальную ошибку только если APP_DEBUG включен
         if ($request->expectsJson() || $request->ajax()) {
             $message = $e->getMessage();
             $code = method_exists($e, 'getStatusCode') ? $e->getStatusCode() : 500;
 
+            if (config('app.debug')) {
+                return response()->json([
+                    'success' => false,
+                    'message' => $message ?: 'Server Error',
+                    'error' => $message,
+                    'file' => $e->getFile(),
+                    'line' => $e->getLine(),
+                    'trace' => $e->getTraceAsString(),
+                ], $code >= 400 ? $code : 500);
+            }
+
             return response()->json([
                 'success' => false,
-                'message' => $message ?: 'Server Error',
-                'error' => $message,
-                'file' => $e->getFile(),
-                'line' => $e->getLine(),
-                'trace' => config('app.debug') ? $e->getTraceAsString() : null,
+                'message' => __('Произошла ошибка! Попробуйте позже.')
             ], $code >= 400 ? $code : 500);
         }
 
