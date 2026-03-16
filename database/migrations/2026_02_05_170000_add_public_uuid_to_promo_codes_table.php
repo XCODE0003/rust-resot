@@ -13,10 +13,11 @@ class AddPublicUuidToPromoCodesTable extends Migration
      */
     public function up()
     {
-        // Добавляем колонку
-        Schema::table('promo_codes', function (Blueprint $table) {
-            $table->string('public_uuid', 36)->nullable()->after('id');
-        });
+        if (!Schema::hasColumn('promo_codes', 'public_uuid')) {
+            Schema::table('promo_codes', function (Blueprint $table) {
+                $table->string('public_uuid', 36)->nullable()->after('id');
+            });
+        }
 
         // Заполняем UUID для существующих записей
         DB::table('promo_codes')->whereNull('public_uuid')->cursor()->each(function ($promo) {
@@ -25,10 +26,17 @@ class AddPublicUuidToPromoCodesTable extends Migration
                 ->update(['public_uuid' => (string) Str::uuid()]);
         });
 
-        // Добавляем уникальный индекс (сработает если все значения уникальны)
-        Schema::table('promo_codes', function (Blueprint $table) {
-            $table->unique('public_uuid');
-        });
+        // Добавляем уникальный индекс (если ещё нет)
+        try {
+            Schema::table('promo_codes', function (Blueprint $table) {
+                $table->unique('public_uuid');
+            });
+        } catch (\Illuminate\Database\QueryException $e) {
+            // 1061 Duplicate key name — индекс уже есть, пропускаем
+            if (strpos($e->getMessage(), '1061') === false) {
+                throw $e;
+            }
+        }
     }
 
     /**
