@@ -284,172 +284,185 @@ class ShopController extends Controller
      */
     public function buy_item_ajax(Request $request)
     {
-        if (!auth()->check()) {
-            return response()->json([
-                'success' => false,
-                'message' => __('Необходимо авторизоваться')
-            ], 401);
-        }
+        try {
+            if (!auth()->check()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => __('Необходимо авторизоваться')
+                ], 401);
+            }
 
-        $validator = $this->validator($request->all());
+            $validator = $this->validator($request->all());
 
-        if ($validator->fails()) {
-            Log::channel('rcon_master')->warning('Shop buy_item_ajax validation failed', [
-                'errors' => $validator->errors()->toArray(),
-                'request' => $request->except(['_token']),
-            ]);
-            return response()->json([
-                'success' => false,
-                'message' => $validator->errors()->first() ?: __('Произошла ошибка! Попробуйте позже.'),
-                'errors' => $validator->errors()
-            ]);
-        }
+            if ($validator->fails()) {
+                Log::channel('rcon_master')->warning('Shop buy_item_ajax validation failed', [
+                    'errors' => $validator->errors()->toArray(),
+                    'request' => $request->except(['_token']),
+                ]);
+                return response()->json([
+                    'success' => false,
+                    'message' => $validator->errors()->first() ?: __('Произошла ошибка! Попробуйте позже.'),
+                    'errors' => $validator->errors()
+                ]);
+            }
 
-        $item_id = intval($request->item_id);
-        $lock = Cache::lock('shop_buy_item'.auth()->id().$item_id.'_lock', 30);
+            $item_id = intval($request->item_id);
+            $lock = Cache::lock('shop_buy_item'.auth()->id().$item_id.'_lock', 30);
 
-        if (!$lock->get()) {
-            return response()->json([
-                'success' => false,
-                'message' => __('Запрос уже обрабатывается, подождите.')
-            ]);
-        }
+            if (!$lock->get()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => __('Запрос уже обрабатывается, подождите.')
+                ]);
+            }
 
-        $server_id = $request->server_id;
-        $shopitem = ShopItem::where('id', $item_id)->where(function ($query) use ($server_id) {
-            return $query->where('server', $server_id)
-                ->orWhere('server', 0)
-                ->orWhere('servers', 'LIKE', '%"' . $server_id . '"%');
-        })->where('status', 1)->first();
+            $server_id = $request->server_id;
+            $shopitem = ShopItem::where('id', $item_id)->where(function ($query) use ($server_id) {
+                return $query->where('server', $server_id)
+                    ->orWhere('server', 0)
+                    ->orWhere('servers', 'LIKE', '%"' . $server_id . '"%');
+            })->where('status', 1)->first();
 
-        if (!$shopitem) {
-            $lock->release();
-            return response()->json([
-                'success' => false,
-                'message' => __('Товар не найден')
-            ]);
-        }
+            if (!$shopitem) {
+                $lock->release();
+                return response()->json([
+                    'success' => false,
+                    'message' => __('Товар не найден')
+                ]);
+            }
 
-        // Проверяем подарок
-        if ($shopitem->can_gift !== 1 && $request->has('steam_id') && $request->steam_id != '') {
-            $lock->release();
-            return response()->json([
-                'success' => false,
-                'message' => __('Этот товар нельзя подарить')
-            ]);
-        }
+            // Проверяем подарок
+            if ($shopitem->can_gift !== 1 && $request->has('steam_id') && $request->steam_id != '') {
+                $lock->release();
+                return response()->json([
+                    'success' => false,
+                    'message' => __('Этот товар нельзя подарить')
+                ]);
+            }
 
-        $qty = 1;
-        $priceData = getShopItemPrice($shopitem, 'rub');
-        $discountPercent = $priceData['discount_percent'];
-        $price = $priceData['discount_price'];
+            $qty = 1;
+            $priceData = getShopItemPrice($shopitem, 'rub');
+            $discountPercent = $priceData['discount_percent'];
+            $price = $priceData['discount_price'];
 
-        if ($request->var_id > 0) {
-            $variations = json_decode($shopitem->variations);
+            if ($request->var_id > 0) {
+                $variations = json_decode($shopitem->variations);
 
-            if (empty($variations)) {
+                if (empty($variations)) {
+                    $qty = abs(intval($request->qty));
+                    $price = $qty * $price;
+                } else {
+                    $variation_find = FALSE;
+                    if (isset($variations[0]->variation_id)) {
+                        foreach ($variations as $variation) {
+                            if ($variation->variation_id == $request->var_id) {
+                                $variation_find = TRUE;
+                                $varPrice = floatval($variation->variation_price);
+                                if ($discountPercent > 0) {
+                                    $price = $varPrice * (1 - $discountPercent / 100);
+                                } else {
+                                    $price = $varPrice;
+                                }
+                            }
+                        }
+                    } elseif (isset($variations[0]->quantity_id)) {
+                        foreach ($variations as $variation) {
+                            if ($variation->quantity_id == $request->var_id) {
+                                $variation_find = TRUE;
+                                $varPrice = floatval($variation->quantity_price);
+                                if ($discountPercent > 0) {
+                                    $price = $varPrice * (1 - $discountPercent / 100);
+                                } else {
+                                    $price = $varPrice;
+                                }
+                                $qty = intval($variation->quantity_amount);
+                            }
+                        }
+                    }
+
+                    if (!$variation_find) {
+                        $lock->release();
+                        return response()->json([
+                            'success' => false,
+                            'message' => __('Вариация не найдена')
+                        ]);
+                    }
+                }
+            } else {
                 $qty = abs(intval($request->qty));
                 $price = $qty * $price;
-            } else {
-                $variation_find = FALSE;
-                if (isset($variations[0]->variation_id)) {
-                    foreach ($variations as $variation) {
-                        if ($variation->variation_id == $request->var_id) {
-                            $variation_find = TRUE;
-                            $varPrice = floatval($variation->variation_price);
-                            if ($discountPercent > 0) {
-                                $price = $varPrice * (1 - $discountPercent / 100);
-                            } else {
-                                $price = $varPrice;
-                            }
-                        }
-                    }
-                } elseif (isset($variations[0]->quantity_id)) {
-                    foreach ($variations as $variation) {
-                        if ($variation->quantity_id == $request->var_id) {
-                            $variation_find = TRUE;
-                            $varPrice = floatval($variation->quantity_price);
-                            if ($discountPercent > 0) {
-                                $price = $varPrice * (1 - $discountPercent / 100);
-                            } else {
-                                $price = $varPrice;
-                            }
-                            $qty = intval($variation->quantity_amount);
-                        }
-                    }
-                }
-
-                if (!$variation_find) {
-                    $lock->release();
-                    return response()->json([
-                        'success' => false,
-                        'message' => __('Вариация не найдена')
-                    ]);
-                }
             }
-        } else {
-            $qty = abs(intval($request->qty));
-            $price = $qty * $price;
-        }
 
-        // Проверяем баланс (приводим к float для корректного сравнения)
-        $balance = floatval(auth()->user()->balance);
-        $priceFloat = floatval($price);
+            // Проверяем баланс (приводим к float для корректного сравнения)
+            $balance = floatval(auth()->user()->balance);
+            $priceFloat = floatval($price);
 
-        if ($balance < $priceFloat) {
+            if ($balance < $priceFloat) {
+                $lock->release();
+                return response()->json([
+                    'success' => false,
+                    'message' => __('Недостаточно средств на балансе'),
+                    'need_balance' => true,
+                    'price' => number_format($priceFloat, 2, ',', ' '),
+                    'balance' => number_format($balance, 2, '.', '')
+                ]);
+            }
+
+            // Определяем steam_id получателя
+            $steam_id = $request->steam_id ?? '';
+            if (empty($steam_id)) {
+                $steam_id = auth()->user()->steam_id;
+            }
+
+            // Сначала списываем баланс (быстро) и освобождаем lock — RCON может быть медленным
+            auth()->user()->decrement('balance', $priceFloat);
             $lock->release();
+
+            // Отправляем товар (RCON — может занимать несколько секунд, lock уже снят)
+            if ($this->send_item(auth()->id(), $shopitem->id, $request->var_id, $steam_id, $server_id, $qty, true, false, $priceFloat)) {
+                auth()->user()->refresh();
+                $newBalance = floatval(auth()->user()->balance);
+
+                if (app()->getLocale() != 'ru') {
+                    $formattedBalance = $newBalance / config('options.exchange_rate_usd', 70);
+                } else {
+                    $formattedBalance = $newBalance;
+                }
+                $formattedBalance = number_format($formattedBalance, 2, '.', ' ');
+
+                if (app()->getLocale() == 'ru') {
+                    $formattedBalance = $formattedBalance . ' руб.';
+                } else {
+                    $formattedBalance = '$' . $formattedBalance;
+                }
+
+                $name = "name_" . app()->getLocale();
+                return response()->json([
+                    'success' => true,
+                    'message' => __('Товар успешно куплен!'),
+                    'item_name' => $shopitem->$name,
+                    'new_balance' => $formattedBalance
+                ]);
+            }
+
+            // Ошибка отправки — возвращаем средства
+            auth()->user()->increment('balance', $priceFloat);
             return response()->json([
                 'success' => false,
-                'message' => __('Недостаточно средств на балансе'),
-                'need_balance' => true,
-                'price' => number_format($priceFloat, 2, ',', ' '),
-                'balance' => number_format($balance, 2, '.', '')
+                'message' => __('Произошла ошибка при отправке товара')
             ]);
-        }
-
-        // Определяем steam_id получателя
-        $steam_id = $request->steam_id ?? '';
-        if (empty($steam_id)) {
-            $steam_id = auth()->user()->steam_id;
-        }
-
-        // Сначала списываем баланс (быстро) и освобождаем lock — RCON может быть медленным
-        auth()->user()->decrement('balance', $priceFloat);
-        $lock->release();
-
-        // Отправляем товар (RCON — может занимать несколько секунд, lock уже снят)
-        if ($this->send_item(auth()->id(), $shopitem->id, $request->var_id, $steam_id, $server_id, $qty, true, false, $priceFloat)) {
-            auth()->user()->refresh();
-            $newBalance = floatval(auth()->user()->balance);
-
-            if (app()->getLocale() != 'ru') {
-                $formattedBalance = $newBalance / config('options.exchange_rate_usd', 70);
-            } else {
-                $formattedBalance = $newBalance;
-            }
-            $formattedBalance = number_format($formattedBalance, 2, '.', ' ');
-
-            if (app()->getLocale() == 'ru') {
-                $formattedBalance = $formattedBalance . ' руб.';
-            } else {
-                $formattedBalance = '$' . $formattedBalance;
-            }
-
-            $name = "name_" . app()->getLocale();
+        } catch (\Exception $e) {
+            Log::channel('rcon_master')->error('Shop buy_item_ajax exception', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+                'request' => $request->except(['_token']),
+            ]);
+            
             return response()->json([
-                'success' => true,
-                'message' => __('Товар успешно куплен!'),
-                'item_name' => $shopitem->$name,
-                'new_balance' => $formattedBalance
-            ]);
+                'success' => false,
+                'message' => 'Ошибка: ' . $e->getMessage()
+            ], 500);
         }
-
-        // Ошибка отправки — возвращаем средства
-        auth()->user()->increment('balance', $priceFloat);
-        return response()->json([
-            'success' => false,
-            'message' => __('Произошла ошибка при отправке товара')
-        ]);
     }
 
     public function send_item($user_id, $item_id, $var_id=0, $steam_id='', $server_id=1, $qty=1, $save_statistics=true, $show_alert=true, $paid_price=null)
@@ -649,120 +662,133 @@ class ShopController extends Controller
 
     public function buy_set_ajax(Request $request)
     {
-        if (!auth()->check()) {
+        try {
+            if (!auth()->check()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => __('Необходимо авторизоваться')
+                ], 401);
+            }
+
+            $validator = $this->validatorSet($request->all());
+
+            if ($validator->fails()) {
+                Log::channel('rcon_master')->warning('Shop buy_set_ajax validation failed', [
+                    'errors' => $validator->errors()->toArray(),
+                    'request' => $request->except(['_token']),
+                ]);
+                return response()->json([
+                    'success' => false,
+                    'message' => $validator->errors()->first() ?: __('Произошла ошибка! Попробуйте позже.'),
+                    'errors' => $validator->errors()
+                ]);
+            }
+
+            $set_id = intval($request->set_id);
+            $qty = abs(intval($request->qty));
+            $steam_id = ($request->has('steam_id') && $request->steam_id != '') ? $request->steam_id : auth()->user()->steam_id;
+
+            $lock = Cache::lock('shop_buy_set'.auth()->id().$set_id.'_lock', 30);
+
+            if (!$lock->get()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => __('Запрос уже обрабатывается, подождите.')
+                ]);
+            }
+
+            $server_id = $request->server_id;
+            $shopset = ShopSet::where('id', $set_id)->where(function ($query) use ($server_id) {
+                return $query->where('server', $server_id)
+                    ->orWhere('server', 0)
+                    ->orWhere('servers', 'LIKE', '%"' . $server_id . '"%');
+            })->where('status', 1)->first();
+
+            if (!$shopset) {
+                $lock->release();
+                return response()->json([
+                    'success' => false,
+                    'message' => __('Сет не найден')
+                ]);
+            }
+
+            // Проверяем подарок
+            if ($shopset->can_gift !== 1 && $request->has('steam_id') && $request->steam_id != '') {
+                $lock->release();
+                return response()->json([
+                    'success' => false,
+                    'message' => __('Этот сет нельзя подарить')
+                ]);
+            }
+
+            // Рассчитываем цену со скидкой
+            $priceData = getShopSetPrice($shopset, 'rub');
+            $price = $qty * $priceData['discount_price'];
+
+            // Проверяем баланс
+            $balance = floatval(auth()->user()->balance);
+            $priceFloat = floatval($price);
+
+            if ($balance < $priceFloat) {
+                $lock->release();
+                return response()->json([
+                    'success' => false,
+                    'message' => __('Недостаточно средств на балансе'),
+                    'need_balance' => true,
+                    'price' => number_format($priceFloat, 2, ',', ' '),
+                    'balance' => number_format($balance, 2, '.', '')
+                ]);
+            }
+
+            // Сначала списываем баланс и освобождаем lock — RCON может быть медленным
+            auth()->user()->decrement('balance', $priceFloat);
+            $lock->release();
+
+            // Отправляем сет (RCON — lock уже снят)
+            if ($this->send_set(auth()->id(), $shopset->id, $steam_id, $server_id, $qty)) {
+                auth()->user()->refresh();
+                $newBalance = floatval(auth()->user()->balance);
+
+                if (app()->getLocale() != 'ru') {
+                    $formattedBalance = $newBalance / config('options.exchange_rate_usd', 70);
+                } else {
+                    $formattedBalance = $newBalance;
+                }
+                $formattedBalance = number_format($formattedBalance, 2, '.', ' ');
+
+                if (app()->getLocale() == 'ru') {
+                    $formattedBalance = $formattedBalance . ' руб.';
+                } else {
+                    $formattedBalance = '$' . $formattedBalance;
+                }
+
+                $name = "name_" . app()->getLocale();
+                return response()->json([
+                    'success' => true,
+                    'message' => __('Товар успешно куплен!'),
+                    'item_name' => $shopset->$name,
+                    'new_balance' => $formattedBalance
+                ]);
+            }
+
+            // Ошибка отправки — возвращаем средства
+            auth()->user()->increment('balance', $priceFloat);
             return response()->json([
                 'success' => false,
-                'message' => __('Необходимо авторизоваться')
-            ], 401);
-        }
-
-        $validator = $this->validatorSet($request->all());
-
-        if ($validator->fails()) {
-            Log::channel('rcon_master')->warning('Shop buy_set_ajax validation failed', [
-                'errors' => $validator->errors()->toArray(),
+                'message' => __('Произошла ошибка! Попробуйте позже.')
+            ]);
+        } catch (\Exception $e) {
+            Log::channel('rcon_master')->error('Shop buy_set_ajax exception', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
                 'request' => $request->except(['_token']),
             ]);
+            
             return response()->json([
                 'success' => false,
-                'message' => $validator->errors()->first() ?: __('Произошла ошибка! Попробуйте позже.'),
-                'errors' => $validator->errors()
-            ]);
+                'message' => 'Ошибка: ' . $e->getMessage()
+            ], 500);
         }
-
-        $set_id = intval($request->set_id);
-        $qty = abs(intval($request->qty));
-        $steam_id = ($request->has('steam_id') && $request->steam_id != '') ? $request->steam_id : auth()->user()->steam_id;
-
-        $lock = Cache::lock('shop_buy_set'.auth()->id().$set_id.'_lock', 30);
-
-        if (!$lock->get()) {
-            return response()->json([
-                'success' => false,
-                'message' => __('Запрос уже обрабатывается, подождите.')
-            ]);
-        }
-
-        $server_id = $request->server_id;
-        $shopset = ShopSet::where('id', $set_id)->where(function ($query) use ($server_id) {
-            return $query->where('server', $server_id)
-                ->orWhere('server', 0)
-                ->orWhere('servers', 'LIKE', '%"' . $server_id . '"%');
-        })->where('status', 1)->first();
-
-        if (!$shopset) {
-            $lock->release();
-            return response()->json([
-                'success' => false,
-                'message' => __('Сет не найден')
-            ]);
-        }
-
-        // Проверяем подарок
-        if ($shopset->can_gift !== 1 && $request->has('steam_id') && $request->steam_id != '') {
-            $lock->release();
-            return response()->json([
-                'success' => false,
-                'message' => __('Этот сет нельзя подарить')
-            ]);
-        }
-
-        // Рассчитываем цену со скидкой
-        $priceData = getShopSetPrice($shopset, 'rub');
-        $price = $qty * $priceData['discount_price'];
-
-        // Проверяем баланс
-        $balance = floatval(auth()->user()->balance);
-        $priceFloat = floatval($price);
-
-        if ($balance < $priceFloat) {
-            $lock->release();
-            return response()->json([
-                'success' => false,
-                'message' => __('Недостаточно средств на балансе'),
-                'need_balance' => true,
-                'price' => number_format($priceFloat, 2, ',', ' '),
-                'balance' => number_format($balance, 2, '.', '')
-            ]);
-        }
-
-        // Сначала списываем баланс и освобождаем lock — RCON может быть медленным
-        auth()->user()->decrement('balance', $priceFloat);
-        $lock->release();
-
-        // Отправляем сет (RCON — lock уже снят)
-        if ($this->send_set(auth()->id(), $shopset->id, $steam_id, $server_id, $qty)) {
-            auth()->user()->refresh();
-            $newBalance = floatval(auth()->user()->balance);
-
-            if (app()->getLocale() != 'ru') {
-                $formattedBalance = $newBalance / config('options.exchange_rate_usd', 70);
-            } else {
-                $formattedBalance = $newBalance;
-            }
-            $formattedBalance = number_format($formattedBalance, 2, '.', ' ');
-
-            if (app()->getLocale() == 'ru') {
-                $formattedBalance = $formattedBalance . ' руб.';
-            } else {
-                $formattedBalance = '$' . $formattedBalance;
-            }
-
-            $name = "name_" . app()->getLocale();
-            return response()->json([
-                'success' => true,
-                'message' => __('Товар успешно куплен!'),
-                'item_name' => $shopset->$name,
-                'new_balance' => $formattedBalance
-            ]);
-        }
-
-        // Ошибка отправки — возвращаем средства
-        auth()->user()->increment('balance', $priceFloat);
-        return response()->json([
-            'success' => false,
-            'message' => __('Произошла ошибка! Попробуйте позже.')
-        ]);
     }
 
     public function buy_set(Request $request)
