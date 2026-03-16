@@ -26,50 +26,22 @@ class RustGameApi
     }
     public static function getOnlineCount()
     {
-        $data = [
-            'count' => 0,
-            'count_max' => 0,
-            'queued' => 0,
-        ];
-        $result = RustCON::sendCommand('status');
-
-        Log::channel('rcon')->info('Method: getOnlineCount. Result RCON: ' . print_r($result, 1));
-
-        if (!$result) return $data;
-
-        $count = 0;
-        $count_max = 0;
-        $queued = 0;
-        $result = explode("players : ", $result->Message);
-        if (isset($result[1])) {
-            $result5 = explode(" queued", $result[1]);
-            if (isset($result5[0])) {
-                $result5 = explode("max) (", $result5[0]);
-                if (isset($result5[1])) {
-                    $queued = $result5[1];
-                }
-            }
-            $result = explode(" queued", $result[1]);
-            if (isset($result[0])) {
-                $result1 = explode(" max)", $result[0]);
-                if (isset($result1[0])) {
-                    $result4 = explode(" (", $result1[0]);
-                    if (isset($result4[0])) {
-                        $count = $result4[0];
-                    }
-                }
-                $result2 = explode(" (", $result[0]);
-                if (isset($result2[1])) {
-                    $result3 = explode(" max)", $result2[1]);
-                    $count_max = $result3[0];
-                }
-            }
+        $server_id = session('server_id', 1);
+        
+        $serverOnline = \App\Models\ServerOnline::where('server_id', $server_id)->first();
+        
+        if (!$serverOnline) {
+            return [
+                'count' => 0,
+                'count_max' => 0,
+                'queued' => 0,
+            ];
         }
 
         $data = [
-            'count'     => $count,
-            'count_max' => $count_max,
-            'queued'    => $queued,
+            'count'     => $serverOnline->online_count,
+            'count_max' => $serverOnline->online_max,
+            'queued'    => $serverOnline->online_queued,
         ];
 
         Log::channel('rcon')->info('Method: getOnlineCount. Result count: ' . print_r($data, 1));
@@ -79,12 +51,14 @@ class RustGameApi
 
     public static function getPlayersOnline()
     {
-        $result = RustCON::sendCommand('status');
+        $server_id = session('server_id', 1);
+        
+        $serverOnline = \App\Models\ServerOnline::where('server_id', $server_id)->first();
 
-        if (!$result) return '';
+        if (!$serverOnline || !$serverOnline->players_data) return [];
 
         $players = [];
-        $result = explode("kicks ", $result->Message);
+        $result = explode("kicks ", $serverOnline->players_data);
         if (isset($result[1])) {
             $result1 = explode("\r\n", $result[1]);
             if (isset($result1[0])) {
@@ -121,7 +95,8 @@ class RustGameApi
 
     public static function sendServiceToGame($command)
     {
-        $result = RustCON::sendCommand($command);
+        $server_id = session('server_id', 1);
+        $result = RustCON::sendCommand($command, $server_id);
 
         Log::channel('rcon')->info('Method: sendServiceToGame. Result: ' . print_r($result, 1));
 
@@ -132,9 +107,6 @@ class RustGameApi
         if (isset($result->Message) && (strpos($result->Message, 'Added to group') !== FALSE || strpos($result->Message, 'time extended') !== FALSE || strpos($result->Message, 'ermission granted') !== FALSE || strpos($result->Message, 'успешно') !== FALSE || strpos($result->Message, 'granted permission') !== FALSE)) {
             return TRUE;
         }
-
-        //Ставим блок, чтобы не выдало пока не придет ответ с игрового сервера, доставлена услуга или нет
-        Cache::put('transferServiceGameServer'.json_encode($command).'_lock', true, 30);
 
         return FALSE;
     }

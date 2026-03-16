@@ -20,3 +20,706 @@
 [2026-01-10 22:00:25] production.INFO: Message: hostnameResult: {"Message":"hostname: RustResort.com - EU Vanilla | 2X Monday 05.01\nversion : 2617 secure (secure mode enabled, connected to Steam3)\nmap     : Procedural Map\nplayers : 41 (200 max) (0 queued) (0 joining)\n\nid                name                  ping connected addr                  owner violation kicks entityId  \r\n76561199144003631 \"\u042f\u0421\u041f\u0415\u0420 \u041c\u0410\u0413\u041b\u041e\u0422\"        7    1779.385s 95.106.141.42:59104         0.0       0     238137785 \r\n76561199784177636 \"wsx\"                 10   23367.9s  95.161.223.70:58607         0.0       0     247461194 \r\n76561199353548858 \"I'm| \u042f\u043c\u0430\u0439\u043a\u0430\"         33   6194.6s   94.233.237.183:5642         0.0       0     249740904 \r\n76561199545089120 \"Lost``\"              35   8992.207s 193.0.151.186:3223          0.0       0     208409917 \r\n76561198774506835 \"spokoynich\"          86   11525.62s 213.135.157.88:9353         0.0       0     246776425 \r\n76561199049668110 \"44\"                  2    20628.47s 188.32.9.222:51486          0.0       0     237223786 \r\n76561199642533855 \"(BITW) \u0416\u0438\u0440\u043d\u044b\u0439_\u0421\u0418\u041c\u041f\u041b\" 12   18587.22s 109.252.117.226:2606        0.0       0     248356616 \r\n76561199783082623 \"Absolute pubertat\"   101  194.5761s 31.128.247.66:56419         0.0       0     246645815 \r\n76561199182528192 \"KNAEZY#bloodrust\"    87   9993.13s  212.164.29.238:3983         0.0       1     245620391 \r\n76561198794198659 \"3fps\"                4    8329.894s 95.24.150.19:61727          0.0       0     199074830 \r\n76561198168666527 \"SplitteR\"            80   8968.638s 81.43.241.89:56473          0.0       0     249875886 \r\n76561198365874603 \"\u041e\u043b\u0435\u041d\u0435\u0433\u0440\"             12   13279.81s 109.161.50.71:8811          0.0       0     244328113 \r\n76561199647496956 \"donat1c\"             3    31716.65s 158.160.213.230:60209       0.0       0     246148076 \r\n76561199808477672 \"\u0433\u0435\u043d\u0430\u0446\u044b\u0434\u0430\u0440\u043c\u044f\u043d\"        68   41101.31s 188.186.212.27:13267        0.0       0     244813236 \r\n76561198108879958 \"\u0416\u0435\u043d\u044f\"                26   6264.029s 178.172.246.22:54279        0.0       0     249440557 \r\n76561199794609827 \"\u0416\u041e\u041f\u0410 \u0416\u041e\u041f\u0410\u0412\u0418\u0427\"        9    18315.21s 95.32.123.171:54282         0.0       0     201713868 \r\n76561199814247414 \"RDH | AnalKiller228\" 12   18881.06s 87.248.238.222:13856        0.0       0     239019107 \r\n76561198755911107 \"Qesy\"                10   4613.613s 81.18.155.9:55938           0.0       0     247894605 \r\n76561199872049201 \"EKHO017\"             36   24616.64s 178.35.95.211:52704         0.0       0     244250399 \r\n76561198171042165 \"Dark\"                32   30598.12s 213.147.198.75:50036        0.0       0     184640205 \r\n76561199886311078 \"timka\"               83   17323.94s 46.55.115.130:1155          0.0       0     237454320 \r\n76561199302403535 \"qqwesfeel\"           32   4836.84s  31.148.217.201:55935        0.0       0     241959185 \r\n76561199404739195 \"alex456\"             8    34354.43s 176.106.246.207:55827       0.0       0     188132600 \r\n76561199505195633 \"\u041d\u044f\u0448\u043a\u0430\"               2    6010.636s 46.242.9.159:1481           0.0       0     198622287 \r\n76561199849570671 \"joselm13\"            108  8890.913s 81.43.241.89:55662          0.0       0     249890091 \r\n76561198766941782 \"dizay?ezz\"           28   11405.95s 37.78.181.233:64172         0.0       0     248774598 \r\n76561198054319288 \"LIL A$AP THUG 52\"    4    1271.289s 91.107.118.130:59450        0.0       0     70833230  \r\n76561199382925582 \"Kozi1r\"              7    7993.256s 46.138.116.182:2420         0.0       0     250142563 \r\n76561199405923123 \"\u041f\u043e\u0434\u041f\u0438\u0432\u0430\u0441\"            50   20819.01s 46.42.238.56:64478          0.0       0     244813656 \r\n76561199667844902 \"Kiaws\"               2    10028.12s 91.188.171.114:1329         0.0       0     248083379 \r\n76561198963552642 \"\u0421\u043d\u0435\u0433\u0440\u0443\u0440\u043e\u0447\u043a\u0430\"         16   15760.79s 46.138.166.83:1489          0.0       0     241282041 \r\n76561199799014259 \"liquid\"              32   10376.68s 45.136.251.146:53220        0.0       0     219857961 \r\n76561199438815917 \"Y2k\"                 17   834.7527s 141.101.229.72:51209        0.0       0     251281345 \r\n76561199804071255 \"RDH | FIREDEMON\"     12   2489.931s 185.97.202.190:60478        0.0       0     250990780 \r\n76561198793303799 \"R12\/\u271e\ufe0e\u2661\ufe0e\ud835\ude97\ud835\ude8e\ud835\ude94\ud835\ude98\"    5    13875.2s  46.138.214.127:1917         0.0       0     202019285 \r\n76561199036362983 \"Silense_1\"           307  2896.604s 47.63.202.77:53516          0.0       0     237424224 \r\n76561198782248252 \"byismo19\"            82   4023.94s  213.194.156.187:5842        0.0       0     250768995 \r\n76561199709179952 \"Smill\"               11   5677.336s 82.208.125.105:17173        0.0       0     246911333 \r\n76561199823825509 \"3iuo\"                15   5840.227s 5.187.87.215:1258           0.0       0     246261679 \r\n76561199273855782 \"CyaLu\"               37   2775.318s 94.243.12.146:4818          0.0       0     228814817 \r\n76561199486307131 \"DaHR\"                37   629.4678s 77.43.156.123:1135          0.0       0     251271326 \r\n","Identifier":0,"Type":"Generic","Stacktrace":""}Result Message: 1
                                
 [2026-01-10 22:00:25] production.INFO: Rcon online_data: {"Message":"hostname: RustResort.com - EU Vanilla | 2X Monday 05.01\nversion : 2617 secure (secure mode enabled, connected to Steam3)\nmap     : Procedural Map\nplayers : 41 (200 max) (0 queued) (0 joining)\n\nid                name                  ping connected addr                  owner violation kicks entityId  \r\n76561199144003631 \"\u042f\u0421\u041f\u0415\u0420 \u041c\u0410\u0413\u041b\u041e\u0422\"        7    1779.385s 95.106.141.42:59104         0.0       0     238137785 \r\n76561199784177636 \"wsx\"                 10   23367.9s  95.161.223.70:58607         0.0       0     247461194 \r\n76561199353548858 \"I'm| \u042f\u043c\u0430\u0439\u043a\u0430\"         33   6194.6s   94.233.237.183:5642         0.0       0     249740904 \r\n76561199545089120 \"Lost``\"              35   8992.207s 193.0.151.186:3223          0.0       0     208409917 \r\n76561198774506835 \"spokoynich\"          86   11525.62s 213.135.157.88:9353         0.0       0     246776425 \r\n76561199049668110 \"44\"                  2    20628.47s 188.32.9.222:51486          0.0       0     237223786 \r\n76561199642533855 \"(BITW) \u0416\u0438\u0440\u043d\u044b\u0439_\u0421\u0418\u041c\u041f\u041b\" 12   18587.22s 109.252.117.226:2606        0.0       0     248356616 \r\n76561199783082623 \"Absolute pubertat\"   101  194.5761s 31.128.247.66:56419         0.0       0     246645815 \r\n76561199182528192 \"KNAEZY#bloodrust\"    87   9993.13s  212.164.29.238:3983         0.0       1     245620391 \r\n76561198794198659 \"3fps\"                4    8329.894s 95.24.150.19:61727          0.0       0     199074830 \r\n76561198168666527 \"SplitteR\"            80   8968.638s 81.43.241.89:56473          0.0       0     249875886 \r\n76561198365874603 \"\u041e\u043b\u0435\u041d\u0435\u0433\u0440\"             12   13279.81s 109.161.50.71:8811          0.0       0     244328113 \r\n76561199647496956 \"donat1c\"             3    31716.65s 158.160.213.230:60209       0.0       0     246148076 \r\n76561199808477672 \"\u0433\u0435\u043d\u0430\u0446\u044b\u0434\u0430\u0440\u043c\u044f\u043d\"        68   41101.31s 188.186.212.27:13267        0.0       0     244813236 \r\n76561198108879958 \"\u0416\u0435\u043d\u044f\"                26   6264.029s 178.172.246.22:54279        0.0       0     249440557 \r\n76561199794609827 \"\u0416\u041e\u041f\u0410 \u0416\u041e\u041f\u0410\u0412\u0418\u0427\"        9    18315.21s 95.32.123.171:54282         0.0       0     201713868 \r\n76561199814247414 \"RDH | AnalKiller228\" 12   18881.06s 87.248.238.222:13856        0.0       0     239019107 \r\n76561198755911107 \"Qesy\"                10   4613.613s 81.18.155.9:55938           0.0       0     247894605 \r\n76561199872049201 \"EKHO017\"             36   24616.64s 178.35.95.211:52704         0.0       0     244250399 \r\n76561198171042165 \"Dark\"                32   30598.12s 213.147.198.75:50036        0.0       0     184640205 \r\n76561199886311078 \"timka\"               83   17323.94s 46.55.115.130:1155          0.0       0     237454320 \r\n76561199302403535 \"qqwesfeel\"           32   4836.84s  31.148.217.201:55935        0.0       0     241959185 \r\n76561199404739195 \"alex456\"             8    34354.43s 176.106.246.207:55827       0.0       0     188132600 \r\n76561199505195633 \"\u041d\u044f\u0448\u043a\u0430\"               2    6010.636s 46.242.9.159:1481           0.0       0     198622287 \r\n76561199849570671 \"joselm13\"            108  8890.913s 81.43.241.89:55662          0.0       0     249890091 \r\n76561198766941782 \"dizay?ezz\"           28   11405.95s 37.78.181.233:64172         0.0       0     248774598 \r\n76561198054319288 \"LIL A$AP THUG 52\"    4    1271.289s 91.107.118.130:59450        0.0       0     70833230  \r\n76561199382925582 \"Kozi1r\"              7    7993.256s 46.138.116.182:2420         0.0       0     250142563 \r\n76561199405923123 \"\u041f\u043e\u0434\u041f\u0438\u0432\u0430\u0441\"            50   20819.01s 46.42.238.56:64478          0.0       0     244813656 \r\n76561199667844902 \"Kiaws\"               2    10028.12s 91.188.171.114:1329         0.0       0     248083379 \r\n76561198963552642 \"\u0421\u043d\u0435\u0433\u0440\u0443\u0440\u043e\u0447\u043a\u0430\"         16   15760.79s 46.138.166.83:1489          0.0       0     241282041 \r\n76561199799014259 \"liquid\"              32   10376.68s 45.136.251.146:53220        0.0       0     219857961 \r\n76561199438815917 \"Y2k\"                 17   834.7527s 141.101.229.72:51209        0.0       0     251281345 \r\n76561199804071255 \"RDH | FIREDEMON\"     12   2489.931s 185.97.202.190:60478        0.0       0     250990780 \r\n76561198793303799 \"R12\/\u271e\ufe0e\u2661\ufe0e\ud835\ude97\ud835\ude8e\ud835\ude94\ud835\ude98\"    5    13875.2s  46.138.214.127:1917         0.0       0     202019285 \r\n76561199036362983 \"Silense_1\"           307  2896.604s 47.63.202.77:53516          0.0       0     237424224 \r\n76561198782248252 \"byismo19\"            82   4023.94s  213.194.156.187:5842        0.0       0     250768995 \r\n76561199709179952 \"Smill\"               11   5677.336s 82.208.125.105:17173        0.0       0     246911333 \r\n76561199823825509 \"3iuo\"                15   5840.227s 5.187.87.215:1258           0.0       0     246261679 \r\n76561199273855782 \"CyaLu\"               37   2775.318s 94.243.12.146:4818          0.0       0     228814817 \r\n76561199486307131 \"DaHR\"                37   629.4678s 77.43.156.123:1135          0.0       0     251271326 \r\n","Identifier":0,"Type":"Generic","Stacktrace":""}  
+[2026-03-13 14:25:32] local.INFO: Processing server: 2  
+[2026-03-13 14:25:32] local.INFO: Connected to server 2  
+[2026-03-13 14:25:37] local.ERROR: Failed to send command to server 2: Client handshake error  
+[2026-03-13 14:25:37] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:25:37] local.INFO: Processing server: 3  
+[2026-03-13 14:25:37] local.INFO: Connected to server 3  
+[2026-03-13 14:25:39] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:25:39] local.INFO: Server 3 online data received  
+[2026-03-13 14:25:39] local.INFO: Server 3 online: 20/200, queued: 0  
+[2026-03-13 14:25:39] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:26:00] local.INFO: Processing server: 2  
+[2026-03-13 14:26:00] local.INFO: Connected to server 2  
+[2026-03-13 14:26:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:26:01] local.INFO: Server 2 online data received  
+[2026-03-13 14:26:01] local.INFO: Server 2 online: 272/300, queued: 0  
+[2026-03-13 14:26:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:26:01] local.INFO: Processing server: 3  
+[2026-03-13 14:26:01] local.INFO: Connected to server 3  
+[2026-03-13 14:26:02] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:26:02] local.INFO: Server 3 online data received  
+[2026-03-13 14:26:02] local.INFO: Server 3 online: 20/200, queued: 0  
+[2026-03-13 14:26:02] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:26:17] local.INFO: Processing server: 2  
+[2026-03-13 14:26:17] local.INFO: Connected to server 2  
+[2026-03-13 14:27:00] local.INFO: Processing server: 2  
+[2026-03-13 14:27:00] local.INFO: Connected to server 2  
+[2026-03-13 14:27:00] local.INFO: Processing server: 2  
+[2026-03-13 14:27:00] local.INFO: Connected to server 2  
+[2026-03-13 14:27:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:27:01] local.INFO: Server 2 online data received  
+[2026-03-13 14:27:01] local.INFO: Server 2 online: 271/300, queued: 0  
+[2026-03-13 14:27:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:27:01] local.INFO: Processing server: 3  
+[2026-03-13 14:27:01] local.INFO: Connected to server 3  
+[2026-03-13 14:27:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:27:01] local.INFO: Server 2 online data received  
+[2026-03-13 14:27:01] local.INFO: Server 2 online: 271/300, queued: 0  
+[2026-03-13 14:27:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:27:01] local.INFO: Processing server: 3  
+[2026-03-13 14:27:01] local.INFO: Connected to server 3  
+[2026-03-13 14:27:02] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:27:02] local.INFO: Server 3 online data received  
+[2026-03-13 14:27:02] local.INFO: Server 3 online: 21/200, queued: 0  
+[2026-03-13 14:27:02] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:27:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:27:03] local.INFO: Server 3 online data received  
+[2026-03-13 14:27:03] local.INFO: Server 3 online: 21/200, queued: 0  
+[2026-03-13 14:27:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:28:00] local.INFO: Processing server: 2  
+[2026-03-13 14:28:00] local.INFO: Connected to server 2  
+[2026-03-13 14:28:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:28:01] local.INFO: Server 2 online data received  
+[2026-03-13 14:28:02] local.INFO: Server 2 online: 269/300, queued: 0  
+[2026-03-13 14:28:02] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:28:02] local.INFO: Processing server: 3  
+[2026-03-13 14:28:02] local.INFO: Connected to server 3  
+[2026-03-13 14:28:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:28:03] local.INFO: Server 3 online data received  
+[2026-03-13 14:28:03] local.INFO: Server 3 online: 20/200, queued: 0  
+[2026-03-13 14:28:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:29:00] local.INFO: Processing server: 2  
+[2026-03-13 14:29:00] local.INFO: Connected to server 2  
+[2026-03-13 14:29:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:29:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:29:01] local.INFO: Processing server: 3  
+[2026-03-13 14:29:01] local.INFO: Connected to server 3  
+[2026-03-13 14:29:02] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:29:02] local.INFO: Server 3 online data received  
+[2026-03-13 14:29:02] local.INFO: Server 3 online: 20/200, queued: 0  
+[2026-03-13 14:29:02] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:30:00] local.INFO: Processing server: 2  
+[2026-03-13 14:30:00] local.INFO: Connected to server 2  
+[2026-03-13 14:30:02] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:30:02] local.INFO: Server 2 online data received  
+[2026-03-13 14:30:02] local.INFO: Server 2 online: 274/300, queued: 0  
+[2026-03-13 14:30:02] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:30:02] local.INFO: Processing server: 3  
+[2026-03-13 14:30:02] local.INFO: Connected to server 3  
+[2026-03-13 14:30:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:30:03] local.INFO: Server 3 online data received  
+[2026-03-13 14:30:03] local.INFO: Server 3 online: 18/200, queued: 0  
+[2026-03-13 14:30:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:31:00] local.INFO: Processing server: 2  
+[2026-03-13 14:31:00] local.INFO: Connected to server 2  
+[2026-03-13 14:31:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:31:01] local.INFO: Server 2 online data received  
+[2026-03-13 14:31:01] local.INFO: Server 2 online: 273/300, queued: 0  
+[2026-03-13 14:31:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:31:01] local.INFO: Processing server: 3  
+[2026-03-13 14:31:01] local.INFO: Connected to server 3  
+[2026-03-13 14:31:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:31:03] local.INFO: Server 3 online data received  
+[2026-03-13 14:31:03] local.INFO: Server 3 online: 19/200, queued: 0  
+[2026-03-13 14:31:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:32:00] local.INFO: Processing server: 2  
+[2026-03-13 14:32:00] local.INFO: Connected to server 2  
+[2026-03-13 14:32:02] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:32:02] local.INFO: Server 2 online data received  
+[2026-03-13 14:32:02] local.INFO: Server 2 online: 271/300, queued: 0  
+[2026-03-13 14:32:02] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:32:02] local.INFO: Processing server: 3  
+[2026-03-13 14:32:02] local.INFO: Connected to server 3  
+[2026-03-13 14:32:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:32:03] local.INFO: Server 3 online data received  
+[2026-03-13 14:32:03] local.INFO: Server 3 online: 19/200, queued: 0  
+[2026-03-13 14:32:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:33:00] local.INFO: Processing server: 2  
+[2026-03-13 14:33:00] local.INFO: Connected to server 2  
+[2026-03-13 14:33:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:33:01] local.INFO: Server 2 online data received  
+[2026-03-13 14:33:01] local.INFO: Server 2 online: 273/300, queued: 0  
+[2026-03-13 14:33:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:33:02] local.INFO: Processing server: 3  
+[2026-03-13 14:33:02] local.INFO: Connected to server 3  
+[2026-03-13 14:33:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:33:03] local.INFO: Server 3 online data received  
+[2026-03-13 14:33:03] local.INFO: Server 3 online: 19/200, queued: 0  
+[2026-03-13 14:33:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:34:00] local.INFO: Processing server: 2  
+[2026-03-13 14:34:00] local.INFO: Connected to server 2  
+[2026-03-13 14:34:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:34:01] local.INFO: Server 2 online data received  
+[2026-03-13 14:34:01] local.INFO: Server 2 online: 274/300, queued: 0  
+[2026-03-13 14:34:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:34:01] local.INFO: Processing server: 3  
+[2026-03-13 14:34:01] local.INFO: Connected to server 3  
+[2026-03-13 14:34:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:34:03] local.INFO: Server 3 online data received  
+[2026-03-13 14:34:03] local.INFO: Server 3 online: 20/200, queued: 0  
+[2026-03-13 14:34:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:35:00] local.INFO: Processing server: 2  
+[2026-03-13 14:35:00] local.INFO: Connected to server 2  
+[2026-03-13 14:35:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:35:01] local.INFO: Server 2 online data received  
+[2026-03-13 14:35:01] local.INFO: Server 2 online: 276/300, queued: 0  
+[2026-03-13 14:35:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:35:01] local.INFO: Processing server: 3  
+[2026-03-13 14:35:01] local.INFO: Connected to server 3  
+[2026-03-13 14:35:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:35:03] local.INFO: Server 3 online data received  
+[2026-03-13 14:35:03] local.INFO: Server 3 online: 20/200, queued: 0  
+[2026-03-13 14:35:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:36:00] local.INFO: Processing server: 2  
+[2026-03-13 14:36:00] local.INFO: Connected to server 2  
+[2026-03-13 14:36:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:36:01] local.INFO: Server 2 online data received  
+[2026-03-13 14:36:01] local.INFO: Server 2 online: 278/300, queued: 0  
+[2026-03-13 14:36:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:36:01] local.INFO: Processing server: 3  
+[2026-03-13 14:36:01] local.INFO: Connected to server 3  
+[2026-03-13 14:36:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:36:03] local.INFO: Server 3 online data received  
+[2026-03-13 14:36:03] local.INFO: Server 3 online: 20/200, queued: 0  
+[2026-03-13 14:36:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:37:00] local.INFO: Processing server: 2  
+[2026-03-13 14:37:00] local.INFO: Connected to server 2  
+[2026-03-13 14:37:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:37:01] local.INFO: Server 2 online data received  
+[2026-03-13 14:37:01] local.INFO: Server 2 online: 281/300, queued: 0  
+[2026-03-13 14:37:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:37:01] local.INFO: Processing server: 3  
+[2026-03-13 14:37:01] local.INFO: Connected to server 3  
+[2026-03-13 14:37:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:37:03] local.INFO: Server 3 online data received  
+[2026-03-13 14:37:03] local.INFO: Server 3 online: 20/200, queued: 0  
+[2026-03-13 14:37:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:38:00] local.INFO: Processing server: 2  
+[2026-03-13 14:38:00] local.INFO: Connected to server 2  
+[2026-03-13 14:38:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:38:01] local.INFO: Server 2 online data received  
+[2026-03-13 14:38:01] local.INFO: Server 2 online: 284/300, queued: 0  
+[2026-03-13 14:38:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:38:01] local.INFO: Processing server: 3  
+[2026-03-13 14:38:01] local.INFO: Connected to server 3  
+[2026-03-13 14:38:02] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:38:02] local.INFO: Server 3 online data received  
+[2026-03-13 14:38:02] local.INFO: Server 3 online: 20/200, queued: 0  
+[2026-03-13 14:38:02] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:39:00] local.INFO: Processing server: 2  
+[2026-03-13 14:39:00] local.INFO: Connected to server 2  
+[2026-03-13 14:39:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:39:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:39:01] local.INFO: Processing server: 3  
+[2026-03-13 14:39:01] local.INFO: Connected to server 3  
+[2026-03-13 14:39:02] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:39:02] local.INFO: Server 3 online data received  
+[2026-03-13 14:39:02] local.INFO: Server 3 online: 21/200, queued: 0  
+[2026-03-13 14:39:02] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:40:00] local.INFO: Processing server: 2  
+[2026-03-13 14:40:00] local.INFO: Connected to server 2  
+[2026-03-13 14:40:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:40:01] local.INFO: Server 2 online data received  
+[2026-03-13 14:40:01] local.INFO: Server 2 online: 279/300, queued: 0  
+[2026-03-13 14:40:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:40:01] local.INFO: Processing server: 3  
+[2026-03-13 14:40:01] local.INFO: Connected to server 3  
+[2026-03-13 14:40:02] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:40:02] local.INFO: Server 3 online data received  
+[2026-03-13 14:40:02] local.INFO: Server 3 online: 21/200, queued: 0  
+[2026-03-13 14:40:02] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:41:00] local.INFO: Processing server: 2  
+[2026-03-13 14:41:00] local.INFO: Connected to server 2  
+[2026-03-13 14:41:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:41:01] local.INFO: Server 2 online data received  
+[2026-03-13 14:41:01] local.INFO: Server 2 online: 286/300, queued: 1  
+[2026-03-13 14:41:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:41:01] local.INFO: Processing server: 3  
+[2026-03-13 14:41:01] local.INFO: Connected to server 3  
+[2026-03-13 14:41:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:41:03] local.INFO: Server 3 online data received  
+[2026-03-13 14:41:03] local.INFO: Server 3 online: 21/200, queued: 0  
+[2026-03-13 14:41:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:42:00] local.INFO: Processing server: 2  
+[2026-03-13 14:42:00] local.INFO: Connected to server 2  
+[2026-03-13 14:42:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:42:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:42:01] local.INFO: Processing server: 3  
+[2026-03-13 14:42:01] local.INFO: Connected to server 3  
+[2026-03-13 14:42:02] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:42:02] local.INFO: Server 3 online data received  
+[2026-03-13 14:42:02] local.INFO: Server 3 online: 21/200, queued: 0  
+[2026-03-13 14:42:02] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:43:00] local.INFO: Processing server: 2  
+[2026-03-13 14:43:00] local.INFO: Connected to server 2  
+[2026-03-13 14:43:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:43:01] local.INFO: Server 2 online data received  
+[2026-03-13 14:43:01] local.INFO: Server 2 online: 285/300, queued: 5  
+[2026-03-13 14:43:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:43:01] local.INFO: Processing server: 3  
+[2026-03-13 14:43:01] local.INFO: Connected to server 3  
+[2026-03-13 14:43:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:43:03] local.INFO: Server 3 online data received  
+[2026-03-13 14:43:03] local.INFO: Server 3 online: 21/200, queued: 0  
+[2026-03-13 14:43:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:44:00] local.INFO: Processing server: 2  
+[2026-03-13 14:44:00] local.INFO: Connected to server 2  
+[2026-03-13 14:44:02] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:44:02] local.INFO: Server 2 online data received  
+[2026-03-13 14:44:02] local.INFO: Server 2 online: 283/300, queued: 6  
+[2026-03-13 14:44:02] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:44:02] local.INFO: Processing server: 3  
+[2026-03-13 14:44:02] local.INFO: Connected to server 3  
+[2026-03-13 14:44:04] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:44:04] local.INFO: Server 3 online data received  
+[2026-03-13 14:44:04] local.INFO: Server 3 online: 21/200, queued: 0  
+[2026-03-13 14:44:04] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:45:00] local.INFO: Processing server: 2  
+[2026-03-13 14:45:00] local.INFO: Connected to server 2  
+[2026-03-13 14:45:02] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:45:02] local.INFO: Server 2 online data received  
+[2026-03-13 14:45:02] local.INFO: Server 2 online: 285/300, queued: 7  
+[2026-03-13 14:45:02] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:45:02] local.INFO: Processing server: 3  
+[2026-03-13 14:45:02] local.INFO: Connected to server 3  
+[2026-03-13 14:45:04] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:45:04] local.INFO: Server 3 online data received  
+[2026-03-13 14:45:04] local.INFO: Server 3 online: 21/200, queued: 0  
+[2026-03-13 14:45:04] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:46:00] local.INFO: Processing server: 2  
+[2026-03-13 14:46:00] local.INFO: Connected to server 2  
+[2026-03-13 14:46:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:46:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:46:01] local.INFO: Processing server: 3  
+[2026-03-13 14:46:01] local.INFO: Connected to server 3  
+[2026-03-13 14:46:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:46:03] local.INFO: Server 3 online data received  
+[2026-03-13 14:46:03] local.INFO: Server 3 online: 22/200, queued: 0  
+[2026-03-13 14:46:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:47:00] local.INFO: Processing server: 2  
+[2026-03-13 14:47:00] local.INFO: Connected to server 2  
+[2026-03-13 14:47:02] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:47:02] local.INFO: Server 2 online data received  
+[2026-03-13 14:47:02] local.INFO: Server 2 online: 286/300, queued: 7  
+[2026-03-13 14:47:02] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:47:02] local.INFO: Processing server: 3  
+[2026-03-13 14:47:02] local.INFO: Connected to server 3  
+[2026-03-13 14:47:04] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:47:04] local.INFO: Server 3 online data received  
+[2026-03-13 14:47:04] local.INFO: Server 3 online: 21/200, queued: 0  
+[2026-03-13 14:47:04] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:48:00] local.INFO: Processing server: 2  
+[2026-03-13 14:48:00] local.INFO: Connected to server 2  
+[2026-03-13 14:48:02] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:48:02] local.INFO: Server 2 online data received  
+[2026-03-13 14:48:02] local.INFO: Server 2 online: 286/300, queued: 10  
+[2026-03-13 14:48:02] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:48:02] local.INFO: Processing server: 3  
+[2026-03-13 14:48:02] local.INFO: Connected to server 3  
+[2026-03-13 14:48:04] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:48:04] local.INFO: Server 3 online data received  
+[2026-03-13 14:48:04] local.INFO: Server 3 online: 21/200, queued: 0  
+[2026-03-13 14:48:04] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:49:00] local.INFO: Processing server: 2  
+[2026-03-13 14:49:00] local.INFO: Connected to server 2  
+[2026-03-13 14:49:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:49:01] local.INFO: Server 2 online data received  
+[2026-03-13 14:49:01] local.INFO: Server 2 online: 288/300, queued: 11  
+[2026-03-13 14:49:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:49:01] local.INFO: Processing server: 3  
+[2026-03-13 14:49:01] local.INFO: Connected to server 3  
+[2026-03-13 14:49:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:49:03] local.INFO: Server 3 online data received  
+[2026-03-13 14:49:03] local.INFO: Server 3 online: 22/200, queued: 0  
+[2026-03-13 14:49:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:50:00] local.INFO: Processing server: 2  
+[2026-03-13 14:50:00] local.INFO: Connected to server 2  
+[2026-03-13 14:50:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:50:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:50:01] local.INFO: Processing server: 3  
+[2026-03-13 14:50:01] local.INFO: Connected to server 3  
+[2026-03-13 14:50:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:50:03] local.INFO: Server 3 online data received  
+[2026-03-13 14:50:03] local.INFO: Server 3 online: 22/200, queued: 0  
+[2026-03-13 14:50:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:51:00] local.INFO: Processing server: 2  
+[2026-03-13 14:51:00] local.INFO: Connected to server 2  
+[2026-03-13 14:51:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:51:01] local.INFO: Server 2 online data received  
+[2026-03-13 14:51:01] local.INFO: Server 2 online: 287/300, queued: 15  
+[2026-03-13 14:51:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:51:01] local.INFO: Processing server: 3  
+[2026-03-13 14:51:01] local.INFO: Connected to server 3  
+[2026-03-13 14:51:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:51:03] local.INFO: Server 3 online data received  
+[2026-03-13 14:51:03] local.INFO: Server 3 online: 22/200, queued: 0  
+[2026-03-13 14:51:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:52:00] local.INFO: Processing server: 2  
+[2026-03-13 14:52:00] local.INFO: Connected to server 2  
+[2026-03-13 14:52:02] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:52:02] local.INFO: Server 2 online data received  
+[2026-03-13 14:52:02] local.INFO: Server 2 online: 289/300, queued: 14  
+[2026-03-13 14:52:02] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:52:02] local.INFO: Processing server: 3  
+[2026-03-13 14:52:02] local.INFO: Connected to server 3  
+[2026-03-13 14:52:04] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:52:04] local.INFO: Server 3 online data received  
+[2026-03-13 14:52:04] local.INFO: Server 3 online: 22/200, queued: 0  
+[2026-03-13 14:52:04] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:53:00] local.INFO: Processing server: 2  
+[2026-03-13 14:53:00] local.INFO: Connected to server 2  
+[2026-03-13 14:53:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:53:01] local.INFO: Server 2 online data received  
+[2026-03-13 14:53:01] local.INFO: Server 2 online: 288/300, queued: 18  
+[2026-03-13 14:53:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:53:01] local.INFO: Processing server: 3  
+[2026-03-13 14:53:01] local.INFO: Connected to server 3  
+[2026-03-13 14:53:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:53:03] local.INFO: Server 3 online data received  
+[2026-03-13 14:53:03] local.INFO: Server 3 online: 23/200, queued: 0  
+[2026-03-13 14:53:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:54:00] local.INFO: Processing server: 2  
+[2026-03-13 14:54:00] local.INFO: Connected to server 2  
+[2026-03-13 14:54:02] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:54:02] local.INFO: Server 2 online data received  
+[2026-03-13 14:54:02] local.INFO: Server 2 online: 287/300, queued: 20  
+[2026-03-13 14:54:02] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:54:02] local.INFO: Processing server: 3  
+[2026-03-13 14:54:02] local.INFO: Connected to server 3  
+[2026-03-13 14:54:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:54:03] local.INFO: Server 3 online data received  
+[2026-03-13 14:54:03] local.INFO: Server 3 online: 23/200, queued: 0  
+[2026-03-13 14:54:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:55:00] local.INFO: Processing server: 2  
+[2026-03-13 14:55:00] local.INFO: Connected to server 2  
+[2026-03-13 14:55:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:55:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:55:01] local.INFO: Processing server: 3  
+[2026-03-13 14:55:01] local.INFO: Connected to server 3  
+[2026-03-13 14:55:02] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:55:02] local.INFO: Server 3 online data received  
+[2026-03-13 14:55:02] local.INFO: Server 3 online: 23/200, queued: 0  
+[2026-03-13 14:55:02] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:56:00] local.INFO: Processing server: 2  
+[2026-03-13 14:56:00] local.INFO: Connected to server 2  
+[2026-03-13 14:56:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:56:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:56:01] local.INFO: Processing server: 3  
+[2026-03-13 14:56:01] local.INFO: Connected to server 3  
+[2026-03-13 14:56:02] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:56:02] local.INFO: Server 3 online data received  
+[2026-03-13 14:56:02] local.INFO: Server 3 online: 23/200, queued: 0  
+[2026-03-13 14:56:02] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:57:00] local.INFO: Processing server: 2  
+[2026-03-13 14:57:00] local.INFO: Connected to server 2  
+[2026-03-13 14:57:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:57:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:57:01] local.INFO: Processing server: 3  
+[2026-03-13 14:57:01] local.INFO: Connected to server 3  
+[2026-03-13 14:57:02] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:57:02] local.INFO: Server 3 online data received  
+[2026-03-13 14:57:02] local.INFO: Server 3 online: 23/200, queued: 0  
+[2026-03-13 14:57:02] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:58:00] local.INFO: Processing server: 2  
+[2026-03-13 14:58:00] local.INFO: Connected to server 2  
+[2026-03-13 14:58:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:58:01] local.INFO: Server 2 online data received  
+[2026-03-13 14:58:01] local.INFO: Server 2 online: 306/325, queued: 3  
+[2026-03-13 14:58:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:58:01] local.INFO: Processing server: 3  
+[2026-03-13 14:58:01] local.INFO: Connected to server 3  
+[2026-03-13 14:58:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:58:03] local.INFO: Server 3 online data received  
+[2026-03-13 14:58:03] local.INFO: Server 3 online: 24/200, queued: 0  
+[2026-03-13 14:58:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 14:59:00] local.INFO: Processing server: 2  
+[2026-03-13 14:59:00] local.INFO: Connected to server 2  
+[2026-03-13 14:59:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 14:59:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 14:59:01] local.INFO: Processing server: 3  
+[2026-03-13 14:59:01] local.INFO: Connected to server 3  
+[2026-03-13 14:59:02] local.INFO: Command sent to server 3: status  
+[2026-03-13 14:59:02] local.INFO: Server 3 online data received  
+[2026-03-13 14:59:02] local.INFO: Server 3 online: 23/200, queued: 0  
+[2026-03-13 14:59:02] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:00:00] local.INFO: Processing server: 2  
+[2026-03-13 15:00:00] local.INFO: Connected to server 2  
+[2026-03-13 15:00:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:00:01] local.INFO: Server 2 online data received  
+[2026-03-13 15:00:01] local.INFO: Server 2 online: 308/325, queued: 4  
+[2026-03-13 15:00:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:00:01] local.INFO: Processing server: 3  
+[2026-03-13 15:00:01] local.INFO: Connected to server 3  
+[2026-03-13 15:00:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:00:03] local.INFO: Server 3 online data received  
+[2026-03-13 15:00:03] local.INFO: Server 3 online: 24/200, queued: 0  
+[2026-03-13 15:00:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:01:00] local.INFO: Processing server: 2  
+[2026-03-13 15:01:00] local.INFO: Connected to server 2  
+[2026-03-13 15:01:02] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:01:02] local.INFO: Server 2 online data received  
+[2026-03-13 15:01:02] local.INFO: Server 2 online: 312/325, queued: 9  
+[2026-03-13 15:01:02] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:01:02] local.INFO: Processing server: 3  
+[2026-03-13 15:01:02] local.INFO: Connected to server 3  
+[2026-03-13 15:01:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:01:03] local.INFO: Server 3 online data received  
+[2026-03-13 15:01:03] local.INFO: Server 3 online: 25/200, queued: 0  
+[2026-03-13 15:01:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:02:00] local.INFO: Processing server: 2  
+[2026-03-13 15:02:00] local.INFO: Connected to server 2  
+[2026-03-13 15:02:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:02:01] local.INFO: Server 2 online data received  
+[2026-03-13 15:02:01] local.INFO: Server 2 online: 309/325, queued: 11  
+[2026-03-13 15:02:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:02:01] local.INFO: Processing server: 3  
+[2026-03-13 15:02:01] local.INFO: Connected to server 3  
+[2026-03-13 15:02:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:02:03] local.INFO: Server 3 online data received  
+[2026-03-13 15:02:03] local.INFO: Server 3 online: 25/200, queued: 0  
+[2026-03-13 15:02:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:03:00] local.INFO: Processing server: 2  
+[2026-03-13 15:03:00] local.INFO: Connected to server 2  
+[2026-03-13 15:03:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:03:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:03:01] local.INFO: Processing server: 3  
+[2026-03-13 15:03:01] local.INFO: Connected to server 3  
+[2026-03-13 15:03:02] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:03:02] local.INFO: Server 3 online data received  
+[2026-03-13 15:03:02] local.INFO: Server 3 online: 25/200, queued: 0  
+[2026-03-13 15:03:02] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:04:00] local.INFO: Processing server: 2  
+[2026-03-13 15:04:00] local.INFO: Connected to server 2  
+[2026-03-13 15:04:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:04:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:04:01] local.INFO: Processing server: 3  
+[2026-03-13 15:04:01] local.INFO: Connected to server 3  
+[2026-03-13 15:04:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:04:03] local.INFO: Server 3 online data received  
+[2026-03-13 15:04:03] local.INFO: Server 3 online: 24/200, queued: 0  
+[2026-03-13 15:04:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:05:00] local.INFO: Processing server: 2  
+[2026-03-13 15:05:00] local.INFO: Connected to server 2  
+[2026-03-13 15:05:09] local.ERROR: Failed to send command to server 2: Client read timeout  
+[2026-03-13 15:05:14] local.WARNING: Error closing connection for server 2: Client read timeout  
+[2026-03-13 15:05:14] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:05:14] local.INFO: Processing server: 3  
+[2026-03-13 15:05:14] local.INFO: Connected to server 3  
+[2026-03-13 15:05:16] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:05:16] local.INFO: Server 3 online data received  
+[2026-03-13 15:05:16] local.INFO: Server 3 online: 24/200, queued: 0  
+[2026-03-13 15:05:16] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:06:00] local.INFO: Processing server: 2  
+[2026-03-13 15:06:00] local.INFO: Connected to server 2  
+[2026-03-13 15:06:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:06:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:06:01] local.INFO: Processing server: 3  
+[2026-03-13 15:06:01] local.INFO: Connected to server 3  
+[2026-03-13 15:06:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:06:03] local.INFO: Server 3 online data received  
+[2026-03-13 15:06:03] local.INFO: Server 3 online: 24/200, queued: 0  
+[2026-03-13 15:06:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:07:00] local.INFO: Processing server: 2  
+[2026-03-13 15:07:00] local.INFO: Connected to server 2  
+[2026-03-13 15:07:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:07:01] local.INFO: Server 2 online data received  
+[2026-03-13 15:07:01] local.INFO: Server 2 online: 307/325, queued: 4  
+[2026-03-13 15:07:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:07:01] local.INFO: Processing server: 3  
+[2026-03-13 15:07:01] local.INFO: Connected to server 3  
+[2026-03-13 15:07:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:07:03] local.INFO: Server 3 online data received  
+[2026-03-13 15:07:03] local.INFO: Server 3 online: 23/200, queued: 0  
+[2026-03-13 15:07:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:08:00] local.INFO: Processing server: 2  
+[2026-03-13 15:08:00] local.INFO: Connected to server 2  
+[2026-03-13 15:08:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:08:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:08:01] local.INFO: Processing server: 3  
+[2026-03-13 15:08:01] local.INFO: Connected to server 3  
+[2026-03-13 15:08:02] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:08:02] local.INFO: Server 3 online data received  
+[2026-03-13 15:08:02] local.INFO: Server 3 online: 24/200, queued: 0  
+[2026-03-13 15:08:02] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:09:00] local.INFO: Processing server: 2  
+[2026-03-13 15:09:00] local.INFO: Connected to server 2  
+[2026-03-13 15:09:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:09:01] local.INFO: Server 2 online data received  
+[2026-03-13 15:09:01] local.INFO: Server 2 online: 291/325, queued: 13  
+[2026-03-13 15:09:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:09:01] local.INFO: Processing server: 3  
+[2026-03-13 15:09:01] local.INFO: Connected to server 3  
+[2026-03-13 15:09:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:09:03] local.INFO: Server 3 online data received  
+[2026-03-13 15:09:03] local.INFO: Server 3 online: 24/200, queued: 0  
+[2026-03-13 15:09:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:10:00] local.INFO: Processing server: 2  
+[2026-03-13 15:10:00] local.INFO: Connected to server 2  
+[2026-03-13 15:10:02] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:10:02] local.INFO: Server 2 online data received  
+[2026-03-13 15:10:02] local.INFO: Server 2 online: 291/325, queued: 12  
+[2026-03-13 15:10:02] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:10:02] local.INFO: Processing server: 3  
+[2026-03-13 15:10:02] local.INFO: Connected to server 3  
+[2026-03-13 15:10:04] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:10:04] local.INFO: Server 3 online data received  
+[2026-03-13 15:10:04] local.INFO: Server 3 online: 23/200, queued: 0  
+[2026-03-13 15:10:04] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:11:00] local.INFO: Processing server: 2  
+[2026-03-13 15:11:00] local.INFO: Connected to server 2  
+[2026-03-13 15:11:02] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:11:02] local.INFO: Server 2 online data received  
+[2026-03-13 15:11:02] local.INFO: Server 2 online: 293/325, queued: 11  
+[2026-03-13 15:11:02] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:11:02] local.INFO: Processing server: 3  
+[2026-03-13 15:11:02] local.INFO: Connected to server 3  
+[2026-03-13 15:11:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:11:03] local.INFO: Server 3 online data received  
+[2026-03-13 15:11:03] local.INFO: Server 3 online: 24/200, queued: 0  
+[2026-03-13 15:11:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:12:00] local.INFO: Processing server: 2  
+[2026-03-13 15:12:00] local.INFO: Connected to server 2  
+[2026-03-13 15:12:02] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:12:02] local.INFO: Server 2 online data received  
+[2026-03-13 15:12:02] local.INFO: Server 2 online: 295/325, queued: 10  
+[2026-03-13 15:12:02] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:12:02] local.INFO: Processing server: 3  
+[2026-03-13 15:12:02] local.INFO: Connected to server 3  
+[2026-03-13 15:12:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:12:03] local.INFO: Server 3 online data received  
+[2026-03-13 15:12:03] local.INFO: Server 3 online: 25/200, queued: 0  
+[2026-03-13 15:12:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:13:00] local.INFO: Processing server: 2  
+[2026-03-13 15:13:00] local.INFO: Connected to server 2  
+[2026-03-13 15:13:02] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:13:02] local.INFO: Server 2 online data received  
+[2026-03-13 15:13:02] local.INFO: Server 2 online: 295/325, queued: 8  
+[2026-03-13 15:13:02] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:13:02] local.INFO: Processing server: 3  
+[2026-03-13 15:13:02] local.INFO: Connected to server 3  
+[2026-03-13 15:13:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:13:03] local.INFO: Server 3 online data received  
+[2026-03-13 15:13:03] local.INFO: Server 3 online: 25/200, queued: 0  
+[2026-03-13 15:13:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:14:00] local.INFO: Processing server: 2  
+[2026-03-13 15:14:00] local.INFO: Connected to server 2  
+[2026-03-13 15:14:02] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:14:02] local.INFO: Server 2 online data received  
+[2026-03-13 15:14:02] local.INFO: Server 2 online: 295/325, queued: 0  
+[2026-03-13 15:14:02] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:14:02] local.INFO: Processing server: 3  
+[2026-03-13 15:14:02] local.INFO: Connected to server 3  
+[2026-03-13 15:14:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:14:03] local.INFO: Server 3 online data received  
+[2026-03-13 15:14:03] local.INFO: Server 3 online: 25/200, queued: 0  
+[2026-03-13 15:14:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:15:00] local.INFO: Processing server: 2  
+[2026-03-13 15:15:00] local.INFO: Connected to server 2  
+[2026-03-13 15:15:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:15:01] local.INFO: Server 2 online data received  
+[2026-03-13 15:15:01] local.INFO: Server 2 online: 301/325, queued: 0  
+[2026-03-13 15:15:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:15:01] local.INFO: Processing server: 3  
+[2026-03-13 15:15:01] local.INFO: Connected to server 3  
+[2026-03-13 15:15:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:15:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:16:00] local.INFO: Processing server: 2  
+[2026-03-13 15:16:00] local.INFO: Connected to server 2  
+[2026-03-13 15:16:03] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:16:03] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:16:03] local.INFO: Processing server: 3  
+[2026-03-13 15:16:03] local.INFO: Connected to server 3  
+[2026-03-13 15:16:08] local.ERROR: Failed to send command to server 3: Client handshake error  
+[2026-03-13 15:16:08] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:17:00] local.INFO: Processing server: 2  
+[2026-03-13 15:17:00] local.INFO: Connected to server 2  
+[2026-03-13 15:17:02] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:17:02] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:17:02] local.INFO: Processing server: 3  
+[2026-03-13 15:17:02] local.INFO: Connected to server 3  
+[2026-03-13 15:17:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:17:03] local.INFO: Server 3 online data received  
+[2026-03-13 15:17:03] local.INFO: Server 3 online: 26/200, queued: 0  
+[2026-03-13 15:17:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:18:00] local.INFO: Processing server: 2  
+[2026-03-13 15:18:00] local.INFO: Connected to server 2  
+[2026-03-13 15:18:04] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:18:04] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:18:04] local.INFO: Processing server: 3  
+[2026-03-13 15:18:04] local.INFO: Connected to server 3  
+[2026-03-13 15:18:06] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:18:06] local.INFO: Server 3 online data received  
+[2026-03-13 15:18:06] local.INFO: Server 3 online: 27/200, queued: 0  
+[2026-03-13 15:18:06] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:19:00] local.INFO: Processing server: 2  
+[2026-03-13 15:19:00] local.INFO: Connected to server 2  
+[2026-03-13 15:19:02] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:19:02] local.INFO: Server 2 online data received  
+[2026-03-13 15:19:02] local.INFO: Server 2 online: 303/325, queued: 0  
+[2026-03-13 15:19:02] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:19:02] local.INFO: Processing server: 3  
+[2026-03-13 15:19:02] local.INFO: Connected to server 3  
+[2026-03-13 15:19:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:19:03] local.INFO: Server 3 online data received  
+[2026-03-13 15:19:03] local.INFO: Server 3 online: 27/200, queued: 0  
+[2026-03-13 15:19:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:20:00] local.INFO: Processing server: 2  
+[2026-03-13 15:20:00] local.INFO: Connected to server 2  
+[2026-03-13 15:20:05] local.ERROR: Failed to send command to server 2: Client handshake error  
+[2026-03-13 15:20:05] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:20:05] local.INFO: Processing server: 3  
+[2026-03-13 15:20:05] local.INFO: Connected to server 3  
+[2026-03-13 15:20:10] local.ERROR: Failed to send command to server 3: Client handshake error  
+[2026-03-13 15:20:10] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:50:00] local.INFO: Processing server: 2  
+[2026-03-13 15:50:00] local.INFO: Connected to server 2  
+[2026-03-13 15:50:00] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:50:00] local.INFO: Server 2 online data received  
+[2026-03-13 15:50:00] local.INFO: Server 2 online: 321/350, queued: 15  
+[2026-03-13 15:50:00] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:50:00] local.INFO: Processing server: 3  
+[2026-03-13 15:50:00] local.INFO: Connected to server 3  
+[2026-03-13 15:50:01] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:50:01] local.INFO: Server 3 online data received  
+[2026-03-13 15:50:01] local.INFO: Server 3 online: 28/200, queued: 0  
+[2026-03-13 15:50:01] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:51:00] local.INFO: Processing server: 2  
+[2026-03-13 15:51:00] local.INFO: Connected to server 2  
+[2026-03-13 15:51:01] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:51:01] local.INFO: Server 2 online data received  
+[2026-03-13 15:51:01] local.INFO: Server 2 online: 324/350, queued: 16  
+[2026-03-13 15:51:01] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:51:01] local.INFO: Processing server: 3  
+[2026-03-13 15:51:01] local.INFO: Connected to server 3  
+[2026-03-13 15:51:01] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:51:01] local.INFO: Server 3 online data received  
+[2026-03-13 15:51:01] local.INFO: Server 3 online: 28/200, queued: 0  
+[2026-03-13 15:51:01] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:52:00] local.INFO: Processing server: 2  
+[2026-03-13 15:52:00] local.INFO: Connected to server 2  
+[2026-03-13 15:52:02] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:52:02] local.INFO: Server 2 online data received  
+[2026-03-13 15:52:02] local.INFO: Server 2 online: 327/350, queued: 14  
+[2026-03-13 15:52:02] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:52:02] local.INFO: Processing server: 3  
+[2026-03-13 15:52:02] local.INFO: Connected to server 3  
+[2026-03-13 15:52:04] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:52:04] local.INFO: Server 3 online data received  
+[2026-03-13 15:52:04] local.INFO: Server 3 online: 29/200, queued: 0  
+[2026-03-13 15:52:04] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:53:00] local.INFO: Processing server: 2  
+[2026-03-13 15:53:00] local.INFO: Connected to server 2  
+[2026-03-13 15:53:02] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:53:02] local.INFO: Server 2 online data received  
+[2026-03-13 15:53:02] local.INFO: Server 2 online: 327/350, queued: 12  
+[2026-03-13 15:53:02] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:53:02] local.INFO: Processing server: 3  
+[2026-03-13 15:53:02] local.INFO: Connected to server 3  
+[2026-03-13 15:53:03] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:53:03] local.INFO: Server 3 online data received  
+[2026-03-13 15:53:03] local.INFO: Server 3 online: 28/200, queued: 0  
+[2026-03-13 15:53:03] local.INFO: Checking shopping tasks for server: 3  
+[2026-03-13 15:54:00] local.INFO: Processing server: 2  
+[2026-03-13 15:54:00] local.INFO: Connected to server 2  
+[2026-03-13 15:54:04] local.INFO: Command sent to server 2: status  
+[2026-03-13 15:54:04] local.INFO: Server 2 online data received  
+[2026-03-13 15:54:04] local.INFO: Server 2 online: 326/350, queued: 11  
+[2026-03-13 15:54:04] local.INFO: Checking shopping tasks for server: 2  
+[2026-03-13 15:54:04] local.INFO: Processing server: 3  
+[2026-03-13 15:54:04] local.INFO: Connected to server 3  
+[2026-03-13 15:54:06] local.INFO: Command sent to server 3: status  
+[2026-03-13 15:54:06] local.INFO: Server 3 online data received  
+[2026-03-13 15:54:06] local.INFO: Server 3 online: 28/200, queued: 0  
+[2026-03-13 15:54:06] local.INFO: Checking shopping tasks for server: 3  

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "563e681cb9c2ea9593b6cb60512b5816",
+    "content-hash": "b4d7fd7bb81cc192fdf2aaff08fad023",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3791,6 +3791,63 @@
                 }
             ],
             "time": "2021-09-25T23:10:38+00:00"
+        },
+        {
+            "name": "rovazh/phpsocks",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rovazh/phpsocks.git",
+                "reference": "86744be21bd823dcffb15e411371757001cfce84"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rovazh/phpsocks/zipball/86744be21bd823dcffb15e411371757001cfce84",
+                "reference": "86744be21bd823dcffb15e411371757001cfce84",
+                "shasum": ""
+            },
+            "require": {
+                "ext-sockets": "*",
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.64",
+                "mockery/mockery": "^1.6.12",
+                "phpunit/phpunit": "^9",
+                "vimeo/psalm": "^5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhpSocks\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Roman Vazhynskyi",
+                    "email": "rvazhynskyi@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "SOCKS5 proxy client, written in pure PHP with zero dependencies.",
+            "keywords": [
+                "php proxy",
+                "php socks",
+                "php socks5",
+                "proxy client",
+                "socks",
+                "socks client",
+                "socks5"
+            ],
+            "support": {
+                "issues": "https://github.com/rovazh/phpsocks/issues",
+                "source": "https://github.com/rovazh/phpsocks/tree/0.1.1"
+            },
+            "time": "2025-09-12T19:37:57+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

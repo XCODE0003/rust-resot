@@ -12,6 +12,7 @@
     "php": "^7.3|^8.0",
     "ext-json": "*",
     "ext-pdo": "*",
+    "cweagans/composer-patches": "^1.7",
     "fideloper/proxy": "^4.4",
     "fruitcake/laravel-cors": "^2.0",
     "garetjax/phpbrowscap": "^2.0",
@@ -19,7 +20,6 @@
     "heleket/php-sdk": "^1.0",
     "iignatov/lightopenid": "^1.0",
     "irazasyed/telegram-bot-sdk": "^3.9",
-    "cweagans/composer-patches": "^1.7",
     "josiasmontag/laravel-recaptchav3": "^0.6.0",
     "laravel/framework": "^8.40",
     "laravel/tinker": "^2.5",
@@ -32,6 +32,7 @@
     "psr/http-message": "^1.0",
     "psr/log": "^1.0 | ^2.0 | ^3.0",
     "qiwi/bill-payments-php-sdk": "^0.2.2",
+    "rovazh/phpsocks": "^0.1.1",
     "textalk/websocket": "^1.6",
     "timehunter/laravel-google-recaptcha-v2": "~1.0.0",
     "whichbrowser/parser": "^2.1"

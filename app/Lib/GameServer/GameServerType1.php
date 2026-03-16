@@ -24,50 +24,44 @@ class GameServerType1 implements GameServerInterface
             return RustGameApi::getPlayersOnline();
         }
 
-        return 0;
+        return [];
     }
 
     public static function all_online_count($server_id=1)
     {
-        if (self::setServerConfig($server_id)) {
-            return RustGameApi::getOnlineCount();
+        $serverOnline = \App\Models\ServerOnline::where('server_id', $server_id)->first();
+        
+        if (!$serverOnline) {
+            return [
+                'count' => 0,
+                'count_max' => 0,
+                'queued' => 0,
+            ];
         }
 
         return [
-            'count' => 0,
-            'count_max' => 0,
-            'queued' => 0,
+            'count' => $serverOnline->online_count,
+            'count_max' => $serverOnline->online_max,
+            'queued' => $serverOnline->online_queued,
         ];
     }
 
     public static function online_count($server_id=1)
     {
-        if (self::setServerConfig($server_id)) {
-            $data = RustGameApi::getOnlineCount();
-            return $data['count'];
-        }
-
-        return 0;
+        $serverOnline = \App\Models\ServerOnline::where('server_id', $server_id)->first();
+        return $serverOnline ? $serverOnline->online_count : 0;
     }
 
     public static function online_max($server_id=1)
     {
-        if (self::setServerConfig($server_id)) {
-            $data = RustGameApi::getOnlineCount();
-            return $data['count_max'];
-        }
-
-        return 0;
+        $serverOnline = \App\Models\ServerOnline::where('server_id', $server_id)->first();
+        return $serverOnline ? $serverOnline->online_max : 0;
     }
 
     public static function online_queued($server_id=1)
     {
-        if (self::setServerConfig($server_id)) {
-            $data = RustGameApi::getOnlineCount();
-            return $data['queued'];
-        }
-
-        return 0;
+        $serverOnline = \App\Models\ServerOnline::where('server_id', $server_id)->first();
+        return $serverOnline ? $serverOnline->online_queued : 0;
     }
 
     public static function setPasswordAccount($login, $new_password)

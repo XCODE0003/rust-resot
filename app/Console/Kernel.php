@@ -9,6 +9,7 @@ use App\Models\Player;
 use App\Models\Statistic;
 use App\Models\ClearStatistic;
 use App\Models\Shopping;
+use App\Models\ServerOnline;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -19,6 +20,7 @@ use WebSocket\BadOpcodeException;
 use WebSocket\Client;
 use WebSocket\TimeoutException;
 use GameServer;
+use App\Services\RconConnectionManager;
 
 class Kernel extends ConsoleKernel
 {
@@ -41,363 +43,111 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(function () {
 
-            $client = [];
-            //Подключаемся к ркон и держим подключение
+            $manager = RconConnectionManager::getInstance();
 
             foreach (getservers() as $server) {
-
-                Log::channel('rcon_master')->info('Servers: ' . json_encode($server));
-
-                $options = json_decode($server->options);
-                $rcon_ip = $options->rcon_ip ?? '';
-                $rcon_passw = $options->rcon_passw ?? '';
-
+                Log::channel('rcon_master')->info('Processing server: ' . $server->id);
+                
+                $manager->connect($server->id);
+                
                 try {
-                    $client[$server->id] = new Client("ws://" . $rcon_ip . "/" . $rcon_passw);
-                    Log::channel('rcon_master')->info('Connect success! Server ID: ' . $server->id);
+                    $result = $manager->sendCommand($server->id, 'status');
+                    
+                    if ($result && isset($result->Message) && substr($result->Message, 0, 8) === 'hostname') {
+                        Log::channel('rcon_master')->info("Server {$server->id} online data received");
+                        
+                        $count = 0;
+                        $count_max = 0;
+                        $queued = 0;
+                        
+                        $messageParts = explode("players : ", $result->Message);
+                        if (isset($messageParts[1])) {
+                            $queuedParts = explode(" queued", $messageParts[1]);
+                            if (isset($queuedParts[0])) {
+                                $maxParts = explode("max) (", $queuedParts[0]);
+                                if (isset($maxParts[1])) {
+                                    $queued = intval($maxParts[1]);
+                                }
+                            }
+                            
+                            $playersParts = explode(" queued", $messageParts[1]);
+                            if (isset($playersParts[0])) {
+                                $maxParts = explode(" max)", $playersParts[0]);
+                                if (isset($maxParts[0])) {
+                                    $countParts = explode(" (", $maxParts[0]);
+                                    if (isset($countParts[0])) {
+                                        $count = intval($countParts[0]);
+                                    }
+                                }
+                                $countMaxParts = explode(" (", $playersParts[0]);
+                                if (isset($countMaxParts[1])) {
+                                    $maxNumParts = explode(" max)", $countMaxParts[1]);
+                                    $count_max = intval($maxNumParts[0]);
+                                }
+                            }
+                        }
+                        
+                        ServerOnline::updateOrCreate(
+                            ['server_id' => $server->id],
+                            [
+                                'online_count' => $count,
+                                'online_max' => $count_max,
+                                'online_queued' => $queued,
+                                'players_data' => $result->Message,
+                                'updated_at' => now(),
+                            ]
+                        );
+                        
+                        Log::channel('rcon_master')->info("Server {$server->id} online: {$count}/{$count_max}, queued: {$queued}");
+                    }
+                    
                 } catch (\Exception $ex) {
-                    Log::channel('rcon_master')->info('Connect error! Server ID: ' . $server->id);
+                    Log::channel('rcon_master')->error("Error getting online for server {$server->id}: {$ex->getMessage()}");
                 }
-            }
-
-
-            for ($t = 0; $t < 7; $t++) {
-
-                //Get rcon tasks
-                /*
-                foreach (getservers() as $server) {
-
-                    $rcon_tasks = RconTask::where('status', 0)->where('server', $server->id)->get();
-
-                    foreach ($rcon_tasks as $task) {
-                        Log::channel('rcon_master')->info('Rcon Task: ' . json_encode($task));
-
-                        //Отправляем команду на ркон
-                        if (isset($client[$server->id]) && $client[$server->id]) {
-
-                            try {
-                                $data = json_encode([
-                                    'Identifier' => 0,
-                                    'Message'    => $task->command,
-                                    'Stacktrace' => '',
-                                    'Type'       => 3,
-                                ]);
-
-                                $client[$server->id]->send($data);
-                                $result = json_decode($client[$server->id]->receive());
-
-                                Log::channel('rcon_master')->info('Rcon command Result:' . json_encode($result));
-
-                                if (isset($result->Message) && (strpos($result->Message, 'Added to group') !== FALSE || strpos($result->Message, 'time extended') !== FALSE || strpos($result->Message, 'ermission granted') !== FALSE)) {
-                                    $task->status = 1;
-                                } else {
-                                    $task->status = 2;
-                                    $task->comment = 'Some error';
-                                }
-                                $task->save();
-                            } catch (\Exception $ex) {
-                                Log::channel('rcon_master')->info('Rcon error set command!');
-                            }
-
-                        }
-
-                    }
-
-                }
-                */
-
-                //Get the server online date
-
-                foreach (getservers() as $server) {
-                    Log::channel('rcon_master')->info('Server: ' . $server->id);
-                    Log::channel('rcon_master')->info('Connect string: ' . "ws://" . $rcon_ip . "/" . $rcon_passw);
-                    Log::channel('rcon_master')->info('Client: ' . json_encode($client[$server->id]));
-                    try {
-
-                        if (isset($client[$server->id]) && $client[$server->id]) {
-
-                            $data = json_encode([
-                                'Identifier' => 0,
-                                'Message'    => 'status',
-                                'Stacktrace' => '',
-                                'Type'       => 3,
-                            ]);
-
-                            $client[$server->id]->send($data);
-                            $result = json_decode($client[$server->id]->receive());
-
-                            Log::channel('rcon_master')->info('Rcon Result: ' . json_encode($result));
-                            Log::channel('rcon_master')->info('Message: ' . substr($result->Message, 0, 8) .
-                             'Result: ' . json_encode($result) .
-                             'Result Message: ' . (substr($result->Message, 0, 8) === 'hostname') . '
-                             ');
-                            if (isset($result->Message) && substr($result->Message, 0, 8) === 'hostname') {
-                                Log::channel('rcon_master')->info('Rcon online_data: ' . json_encode($result));
-                                Cache::forever('server' . $server->id . ':online_data', $result);
-                                break;
-                            }
-                        }
-
-                    } catch (\Exception $ex) {
-                        Log::channel('rcon_master')->info('Rcon error get online data! Error: ' . $ex);
-                    }
-
-                }
-
-
-                Log::channel('schedule')->info('Seconds - ' . $t);
-
-                sleep(9);
-            }
-        })->everyMinute();
-
-
-        //Get Servers online count
-        $getOnline = function () {
-
-            foreach (getservers() as $server) {
-
-                //Get online count
-                if (Cache::has('server' . $server->id . ':online_data')) {
-                    $result = Cache::get('server' . $server->id . ':online_data');
-
-                    $count = 0;
-                    $count_max = 0;
-                    $queued = 0;
-                    $result = explode("players : ", $result->Message);
-                    if (isset($result[1])) {
-                        $result5 = explode(" queued", $result[1]);
-                        if (isset($result5[0])) {
-                            $result5 = explode("max) (", $result5[0]);
-                            if (isset($result5[1])) {
-                                $queued = $result5[1];
-                            }
-                        }
-                        $result = explode(" queued", $result[1]);
-                        if (isset($result[0])) {
-                            $result1 = explode(" max)", $result[0]);
-                            if (isset($result1[0])) {
-                                $result4 = explode(" (", $result1[0]);
-                                if (isset($result4[0])) {
-                                    $count = $result4[0];
-                                }
-                            }
-                            $result2 = explode(" (", $result[0]);
-                            if (isset($result2[1])) {
-                                $result3 = explode(" max)", $result2[1]);
-                                $count_max = $result3[0];
-                            }
-                        }
-                    }
-
-                    //Refresh cache online count
-                    if ($count > 0) {
-                        Cache::forget('server' . $server->id . ':online_count');
-                        Cache::forever('server' . $server->id . ':online_count', $count);
-                    }
-                    if ($count_max > 0) {
-                        Cache::forget('server' . $server->id . ':online_max');
-                        Cache::forever('server' . $server->id . ':online_max', $count_max);
-                    }
-                    if ($queued >= 0) {
-                        Cache::forget('server' . $server->id . ':online_queued');
-                        Cache::forever('server' . $server->id . ':online_queued', $queued);
-                    }
-
-                }
-
-                //Check and send shop purchase without check online
-                Log::channel('rcon_master')->info('Check Shopping...');
+                
+                Log::channel('rcon_master')->info('Checking shopping tasks for server: ' . $server->id);
                 $shoppings = Shopping::where('status', 0)->where('server', $server->id)->get();
-
+                
                 if ($shoppings) {
                     foreach ($shoppings as $shopping) {
-
-                        //Если есть блок на отправку команды от ркон, то пропускаем
-                        $lock_rcon = Cache::get('transferServiceGameServer'.json_encode($shopping->command).'_lock', false);
-                        if ($lock_rcon) continue;
-
-                        //Задаем блок на отправку команды
+                        
                         $lock_shop = Cache::lock('server' . $server->id . ':shopping_lock' . $shopping->id, 30);
                         if ($lock_shop->get()) {
-                            Log::channel('rcon_master')->info('Send command: ' . $shopping->command . '. Server: ' . $shopping->server);
-
-                            //Отправляем на ркон команду
-
-                            $options = json_decode($server->options);
-                            $rcon_ip = $options->rcon_ip ?? '';
-                            $rcon_passw = $options->rcon_passw ?? '';
-
-                            Log::channel('rcon_master')->info('Client: ' . json_encode($client[$server->id]) . 'Rcon connect string:' . "ws://" . $rcon_ip . "/" . $rcon_passw);
+                            Log::channel('rcon_master')->info("Sending shop command: {$shopping->command} for server {$shopping->server}");
+                            
                             try {
-                                $client[$server->id] = new Client("ws://" . $rcon_ip . "/" . $rcon_passw);
-                                Log::channel('rcon_master')->info('Command Connect success! Server ID: ' . $server->id);
-                            } catch (\Exception $ex) {
-                                Log::channel('rcon_master')->info('Command Connect error! Server ID: ' . $server->id);
-                            }
-
-                            if (isset($client[$server->id]) && $client[$server->id]) {
-
-                                $data = json_encode([
-                                    'Identifier' => 0,
-                                    'Message'    => $shopping->command,
-                                    'Stacktrace' => '',
-                                    'Type'       => 3,
-                                ]);
-
-                                try {
-                                    $client[$server->id]->send($data);
-                                    $rcon_result = json_decode($client[$server->id]->receive());
-
-                                    //$shopping->status = 1;
-                                    //$shopping->save();
-
-                                    Log::channel('rcon_master')->info('Rcon Send command Result: ' . json_encode($rcon_result));
-
-                                    if (isset($rcon_result->Message) && (strpos($rcon_result->Message, 'Added to group') !== FALSE || strpos($rcon_result->Message, 'time extended') !== FALSE || strpos($rcon_result->Message, 'ermission granted') !== FALSE || strpos($rcon_result->Message, 'успешно') !== FALSE || strpos($rcon_result->Message, 'granted permission') !== FALSE)) {
-                                        Log::channel('rcon_master')->info('Send command success: ' . $shopping->command . '. Server: ' . $shopping->server);
+                                $rcon_result = $manager->sendCommand($server->id, $shopping->command);
+                                
+                                Log::channel('rcon_master')->info('Shop command result: ' . json_encode($rcon_result));
+                                
+                                if ($rcon_result && isset($rcon_result->Message)) {
+                                    $successPhrases = ['Added to group', 'time extended', 'ermission granted', 'успешно', 'granted permission'];
+                                    $isSuccess = false;
+                                    
+                                    foreach ($successPhrases as $phrase) {
+                                        if (strpos($rcon_result->Message, $phrase) !== FALSE) {
+                                            $isSuccess = true;
+                                            break;
+                                        }
+                                    }
+                                    
+                                    if ($isSuccess) {
+                                        Log::channel('rcon_master')->info("Shop command success: {$shopping->command}");
                                         $shopping->status = 1;
                                         $shopping->save();
-
-                                        $lock_shop->release();
-                                    }
-                                } catch (\Exception $ex) {
-                                    Log::channel('rcon_master')->info('Rcon Send command error! Server ID: ' . $server->id . 'Error: '. $ex);
-                                }
-                            }
-
-                        }
-                    }
-
-                }
-
-                //Check and send shop purchase
-                /*
-                if (Cache::has('server' . $server->id . ':online_data')) {
-                    $result = Cache::get('server' . $server->id . ':online_data');
-
-                    if ($result) {
-
-                        $players = [];
-                        $result = explode("kicks ", $result->Message);
-                        if (isset($result[1])) {
-                            $result1 = explode("\r\n", $result[1]);
-                            if (isset($result1[0])) {
-                                foreach ($result1 as $r1) {
-                                    if ($r1 == '') continue;
-                                    $result2 = explode(" ", $r1);
-                                    if (isset($result2[1])) {
-                                        $player_id = $result2[0];
-                                        foreach ($result2 as $r2) {
-                                            if (mb_substr($r2, -1) != 's') continue;
-                                            $players[] = (object)[
-                                                'id'          => $player_id,
-                                                'online_time' => intval(str_replace('s', '', $r2)),
-                                            ];
-                                        }
                                     }
                                 }
-
+                                
+                                $lock_shop->release();
+                            } catch (\Exception $ex) {
+                                Log::channel('rcon_master')->error("Error sending shop command for server {$server->id}: {$ex->getMessage()}");
+                                $lock_shop->release();
                             }
-                        }
-
-                        $shoppings = Shopping::where('status', 0)->where('server', $server->id)->get();
-
-                        if ($players && $shoppings) {
-                            foreach ($shoppings as $shopping) {
-                                foreach ($players as $player) {
-                                    if ($shopping->user->steam_id == $player->id) {
-
-                                        //Задаем блок на отправку команды
-                                        $lock_shop = Cache::lock('server' . $server->id . ':shopping_lock' . $shopping->id, 5);
-                                        if ($lock_shop->get()) {
-                                            Log::channel('rcon_master')->info('Send command: ' . $shopping->command . '. Server: ' . $shopping->server);
-
-                                            //Отправляем на ркон команду
-
-                                            $options = json_decode($server->options);
-                                            $rcon_ip = $options->rcon_ip ?? '';
-                                            $rcon_passw = $options->rcon_passw ?? '';
-
-                                            try {
-                                                $client[$server->id] = new Client("ws://" . $rcon_ip . "/" . $rcon_passw);
-                                                Log::channel('rcon_master')->info('Command Connect success! Server ID: ' . $server->id);
-                                            } catch (\Exception $ex) {
-                                                Log::channel('rcon_master')->info('Command Connect error! Server ID: ' . $server->id);
-                                            }
-
-                                            if (isset($client[$server->id]) && $client[$server->id]) {
-
-                                                $data = json_encode([
-                                                    'Identifier' => 0,
-                                                    'Message'    => $shopping->command,
-                                                    'Stacktrace' => '',
-                                                    'Type'       => 3,
-                                                ]);
-
-                                                $client[$server->id]->send($data);
-                                                $rcon_result = json_decode($client[$server->id]->receive());
-
-                                                Log::channel('rcon_master')->info('Rcon Send command Result: ' . json_encode($rcon_result));
-
-                                                if (isset($rcon_result->Message) && (strpos($rcon_result->Message, 'Added to group') !== FALSE || strpos($rcon_result->Message, 'time extended') !== FALSE || strpos($rcon_result->Message, 'ermission granted') !== FALSE)) {
-                                                    Log::channel('rcon_master')->info('Send command success: ' . $shopping->command . '. Server: ' . $shopping->server);
-                                                    $shopping->status = 1;
-                                                    $shopping->save();
-
-                                                    $lock_shop->release();
-                                                }
-
-                                            }
-
-                                        }
-                                    }
-                                }
-                            }
-
                         }
                     }
                 }
-                */
             }
-        };
-
-        $schedule->call(function () use ($getOnline) {
-
-            Log::channel('rcon_master')->info("getOnline:" . "\n");
-
-            for ($t = 0; $t < 6; $t++) {
-                $getOnline();
-                sleep(10);
-            }
-
-        })->everyMinute();
-
-
-        //Get servers status
-        $schedule->call(function () {
-
-            /*
-            foreach (getservers() as $server) {
-                $status = 'Offline';
-                $options = json_decode($server->options);
-
-                $ip_port = explode(':', $options->rcon_ip);
-                if (!isset($ip_port[1])) return 'Offline';
-                $ip = $ip_port[0];
-                $port = $ip_port[1];
-
-                $fp = @fsockopen($ip, $port, $errno, $errstr, 1);
-                if ($fp) {
-                    fclose($fp);
-                    $status = 'Online';
-                }
-
-                Cache::forget('server'.$server->id.':status');
-                Cache::forever('server'.$server->id.':status', $status);
-            }
-            */
-
+            
         })->everyMinute();
 
         //Get players online
@@ -405,17 +155,15 @@ class Kernel extends ConsoleKernel
 
             Log::channel('players_online')->info('Method: getPlayersOnline. Start...');
 
-
             foreach(getservers() as $server) {
 
                 if(config('options.server_'.$server->id.'_plate', 0) > 0) continue;
 
-
-                if (Cache::has('server'.$server->id.':online_data')) {
-                    $result = Cache::get('server' . $server->id . ':online_data');
-
+                $serverOnline = ServerOnline::where('server_id', $server->id)->first();
+                
+                if ($serverOnline && $serverOnline->players_data) {
                     $players = [];
-                    $result = explode("kicks ", $result->Message);
+                    $result = explode("kicks ", $serverOnline->players_data);
                     if (isset($result[1])) {
                         $result1 = explode("\r\n", $result[1]);
                         if (isset($result1[0])) {
@@ -452,11 +200,9 @@ class Kernel extends ConsoleKernel
                             $player_online->online_prev = $player->online_time;
                         }
 
-                        //Проверяю, что онлайн больше 0 и что игрока уже не считали
                         if ($player->online_time <= 0 || in_array($player->id, $players_online)) continue;
                         $players_online[] = $player->id;
 
-                        //Считаем онлайн для каждого сервера
                         if ($player_online->online_prev <= $player->online_time) {
                             $diff = $player->online_time - $player_online->online_prev;
                             $player_online->online_time += $diff;
@@ -464,8 +210,6 @@ class Kernel extends ConsoleKernel
                             $player_online->online_time += $player->online_time;
                         }
 
-
-                        //Запись общего онлайна
                         if ($player_online->online_prev <= $player->online_time) {
                             $diff = $player->online_time - $player_online->online_prev;
                             $user->online_time += $diff;
@@ -473,7 +217,6 @@ class Kernel extends ConsoleKernel
                             $user->online_time += $player->online_time;
                         }
 
-                        //Записываем отдельно время онлайна для сервера EU Monday
                         if ($server->id == 3) {
                             if ($player_online->online_prev <= $player->online_time) {
                                 $diff = $player->online_time - $player_online->online_prev;
@@ -483,7 +226,6 @@ class Kernel extends ConsoleKernel
                             }
                         }
 
-                        //Записываем отдельно время онлайна для кейса Thursday
                         if (config('options.bonusth_status', '0') == '1' && ($server->id == 1 || $server->id == 2)) {
                             if ($player_online->online_prev <= $player->online_time) {
                                 $diff = $player->online_time - $player_online->online_prev;
@@ -493,7 +235,6 @@ class Kernel extends ConsoleKernel
                             }
                         }
 
-                        //Записываем отдельно время онлайна для сервера EU Main
                         if ($server->id == 1) {
                             if ($player_online->online_prev <= $player->online_time) {
                                 $diff = $player->online_time - $player_online->online_prev;
@@ -502,8 +243,6 @@ class Kernel extends ConsoleKernel
                                 $user->online_time_eumain += $player->online_time;
                             }
                         }
-
-
 
                         $d = (isset($diff)) ? $diff : $player->online_time;
                         Log::channel('players_online')->info('Method: getPlayersOnline. Server: '.$server->id.'. Player: '.$player->id.'('. $user->name .'). Prev online: ' . $player_online->online_prev . ', Server Online: '. $player_online->online_time . ', Online: '. $player->online_time .'. Diff online: '. $d .', All online: ' . $user->online_time . ', Monday online: ' . $user->online_time_monday . ', Thursday online: ' . $user->online_time_thursday);
@@ -523,7 +262,7 @@ class Kernel extends ConsoleKernel
         })->everyMinute();
 
         //Cache statistics
-        $schedule->call(function () use ($getOnline) {
+        $schedule->call(function ()  {
 
             Log::channel('schedule')->info('Start statistics cache...');
             for ($p = 0; $p <= 2; $p++) {
@@ -585,7 +324,7 @@ class Kernel extends ConsoleKernel
         //})->everyTenMinutes();
 
         //Clear statistics
-        $schedule->call(function () use ($getOnline) {
+        $schedule->call(function ()  {
 
             Log::channel('schedule')->info('Start statistics clear 2 ...');
 
@@ -694,7 +433,7 @@ class Kernel extends ConsoleKernel
 
         })->dailyAt('02:30');
 
-        $schedule->call(function () use ($getOnline) {
+        $schedule->call(function ()  {
 
             Log::channel('schedule')->info('Start statistics clear 3 ...');
 
@@ -804,7 +543,7 @@ class Kernel extends ConsoleKernel
         })->dailyAt('03:30');
 
 
-        $schedule->call(function () use ($getOnline) {
+        $schedule->call(function ()  {
 
             Log::channel('schedule')->info('Start statistics clear 8 ...');
 

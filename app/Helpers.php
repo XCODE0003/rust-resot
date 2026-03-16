@@ -622,29 +622,20 @@ if (!function_exists('l2_encrypt')) {
 if (!function_exists('server_status')) {
     function server_status($server_id = 1)
     {
-        return Cache::get('server' . $server_id . ':status', 0);
-
-        /*
-        //Cache::forget('server' . $server_id . ':status');
-        return Cache::remember('server' . $server_id . ':status', '60', function () use ($server_id) {
-
-            $status = 'Offline';
-            $server = Server::where('id', $server_id)->first();
-            $options = json_decode($server->options);
-
-            $ip_port = explode(':', $options->rcon_ip);
-            if (!isset($ip_port[1])) return 'Offline';
-            $ip = $ip_port[0];
-            $port = $ip_port[1];
-
-            $fp = @fsockopen($ip, $port, $errno, $errstr, 1);
-            if ($fp) {
-                fclose($fp);
-                $status = 'Online';
-            }
-            return $status;
-        });
-        */
+        $serverOnline = \App\Models\ServerOnline::where('server_id', $server_id)->first();
+        
+        if (!$serverOnline) {
+            return 'Offline';
+        }
+        
+        $lastUpdate = \Carbon\Carbon::parse($serverOnline->updated_at);
+        $minutesAgo = $lastUpdate->diffInMinutes(now());
+        
+        if ($minutesAgo > 2) {
+            return 'Offline';
+        }
+        
+        return 'Online';
     }
 }
 
@@ -655,18 +646,8 @@ if (!function_exists('online_count')) {
             return 0;
         }
 
-        return Cache::get('server' . $server_id . ':online_count', 0);
-
-        /*
-                if ($online_count == 0) {
-                    Cache::forget('server'.$server_id.':online_count');
-                }
-                //Cache::forget('server'.$server_id.':online_count');
-                return Cache::rememberForever('server' . $server_id . ':online_count', function () use ($server_id) {
-                    $online_count = GameServer::online_count($server_id);
-                    return $online_count * intval(config('options.server_' . $server_id . '_mul_online', '1'));
-                });
-        */
+        $serverOnline = \App\Models\ServerOnline::where('server_id', $server_id)->first();
+        return $serverOnline ? $serverOnline->online_count : 0;
     }
 }
 
@@ -677,18 +658,8 @@ if (!function_exists('online_max')) {
             return 0;
         }
 
-        return Cache::get('server' . $server_id . ':online_max', 0);
-
-        /*
-                if (Cache::get('server'.$server_id.':online_max') == 0) {
-                    Cache::forget('server'.$server_id.':online_max');
-                }
-                //Cache::forget('server'.$server_id.':online_max');
-                return Cache::remember('server' . $server_id . ':online_max', '300', function () use ($server_id) {
-                    return GameServer::online_max($server_id);
-                });
-        */
-
+        $serverOnline = \App\Models\ServerOnline::where('server_id', $server_id)->first();
+        return $serverOnline ? $serverOnline->online_max : 0;
     }
 }
 
@@ -699,18 +670,8 @@ if (!function_exists('online_queued')) {
             return 0;
         }
 
-        return Cache::get('server' . $server_id . ':online_queued', 0);
-
-        /*
-                if (Cache::get('server'.$server_id.':online_queued') == 0) {
-                    Cache::forget('server'.$server_id.':online_queued');
-                }
-                //Cache::forget('server'.$server_id.':online_queued');
-                return Cache::remember('server' . $server_id . ':online_queued', '300', function () use ($server_id) {
-                    return GameServer::online_queued($server_id);
-                });
-        */
-
+        $serverOnline = \App\Models\ServerOnline::where('server_id', $server_id)->first();
+        return $serverOnline ? $serverOnline->online_queued : 0;
     }
 }
 

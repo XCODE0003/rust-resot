@@ -87,7 +87,6 @@ class ServersWipeController extends Controller
 
     protected function forgetCacheOnline(Request $request)
     {
-        //Log::channel('api')->info('Request: ' . print_r(@file_get_contents('php://input'), 1));
         $request = json_decode(@file_get_contents('php://input'));
         Log::channel('api')->info('Method: forgetCacheOnline. Request: ' . print_r($request, 1));
 
@@ -105,111 +104,10 @@ class ServersWipeController extends Controller
             ], 500);
         }
 
-        //Отключено, идет через schedule
         return response()->json([
             'status' => 'success',
             'server' => $request->server,
-        ]);
-
-
-
-        $server_id = 1;
-        $server_find = FALSE;
-
-        foreach (getservers() as $server) {
-            if ($server->name == $request->server) {
-                $server_id = $server->id;
-                $server_find = TRUE;
-            }
-        }
-
-        if ($server_find === FALSE) {
-            return response()->json([
-                'status' => 'error',
-                'msg'    => 'server not find',
-            ], 500);
-        }
-
-        /*
-        Cache::forget('server'.$server_id.':online_count');
-        Cache::forget('server'.$server_id.':online_max');
-        Cache::forget('server'.$server_id.':online_queued');
-        */
-
-        //Задаем ограничение на кол-во запросов на обновление онлайна раз в секунду
-        $lock = Cache::lock('server'.$server_id.':online_count_lock', 1);
-        if ($lock->get()) {
-
-            //Проверяем, есть ли не доставленные покупки и доставляем повторно
-            if (1==1) {
-                $result = GameServer::getPlayersOnline($server_id);
-                $shoppings = Shopping::where('status', 0)->get();
-                if ($result && $shoppings) {
-                    foreach ($shoppings as $shopping) {
-                        foreach ($result as $player) {
-                            if ($shopping->user->steam_id == $player->id) {
-
-                                //Задаем блок на отправку команды
-                                $lock_shop = Cache::lock('server'.$server_id.':shopping_lock'.$shopping->id, 10);
-                                if ($lock_shop->get()) {
-                                    Log::channel('api')->info('Send command: ' . $shopping->command . '. Server: ' . $shopping->server);
-                                    if (GameServer::transferServiceGameServer($shopping->command, $shopping->server)) {
-                                        Log::channel('api')->info('Send command success: ' . $shopping->command . '. Server: ' . $shopping->server);
-                                        $shopping->status = 1;
-                                        $shopping->save();
-
-                                        $lock_shop->release();
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-                }
-            }
-
-            if (1==2) {
-                $shoppings = Shopping::where('status', 0)->get();
-                if ($shoppings) {
-                    foreach ($shoppings as $shopping) {
-
-                        //Задаем блок на отправку команды
-                        $lock_shop = Cache::lock('server' . $server_id . ':shopping_lock' . $shopping->id, 10);
-                        if ($lock_shop->get()) {
-                            Log::channel('api')->info('Send command: ' . $shopping->command . '. Server: ' . $shopping->server);
-                            if (GameServer::transferServiceGameServer($shopping->command, $shopping->server)) {
-                                Log::channel('api')->info('Send command success: ' . $shopping->command . '. Server: ' . $shopping->server);
-                                $shopping->status = 1;
-                                $shopping->save();
-
-                                $lock_shop->release();
-                            }
-                        }
-                    }
-                }
-            }
-
-
-            Log::channel('api')->info('Method: forgetCacheOnline. Is forget.');
-
-            $data_online = GameServer::all_online_count($server_id);
-            if ($data_online['count'] > 0) {
-                Cache::forget('server'.$server_id.':online_count');
-                Cache::forever('server'.$server_id.':online_count', $data_online['count']);
-            }
-            if ($data_online['count_max'] > 0) {
-                Cache::forget('server'.$server_id.':online_max');
-                Cache::forever('server'.$server_id.':online_max', $data_online['count_max']);
-            }
-            if ($data_online['queued'] >= 0) {
-                Cache::forget('server'.$server_id.':online_queued');
-                Cache::forever('server'.$server_id.':online_queued', $data_online['queued']);
-            }
-        }
-
-        return response()->json([
-            'status' => 'success',
-            'server' => $request->server,
+            'msg' => 'Online data now updates automatically every minute via schedule',
         ]);
     }
 
@@ -221,25 +119,6 @@ class ServersWipeController extends Controller
             exit('error');
         }
 
-        foreach (getservers() as $server) {
-            $status = 'Offline';
-            $options = json_decode($server->options);
-
-            $ip_port = explode(':', $options->rcon_ip);
-            if (!isset($ip_port[1])) return 'Offline';
-            $ip = $ip_port[0];
-            $port = $ip_port[1];
-
-            $fp = @fsockopen($ip, $port, $errno, $errstr, 1);
-            if ($fp) {
-                fclose($fp);
-                $status = 'Online';
-            }
-
-            Cache::forget('server'.$server->id.':status');
-            Cache::forever('server'.$server->id.':status', $status);
-        }
-
-        exit('OK');
+        exit('OK - Server status now determined by database update time');
     }
 }
