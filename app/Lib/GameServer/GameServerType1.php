@@ -268,7 +268,7 @@ class GameServerType1 implements GameServerInterface
     public static function transferServiceGameServer($command, $server_id)
     {
         if (self::setServerConfig($server_id)) {
-            return RustGameApi::sendServiceToGame($command);
+            return RustGameApi::sendServiceToGame($command, $server_id);
         }
     }
 

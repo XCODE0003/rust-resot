@@ -93,9 +93,9 @@ class RustGameApi
         return TRUE;
     }
 
-    public static function sendServiceToGame($command)
+    public static function sendServiceToGame($command, $server_id = null)
     {
-        $server_id = session('server_id', 1);
+        $server_id = $server_id ?? session('server_id', 1);
         $result = RustCON::sendCommand($command, $server_id);
 
         Log::channel('rcon')->info('Method: sendServiceToGame. Result: ' . print_r($result, 1));

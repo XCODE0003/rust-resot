@@ -294,9 +294,14 @@ class ShopController extends Controller
         $validator = $this->validator($request->all());
 
         if ($validator->fails()) {
+            Log::channel('rcon_master')->warning('Shop buy_item_ajax validation failed', [
+                'errors' => $validator->errors()->toArray(),
+                'request' => $request->except(['_token']),
+            ]);
             return response()->json([
                 'success' => false,
-                'message' => __('Произошла ошибка! Попробуйте позже.')
+                'message' => $validator->errors()->first() ?: __('Произошла ошибка! Попробуйте позже.'),
+                'errors' => $validator->errors()
             ]);
         }
 
@@ -306,7 +311,7 @@ class ShopController extends Controller
         if (!$lock->get()) {
             return response()->json([
                 'success' => false,
-                'message' => __('Произошла ошибка! Попробуйте позже.')
+                'message' => __('Запрос уже обрабатывается, подождите.')
             ]);
         }
 
@@ -656,9 +661,14 @@ class ShopController extends Controller
         $validator = $this->validatorSet($request->all());
 
         if ($validator->fails()) {
+            Log::channel('rcon_master')->warning('Shop buy_set_ajax validation failed', [
+                'errors' => $validator->errors()->toArray(),
+                'request' => $request->except(['_token']),
+            ]);
             return response()->json([
                 'success' => false,
-                'message' => __('Произошла ошибка! Попробуйте позже.')
+                'message' => $validator->errors()->first() ?: __('Произошла ошибка! Попробуйте позже.'),
+                'errors' => $validator->errors()
             ]);
         }
 
@@ -671,7 +681,7 @@ class ShopController extends Controller
         if (!$lock->get()) {
             return response()->json([
                 'success' => false,
-                'message' => __('Произошла ошибка! Попробуйте позже.')
+                'message' => __('Запрос уже обрабатывается, подождите.')
             ]);
         }
 
