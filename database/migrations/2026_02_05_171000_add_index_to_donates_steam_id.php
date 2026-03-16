@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddIndexToDonateSteamId extends Migration
+class AddIndexToDonatesSteamId20260205 extends Migration
 {
     /**
      * Run the migrations.
